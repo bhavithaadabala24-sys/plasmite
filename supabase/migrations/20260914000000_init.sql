@@ -59,7 +59,7 @@ create or replace function public.handle_new_user()
 returns trigger
 language plpgsql
 security definer
-set search_path = public
+set search_path = ''
 as $$
 begin
   insert into public.profiles (id, full_name)
@@ -217,9 +217,10 @@ create table public.tags (
   user_id       uuid not null references auth.users (id) on delete cascade,
   name          text not null,
   color         text default 'parchment',
-  created_at    timestamptz not null default now(),
-  unique (user_id, lower(name))
+  created_at    timestamptz not null default now()
 );
+
+create unique index tags_user_name_unique on public.tags (user_id, lower(name));
 
 create table public.note_tags (
   note_id       uuid not null references public.notes (id) on delete cascade,
@@ -526,3 +527,13 @@ create policy "attachments_storage_update_own" on storage.objects
   for update using (bucket_id = 'attachments' and (storage.foldername(name))[1] = auth.uid()::text);
 create policy "attachments_storage_delete_own" on storage.objects
   for delete using (bucket_id = 'attachments' and (storage.foldername(name))[1] = auth.uid()::text);
+
+-- ------------------------------------------------------------
+-- Data API exposure
+-- New Supabase projects gate the REST/PostgREST API per-table.
+-- Grant DML on all public tables to the API roles (RLS gates rows).
+-- ------------------------------------------------------------
+grant usage on schema public to anon, authenticated;
+grant select, insert, update, delete on all tables in schema public to anon, authenticated;
+alter default privileges in schema public
+  grant select, insert, update, delete on tables to anon, authenticated;

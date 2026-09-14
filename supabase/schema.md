@@ -82,9 +82,9 @@ Polymorphic: `parent_type` (attachment_type enum), `parent_id`, `name`,
 ## Applying
 
 ```sh
-npx supabase init            # if not already present
-npx supabase start           # local stack
-npx supabase db reset        # apply all migrations on a clean local DB
+# Push migrations to the remote project (DSN is in the gitignored supabase/.env.db)
+npx -y supabase@latest db push --db-url "$(Get-Content supabase\.env.db)" --include-all --yes
 ```
 
-Verify on a clean database before pointing the app at a production project.
+Applied to production project `buxfauvofrrwwxxdjwgh` (region ap-southeast-2).
+Verify on a clean database before pushing experimental migrations.

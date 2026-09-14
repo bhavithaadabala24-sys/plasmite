@@ -33,5 +33,46 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
+  const pathname = request.nextUrl.pathname;
+
+  // Protected app routes — signed-out visitors are sent to sign-in.
+  const protectedRoutes = [
+    "/dashboard",
+    "/notes",
+    "/subjects",
+    "/labs",
+    "/projects",
+    "/questions",
+    "/revision",
+    "/viva",
+    "/ideas",
+    "/bugs",
+    "/tools",
+    "/settings",
+    "/profile",
+    "/search",
+    "/setup",
+  ];
+  const isProtected = protectedRoutes.some(
+    (p) => pathname === p || pathname.startsWith(`${p}/`),
+  );
+
+  if (!user && isProtected) {
+    return {
+      supabaseResponse: NextResponse.redirect(new URL("/sign-in", request.url)),
+      user: null,
+    };
+  }
+
+  // Signed-in users skip the public auth pages.
+  const authRoutes = ["/sign-in", "/sign-up"];
+  const isAuthRoute = authRoutes.some((p) => pathname.startsWith(p));
+  if (user && isAuthRoute) {
+    return {
+      supabaseResponse: NextResponse.redirect(new URL("/dashboard", request.url)),
+      user,
+    };
+  }
+
   return { supabaseResponse, user };
 }
