@@ -8,8 +8,8 @@ export function Brand({ className }: { className?: string }) {
       <Image
         src="/plasmite-logo.png"
         alt="PLASMITE"
-        width={132}
-        height={72}
+        width={300}
+        height={100}
         priority
         className="h-7 w-auto object-contain lg:h-8"
       />
