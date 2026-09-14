@@ -43,6 +43,7 @@ yarn-error.log*
 
 # stray local design assets
 /updated logo.png
+/updated 2 logo.png
 /app logo and Name _PLASMITE_.png
 
 # typescript
