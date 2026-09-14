@@ -41,6 +41,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# stray local design assets
+/updated logo.png
+/app logo and Name _PLASMITE_.png
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
