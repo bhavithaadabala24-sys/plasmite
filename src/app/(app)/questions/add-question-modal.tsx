@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Loader2, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 
 import { createClient } from "@/lib/supabase/client";
 import { Field, inputField, ModalShell, SubmitButtons } from "@/app/(app)/labs/create-lab-modal";

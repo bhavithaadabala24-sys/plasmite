@@ -49,14 +49,14 @@ export function ProjectBoard({
     await supabase.from("projects").update({ progress: Number(done) }).eq("id", projectId);
   }
 
-  async function setStatus(next: string) {
+  async function updateStatus(next: string) {
     setStatus(next);
     await supabase.from("projects").update({ status: next }).eq("id", projectId);
     router.refresh();
   }
 
   async function toggleTask(task: Task) {
-    const next = task.status === "done" ? "todo" : "done";
+    const next: Task["status"] = task.status === "done" ? "todo" : "done";
     const updated = tasks.map((t) => (t.id === task.id ? { ...t, status: next } : t));
     setTasks(updated);
     await supabase.from("project_tasks").update({ status: next }).eq("id", task.id);
@@ -142,7 +142,7 @@ export function ProjectBoard({
           <select
             id="project-status"
             value={status}
-            onChange={(e) => setStatus(e.target.value)}
+            onChange={(e) => updateStatus(e.target.value)}
             className="h-9 cursor-pointer rounded-lg border border-border bg-surface-container-lowest px-3 font-body text-body-sm text-on-surface shadow-sm focus:border-2 focus:border-ring focus:outline-none"
           >
             {PROJECT_STATUS.map((s) => (

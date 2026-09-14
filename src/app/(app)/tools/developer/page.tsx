@@ -7,7 +7,15 @@ import { PageHeader } from "@/components/layout/page-header";
 
 function parseBase(s: string, base: number): bigint | null {
   try {
-    return BigInt.parseInt(s.trim(), base);
+    const text = s.trim().toUpperCase();
+    if (!text) return BigInt(0);
+    let result = BigInt(0);
+    for (const ch of text) {
+      const digit = parseInt(ch, base);
+      if (Number.isNaN(digit)) return null;
+      result = result * BigInt(base) + BigInt(digit);
+    }
+    return result;
   } catch {
     return null;
   }
@@ -117,7 +125,7 @@ function UnitConverter() {
           <select
             value={kind}
             onChange={(e) => {
-              setKind(e.target.value);
+              setKind(e.target.value as UnitKind);
               setFrom(e.target.value === "mass" ? "kg" : "m");
               setTo(e.target.value === "mass" ? "g" : "cm");
             }}

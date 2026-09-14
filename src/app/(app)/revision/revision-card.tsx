@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Layers, Plus, RotateCcw, X } from "lucide-react";
+import { Layers, RotateCcw, X } from "lucide-react";
 
 import { createClient } from "@/lib/supabase/client";
 

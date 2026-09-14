@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 import { requireUser } from "@/lib/db";
-import { SetupCurriculumForm } from "./setup-curriculum-form";
+import { SetupCurriculumForm } from "../setup-curriculum-form";
 
 export default async function SetupCurriculumPage() {
   const { supabase, user } = await requireUser();

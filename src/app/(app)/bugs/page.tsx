@@ -15,7 +15,7 @@ export default async function BugsPage({
 
   let query = supabase
     .from("bugs")
-    .select("id, title, severity, status, symptom, root_cause, remedy, project:projects(name)")
+    .select("id, title, severity, status, symptom, root_cause, remedy, updated_at, project:projects(name)")
     .eq("user_id", user.id);
   if (status) query = query.eq("status", status);
   if (severity) query = query.eq("severity", severity);
@@ -122,7 +122,7 @@ export default async function BugsPage({
                 </div>
                 <div className="flex shrink-0 items-center gap-2">
                   <span
-                    className={`rounded-full px-2.5 py-1 font-display text-code-sm capitalize ${SEVERITY_META[b.severity].className}`}
+                    className={`rounded-full px-2.5 py-1 font-display text-code-sm capitalize ${SEVERITY_META[b.severity as keyof typeof SEVERITY_META].className}`}
                   >
                     {b.severity}
                   </span>

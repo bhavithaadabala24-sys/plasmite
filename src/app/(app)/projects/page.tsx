@@ -82,7 +82,7 @@ export default async function ProjectsPage() {
 
                 {(p.technologies ?? []).length > 0 ? (
                   <div className="flex flex-wrap gap-1.5">
-                    {p.technologies.map((t) => (
+                    {p.technologies.map((t: string) => (
                       <span
                         key={t}
                         className="rounded-full bg-secondary-container px-2 py-0.5 font-display text-code-sm text-on-secondary-container"
