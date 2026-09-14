@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Plasmite Workspace</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&amp;family=Space+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed": "#e7e2da", "on-primary-fixed-variant": "#4c463d", "on-primary": "#ffffff", "on-secondary-container": "#67645e", "primary-fixed": "#ece1d5", "on-tertiary-fixed-variant": "#494640", "surface-container-lowest": "#ffffff", "on-secondary-fixed-variant": "#494741", "secondary-fixed-dim": "#cac6bf", "tertiary-fixed": "#e7e2d9", "outline": "#7d766e", "primary-fixed-dim": "#cfc5ba", "surface-container-low": "#f5f3f0", "inverse-surface": "#30312f", "on-secondary-fixed": "#1d1b17", "surface-tint": "#645d54", "error": "#ba1a1a", "surface-container": "#efeeeb", "outline-variant": "#cec5bc", "on-error-container": "#93000a", "on-primary-fixed": "#201b14", "on-background": "#1b1c1a", "on-error": "#ffffff", "secondary-container": "#e7e2da", "surface-variant": "#e4e2df", "tertiary-fixed-dim": "#cbc6be", "error-container": "#ffdad6", "background": "#fbf9f6", "on-surface": "#1b1c1a", "tertiary": "#25231e", "surface-bright": "#fbf9f6", "inverse-primary": "#cfc5ba", "on-tertiary": "#ffffff", "on-surface-variant": "#4c463f", "surface-container-highest": "#e4e2df", "surface-container-high": "#eae8e5", "tertiary-container": "#3b3933", "secondary": "#615e58", "on-primary-container": "#aaa197", "inverse-on-surface": "#f2f0ed", "on-tertiary-container": "#a7a29b", "primary": "#28231b", "primary-container": "#3e3830", "on-secondary": "#ffffff", "surface": "#fbf9f6", "surface-dim": "#dbdad7", "on-tertiary-fixed": "#1d1b16" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "gutter-lg": "2rem", "margin-sm": "1rem", "gutter": "1.5rem", "gutter-sm": "1rem", "margin-lg": "3.5rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "space-md": "1rem", "margin": "2rem", "space-sm": "0.5rem", "space-xs": "0.25rem" }, "fontFamily": { "body-md": [ "Literata" ], "headline-lg": [ "Space Grotesk" ], "headline-xl": [ "Space Grotesk" ], "label-sm": [ "Space Grotesk" ], "headline-sm": [ "Space Grotesk" ], "label-md": [ "Space Grotesk" ], "body-sm": [ "Literata" ], "headline-md": [ "Space Grotesk" ], "display-lg": [ "Space Grotesk" ], "body-xl": [ "Literata" ], "body-lg": [ "Literata" ], "code-sm": [ "Space Grotesk" ], "headline-xl-mobile": [ "Space Grotesk" ], "display-lg-mobile": [ "Space Grotesk" ] }, "fontSize": { "body-md": [ "15px", { "lineHeight": "24px", "letterSpacing": "0.005em", "fontWeight": "400" } ], "headline-lg": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "headline-xl": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "label-sm": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" } ], "headline-sm": [ "16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" } ], "label-md": [ "13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "body-sm": [ "13px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "headline-md": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "500" } ], "display-lg": [ "44px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "600" } ], "body-xl": [ "20px", { "lineHeight": "32px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "body-lg": [ "17px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400" } ], "code-sm": [ "12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "headline-xl-mobile": [ "26px", { "lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "display-lg-mobile": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col h-full overflow-hidden"><div class="h-16 px-gutter flex items-center justify-between flex-shrink-0"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-primary text-[22px]">auto_stories</span><span class="font-headline-sm text-headline-sm tracking-tight text-primary font-bold">PLASMITE</span></div><span class="font-code-sm text-code-sm text-on-surface-variant bg-surface px-space-xs py-0.5 rounded">v2.4</span></div><div class="flex-1 overflow-y-auto px-space-md py-space-sm flex flex-col gap-space-lg"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-surface-container-highest text-on-surface font-headline-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[18px]">dashboard</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="subjects" href="#"><span class="material-symbols-outlined text-[18px]">library_books</span><span>Subjects</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="notes" href="#"><span class="material-symbols-outlined text-[18px]">edit_note</span><span>Notes</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="tasks" href="#"><span class="material-symbols-outlined text-[18px]">check_circle</span><span>Tasks</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg transition-colors bg-surface-container-highest text-on-surface font-headline-sm" data-path="labs" href="#"><span class="material-symbols-outlined text-[18px]">biotech</span><span>Labs</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="projects" href="#"><span class="material-symbols-outlined text-[18px]">science</span><span>Projects</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="revision" href="#"><span class="material-symbols-outlined text-[18px]">history_edu</span><span>Revision</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="tools" href="#"><span class="material-symbols-outlined text-[18px]">tune</span><span>Tools</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="settings" href="#"><span class="material-symbols-outlined text-[18px]">settings</span><span>Settings</span></a></nav><div class="bg-surface-container-lowest p-space-md rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.02)] flex flex-col gap-space-sm"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Pending Tasks</span><span class="font-code-sm text-code-sm text-primary font-medium">3 due</span></div><div class="flex flex-col gap-space-xs"><div class="flex items-start gap-space-xs text-on-surface font-body-sm text-body-sm"><span class="material-symbols-outlined text-[15px] text-on-surface-variant mt-0.5">check_box_outline_blank</span><span class="truncate">Review Quantum Electrodynamics</span></div><div class="flex items-start gap-space-xs text-on-surface font-body-sm text-body-sm"><span class="material-symbols-outlined text-[15px] text-on-surface-variant mt-0.5">check_box_outline_blank</span><span class="truncate">Bio-synthesis Draft</span></div></div></div></div><div class="p-space-md bg-surface-container flex items-center justify-between flex-shrink-0"><div class="flex items-center gap-space-sm min-w-0"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col min-w-0"><span class="font-label-md text-label-md text-on-surface truncate font-medium">Dr. S. Thorne</span><span class="font-code-sm text-code-sm text-on-surface-variant truncate">Postdoc Folio</span></div></div><span class="material-symbols-outlined text-on-surface-variant text-[18px]">unfold_more</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-gutter-lg"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs text-on-surface-variant font-code-sm text-code-sm"><span class="material-symbols-outlined text-[16px]">terminal</span><span>plasmite-core/academic</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-md py-1.5 bg-surface-container-low rounded-lg text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">search</span><span class="font-label-sm text-label-sm">Search corpus (⌘K)</span></div><div class="flex items-center gap-space-xs"><button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">bookmark_border</span></button><button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span></button></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-16 w-full px-gutter-lg bg-surface"><div class="flex flex-col w-full pb-margin-lg">
+<!-- Top Action & Navigation Strip -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pt-space-md pb-space-lg">
+<div class="flex items-center gap-space-xs text-secondary font-code-sm text-code-sm tracking-wide">
+<span class="hover:text-on-surface transition-colors cursor-pointer">Subjects</span>
+<span class="text-outline-variant">/</span>
+<span class="hover:text-on-surface transition-colors cursor-pointer">Computer Networks Lab</span>
+<span class="text-outline-variant">/</span>
+<span class="text-on-surface font-medium">Experiment 04</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="inline-flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Teacher Sign-off: Pending</span>
+</div>
+<button class="inline-flex items-center gap-space-xs h-9 px-4 rounded bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-colors shadow-sm" id="exportPdfBtn">
+<span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
+<span>Export Official PDF</span>
+</button>
+</div>
+</div>
+<!-- Header Section -->
+<header class="flex flex-col gap-space-xs mb-space-xl">
+<div class="flex items-center gap-space-xs">
+<span class="font-code-sm text-label-sm uppercase tracking-widest text-secondary font-medium">Experiment 04</span>
+<span class="text-outline-variant text-[10px]">•</span>
+<span class="font-code-sm text-code-sm text-secondary">FOLIO REF #CS-NET-24-04</span>
+</div>
+<h1 class="font-body-xl text-[30px] leading-[38px] text-on-surface tracking-tight font-normal">
+      Implementation of Distance Vector Routing Algorithm
+    </h1>
+<!-- Metadata Strip -->
+<div class="mt-space-sm p-space-md bg-surface-container-lowest rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] flex flex-wrap items-center justify-between gap-y-space-sm gap-x-space-lg text-secondary font-code-sm text-code-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[15px] text-secondary">calendar_today</span>
+<span>Date Performed:</span>
+<span class="text-on-surface font-medium">Sept 12, 2024</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[15px] text-secondary">code</span>
+<span>Language:</span>
+<span class="text-on-surface font-medium">C++ (std20)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[15px] text-secondary">check_circle</span>
+<span>Lab Status:</span>
+<span class="text-on-surface font-medium">Completed &amp; Compiled</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[15px] text-secondary">grade</span>
+<span>Marks:</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-semibold tracking-wider">__ / 10</span>
+</div>
+</div>
+</header>
+<!-- Editorial Main Body: 12-column Grid with Asymmetric Annotation Sidebar -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Primary Vertical Documentation Column -->
+<main class="lg:col-span-9 flex flex-col gap-space-xl">
+<!-- Section 1: Aim & Requirements -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-space-xs">
+<span class="font-code-sm text-secondary">01.</span>
+            Aim &amp; Requirements
+          </h2>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Theory &amp; Environment</span>
+</div>
+<div class="max-w-[68ch] flex flex-col gap-space-sm font-body-md text-body-md text-on-surface">
+<p>
+            To formulate, simulate, and verify the decentralized <strong class="font-medium text-primary">Distance Vector Routing (DVR)</strong> protocol utilizing the iterative, asynchronous Bellman-Ford shortest-path algorithm across an arbitrary network topology. The objective entails modeling dynamic link advertisements, vector relaxation updates, and verifying full-graph convergence within finite iterations.
+          </p>
+<p class="text-body-sm text-on-surface-variant italic">
+            "Each network node maintains a vector of link costs to all known destinations and iteratively distributes this perspective to immediate neighbors until minimum distances stabilize."
+          </p>
+</div>
+<div class="mt-space-xs pt-space-sm">
+<div class="font-label-sm text-label-sm uppercase tracking-wider text-secondary mb-space-sm">Target Environment &amp; Toolchain</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
+<div class="p-space-sm bg-surface-container-low rounded flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm text-secondary">Operating System</span>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">Ubuntu 22.04 LTS (x86_64)</span>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm text-secondary">Compiler / Standard</span>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">GCC 11.4.0 / C++20 standard</span>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm text-secondary">Telemetry &amp; Packet Inspect</span>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">Wireshark v4.0.2 / tcpdump</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Algorithm & Logic -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-space-xs">
+<span class="font-code-sm text-secondary">02.</span>
+            Algorithm &amp; Logic
+          </h2>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Step Execution</span>
+</div>
+<div class="max-w-[68ch] font-body-md text-body-md text-on-surface flex flex-col gap-space-md">
+<p>
+            The protocol calculates shortest paths iteratively without requiring centralized global topology knowledge. The core relaxation follows the recurrence:
+          </p>
+<div class="p-space-md bg-surface-container-low rounded-lg flex items-center justify-center">
+<code class="font-code-sm text-[14px] text-primary font-semibold tracking-wide">
+              D<sub class="text-[11px]">x</sub>(y) = min<sub class="text-[11px]">v ∈ N(x)</sub> { c(x, v) + D<sub class="text-[11px]">v</sub>(y) }
+            </code>
+</div>
+<div class="flex flex-col gap-space-sm mt-space-xs">
+<div class="flex items-start gap-space-md p-space-sm rounded hover:bg-surface-container-low transition-colors">
+<span class="font-code-sm text-code-sm text-secondary font-medium w-6 pt-0.5">01</span>
+<div class="flex-1">
+<span class="font-headline-sm text-headline-sm text-on-surface block mb-1">Local Table Initialization</span>
+<span class="text-body-sm text-on-surface-variant">Each router node <em>x</em> registers direct link costs <em>c(x, v)</em> to each immediate neighbor <em>v</em>. Unreachable destinations are initialized to infinity (∞), with self-cost set to 0.</span>
+</div>
+</div>
+<div class="flex items-start gap-space-md p-space-sm rounded hover:bg-surface-container-low transition-colors">
+<span class="font-code-sm text-code-sm text-secondary font-medium w-6 pt-0.5">02</span>
+<div class="flex-1">
+<span class="font-headline-sm text-headline-sm text-on-surface block mb-1">Asynchronous Vector Broadcast</span>
+<span class="text-body-sm text-on-surface-variant">Every iteration or link cost disturbance triggers an outgoing vector notification: node <em>x</em> transmits its current distance estimate array <em>D<sub>x</sub> = [D<sub>x</sub>(y): y ∈ N]</em> to directly connected peers.</span>
+</div>
+</div>
+<div class="flex items-start gap-space-md p-space-sm rounded hover:bg-surface-container-low transition-colors">
+<span class="font-code-sm text-code-sm text-secondary font-medium w-6 pt-0.5">03</span>
+<div class="flex-1">
+<span class="font-headline-sm text-headline-sm text-on-surface block mb-1">Vector Relaxation &amp; Path Selection</span>
+<span class="text-body-sm text-on-surface-variant">Upon intercepting neighbor vector <em>D<sub>v</sub></em>, node <em>x</em> calculates candidate paths across all destinations. If traversing <em>v</em> reduces path cost to destination <em>y</em>, <em>D<sub>x</sub>(y)</em> updates and next-hop is reassigned to <em>v</em>.</span>
+</div>
+</div>
+<div class="flex items-start gap-space-md p-space-sm rounded hover:bg-surface-container-low transition-colors">
+<span class="font-code-sm text-code-sm text-secondary font-medium w-6 pt-0.5">04</span>
+<div class="flex-1">
+<span class="font-headline-sm text-headline-sm text-on-surface block mb-1">State Stabilization &amp; Quiescence</span>
+<span class="text-body-sm text-on-surface-variant">Cycles repeat across network nodes until no further distance modifications occur within a global iteration window, declaring complete convergence.</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Source Code -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-space-xs">
+<span class="font-code-sm text-secondary">03.</span>
+              Source Code
+            </h2>
+<span class="font-code-sm text-code-sm text-secondary bg-surface-container px-2 py-0.5 rounded">distance_vector.cpp</span>
+</div>
+<button class="inline-flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high transition-colors font-label-sm text-label-sm text-on-surface" id="copyCodeBtn">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span id="copyText">Copy Buffer</span>
+</button>
+</div>
+<!-- Monochromatic Terminal Editor Frame -->
+<div class="bg-[#16161D] rounded-lg p-space-md overflow-x-auto shadow-inner">
+<div class="flex items-center justify-between pb-space-sm mb-space-sm border-b border-[#252530] text-[#7E7E8F] font-code-sm text-[11px]">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#353545]"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#353545]"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#353545]"></span>
+<span class="ml-2 text-[#A0A0B0]">clang++ -O3 -std=c++20 distance_vector.cpp</span>
+</div>
+<span>ANSI UTF-8</span>
+</div>
+<pre class="font-code-sm text-[13px] leading-6 text-[#E4E4E7] select-all"><code><span class="text-[#7E7E8F]">#include &lt;iostream&gt;</span>
+<span class="text-[#7E7E8F]">#include &lt;vector&gt;</span>
+<span class="text-[#7E7E8F]">#include &lt;iomanip&gt;</span>
+
+<span class="text-[#9D86E0]">constexpr int</span> INF = 999999;
+<span class="text-[#9D86E0]">constexpr int</span> MAX_NODES = 4;
+
+<span class="text-[#6CB6EB]">struct</span> <span class="text-[#E5C07B]">RoutingTable</span> {
+    <span class="text-[#9D86E0]">int</span> dist[MAX_NODES];
+    <span class="text-[#9D86E0]">int</span> nextHop[MAX_NODES];
+};
+
+<span class="text-[#9D86E0]">void</span> <span class="text-[#61AFEF]">updateDistanceVector</span>(<span class="text-[#E5C07B]">RoutingTable</span> nodes[], <span class="text-[#9D86E0]">const int</span> costMatrix[MAX_NODES][MAX_NODES]) {
+    <span class="text-[#9D86E0]">bool</span> converged = <span class="text-[#E5C07B]">false</span>;
+    <span class="text-[#9D86E0]">int</span> iter = 0;
+
+    <span class="text-[#C678DD]">while</span> (!converged) {
+        converged = <span class="text-[#E5C07B]">true</span>;
+        std::cout &lt;&lt; <span class="text-[#98C379]">"\n[CYCLE "</span> &lt;&lt; ++iter &lt;&lt; <span class="text-[#98C379]">"] Initiating Vector Exchanges..."</span> &lt;&lt; std::endl;
+
+        <span class="text-[#C678DD]">for</span> (<span class="text-[#9D86E0]">int</span> i = 0; i &lt; MAX_NODES; ++i) {
+            <span class="text-[#C678DD]">for</span> (<span class="text-[#9D86E0]">int</span> j = 0; j &lt; MAX_NODES; ++j) {
+                <span class="text-[#C678DD]">for</span> (<span class="text-[#9D86E0]">int</span> k = 0; k &lt; MAX_NODES; ++k) {
+                    <span class="text-[#7E7E8F]">// Bellman-Ford Relaxation step</span>
+                    <span class="text-[#C678DD]">if</span> (costMatrix[i][k] != INF &amp;&amp; nodes[k].dist[j] != INF) {
+                        <span class="text-[#9D86E0]">int</span> candidateCost = costMatrix[i][k] + nodes[k].dist[j];
+                        <span class="text-[#C678DD]">if</span> (candidateCost &lt; nodes[i].dist[j]) {
+                            nodes[i].dist[j] = candidateCost;
+                            nodes[i].nextHop[j] = k;
+                            converged = <span class="text-[#E5C07B]">false</span>;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    std::cout &lt;&lt; <span class="text-[#98C379]">"System reached steady state in "</span> &lt;&lt; iter &lt;&lt; <span class="text-[#98C379]">" passes."</span> &lt;&lt; std::endl;
+}</code></pre>
+</div>
+</section>
+<!-- Section 4: Execution Output & Verification -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-space-xs">
+<span class="font-code-sm text-secondary">04.</span>
+            Execution Output &amp; Verification
+          </h2>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Test Suite Run</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface max-w-[68ch]">
+          The program was executed against a simulated 4-node diamond network topology [A, B, C, D] where link weights are defined as: A-B=2, B-C=3, A-C=7, C-D=1, B-D=8. Convergence was established after two vector propagation cycles.
+        </p>
+<!-- Visual Verification Log Card -->
+<div class="bg-surface-container-low rounded-lg p-space-md flex flex-col gap-space-sm font-code-sm text-code-sm">
+<div class="flex items-center justify-between text-secondary">
+<span class="font-label-sm uppercase tracking-wider">Terminal Output Stream</span>
+<span class="text-[11px]">Process exit: 0 (0.012s)</span>
+</div>
+<div class="bg-[#1B1C1A] text-[#D1CFCA] p-space-sm rounded font-code-sm text-[12px] leading-5 space-y-1">
+<div class="text-[#8B8882]">$ ./distance_vector_sim --verbose</div>
+<div>[NETWORK TOPO] 4 Nodes initialized. Edges: (A,B,2), (B,C,3), (A,C,7), (C,D,1), (B,D,8)</div>
+<div>[CYCLE 1] Initiating Vector Exchanges...</div>
+<div class="text-[#A2D2FB]">&gt; Relaxation applied at Node A: Path to C reduced from 7 to 5 via B</div>
+<div class="text-[#A2D2FB]">&gt; Relaxation applied at Node A: Path to D reduced from INF to 6 via B-C</div>
+<div>[CYCLE 2] Initiating Vector Exchanges...</div>
+<div>&gt; No state adjustments recorded. Convergence flag asserted.</div>
+<div class="text-[#99E2A8]">System reached steady state in 2 passes. Final Routing Matrices rendered.</div>
+</div>
+</div>
+<!-- Observation Data Table -->
+<div class="flex flex-col gap-space-xs mt-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Node Distance &amp; Hop Registry</span>
+<div class="overflow-x-auto rounded-lg bg-surface-container-low">
+<table class="w-full text-left font-code-sm text-code-sm">
+<thead class="bg-surface-container text-secondary text-label-sm uppercase tracking-wider">
+<tr>
+<th class="py-2.5 px-4">Iteration</th>
+<th class="py-2.5 px-4">Source Node</th>
+<th class="py-2.5 px-4">Destination</th>
+<th class="py-2.5 px-4">Next Hop</th>
+<th class="py-2.5 px-4 text-right">Path Metric</th>
+<th class="py-2.5 px-4 text-center">Status</th>
+</tr>
+</thead>
+<tbody class="text-on-surface divide-y divide-surface-container">
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="py-2.5 px-4 font-medium">Final State</td>
+<td class="py-2.5 px-4">Node A</td>
+<td class="py-2.5 px-4">Node B</td>
+<td class="py-2.5 px-4">Direct (B)</td>
+<td class="py-2.5 px-4 text-right font-medium">2</td>
+<td class="py-2.5 px-4 text-center"><span class="px-2 py-0.5 rounded bg-surface-container-highest text-[11px]">Optimal</span></td>
+</tr>
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="py-2.5 px-4 font-medium">Final State</td>
+<td class="py-2.5 px-4">Node A</td>
+<td class="py-2.5 px-4">Node C</td>
+<td class="py-2.5 px-4">Node B</td>
+<td class="py-2.5 px-4 text-right font-medium">5</td>
+<td class="py-2.5 px-4 text-center"><span class="px-2 py-0.5 rounded bg-surface-container-highest text-[11px]">Optimal</span></td>
+</tr>
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="py-2.5 px-4 font-medium">Final State</td>
+<td class="py-2.5 px-4">Node A</td>
+<td class="py-2.5 px-4">Node D</td>
+<td class="py-2.5 px-4">Node B</td>
+<td class="py-2.5 px-4 text-right font-medium">6</td>
+<td class="py-2.5 px-4 text-center"><span class="px-2 py-0.5 rounded bg-surface-container-highest text-[11px]">Optimal</span></td>
+</tr>
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="py-2.5 px-4 font-medium">Final State</td>
+<td class="py-2.5 px-4">Node B</td>
+<td class="py-2.5 px-4">Node D</td>
+<td class="py-2.5 px-4">Node C</td>
+<td class="py-2.5 px-4 text-right font-medium">4</td>
+<td class="py-2.5 px-4 text-center"><span class="px-2 py-0.5 rounded bg-surface-container-highest text-[11px]">Optimal</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Section 5: Experiment Viva Questions -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-space-xs">
+<span class="font-code-sm text-secondary">05.</span>
+            Experiment Viva Questions
+          </h2>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Oral Examination Prep</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface max-w-[68ch]">
+          Key review checkpoints tested during practical laboratory evaluation. Click to expand full theoretical derivations and mitigation strategies.
+        </p>
+<!-- Viva Accordion Container -->
+<div class="flex flex-col gap-space-sm mt-space-xs" id="vivaAccordion">
+<!-- Viva Item 1 -->
+<div class="rounded-lg bg-surface-container-low overflow-hidden transition-all duration-200 viva-item">
+<button class="w-full p-space-md flex items-center justify-between text-left font-headline-sm text-headline-sm text-on-surface hover:bg-surface-container transition-colors viva-toggle" data-target="viva1">
+<span class="flex items-center gap-space-sm">
+<span class="font-code-sm text-secondary text-[13px]">Q1.</span>
+<span>What is the count-to-infinity problem in Distance Vector algorithms?</span>
+</span>
+<span class="material-symbols-outlined text-secondary transition-transform duration-200 transform rotate-0 text-[20px] viva-icon">expand_more</span>
+</button>
+<div class="hidden px-space-md pb-space-md pt-space-xs text-on-surface-variant font-body-md text-body-md flex flex-col gap-space-sm" id="viva1">
+<p>
+                The count-to-infinity problem manifests when an existing link between two nodes breaks or drastically increases in cost. Because updates are asynchronous and nodes rely purely on their neighbors' advertised costs without knowing intermediate path hops, routing loops develop where two or more nodes incrementally increment metric estimations towards infinity before discovering unreachability.
+              </p>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-code-sm text-[12px] text-secondary">RFC Reference: RFC 1058 (RIP)</span>
+<div class="flex gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface font-code-sm text-[11px] text-on-surface cursor-pointer hover:bg-surface-container-high">Mark Understood</span>
+<span class="px-2 py-0.5 rounded bg-surface font-code-sm text-[11px] text-secondary cursor-pointer hover:bg-surface-container-high">Flag for Review</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Viva Item 2 -->
+<div class="rounded-lg bg-surface-container-low overflow-hidden transition-all duration-200 viva-item">
+<button class="w-full p-space-md flex items-center justify-between text-left font-headline-sm text-headline-sm text-on-surface hover:bg-surface-container transition-colors viva-toggle" data-target="viva2">
+<span class="flex items-center gap-space-sm">
+<span class="font-code-sm text-secondary text-[13px]">Q2.</span>
+<span>How does Split Horizon with Poison Reverse mitigate two-node routing loops?</span>
+</span>
+<span class="material-symbols-outlined text-secondary transition-transform duration-200 transform rotate-0 text-[20px] viva-icon">expand_more</span>
+</button>
+<div class="hidden px-space-md pb-space-md pt-space-xs text-on-surface-variant font-body-md text-body-md flex flex-col gap-space-sm" id="viva2">
+<p>
+                Under <strong>Split Horizon</strong>, a node will not advertise a route back to the neighbor from which it learned that exact route. With <strong>Poison Reverse</strong>, rather than simply suppressing the advertisement, the node explicitly advertises that destination with an infinite cost (<code class="font-code-sm text-[12px]">∞ = 16</code> in RIP) to the next hop. This immediately prevents the preceding neighbor from mistakenly assuming it can reroute back through this path.
+              </p>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-code-sm text-[12px] text-secondary">Convergence Impact: Avoids 2-node cycles</span>
+<div class="flex gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface font-code-sm text-[11px] text-on-surface cursor-pointer hover:bg-surface-container-high">Mark Understood</span>
+<span class="px-2 py-0.5 rounded bg-surface font-code-sm text-[11px] text-secondary cursor-pointer hover:bg-surface-container-high">Flag for Review</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Viva Item 3 -->
+<div class="rounded-lg bg-surface-container-low overflow-hidden transition-all duration-200 viva-item">
+<button class="w-full p-space-md flex items-center justify-between text-left font-headline-sm text-headline-sm text-on-surface hover:bg-surface-container transition-colors viva-toggle" data-target="viva3">
+<span class="flex items-center gap-space-sm">
+<span class="font-code-sm text-secondary text-[13px]">Q3.</span>
+<span>Why does Bellman-Ford exhibit slower convergence compared to Dijkstra (Link-State)?</span>
+</span>
+<span class="material-symbols-outlined text-secondary transition-transform duration-200 transform rotate-0 text-[20px] viva-icon">expand_more</span>
+</button>
+<div class="hidden px-space-md pb-space-md pt-space-xs text-on-surface-variant font-body-md text-body-md flex flex-col gap-space-sm" id="viva3">
+<p>
+                Link-State algorithms (e.g., OSPF) broadcast the complete state of individual links globally using Link State Advertisements (LSAs), permitting each router to independently compute shortest paths over an identical graph model in O(V log V) time. Conversely, Bellman-Ford relies on iterative "routing-by-rumor", where information must ripple hop-by-hop. In the presence of bad news (cost increases), relaxation can require up to <em class="font-medium">O(|V| · |E|)</em> vector exchanges to stabilize.
+              </p>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-code-sm text-[12px] text-secondary">Complexity: O(|V|·|E|) vs O(|E| + |V|log|V|)</span>
+<div class="flex gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface font-code-sm text-[11px] text-on-surface cursor-pointer hover:bg-surface-container-high">Mark Understood</span>
+<span class="px-2 py-0.5 rounded bg-surface font-code-sm text-[11px] text-secondary cursor-pointer hover:bg-surface-container-high">Flag for Review</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Asymmetric Editorial Marginalia (3 Columns) -->
+<aside class="lg:col-span-3 flex flex-col gap-space-lg">
+<!-- Notebook Navigation Index -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] flex flex-col gap-space-sm sticky top-20">
+<div class="font-label-sm text-label-sm uppercase tracking-wider text-secondary flex items-center justify-between">
+<span>Experiment Index</span>
+<span class="font-code-sm text-code-sm text-primary">5 Sections</span>
+</div>
+<nav class="flex flex-col text-label-md text-label-md text-on-surface-variant font-medium">
+<a class="py-1 px-2 rounded hover:bg-surface-container text-on-surface flex items-center justify-between transition-colors" href="#">
+<span>01. Aim &amp; Environment</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</a>
+<a class="py-1 px-2 rounded hover:bg-surface-container text-on-surface flex items-center justify-between transition-colors" href="#">
+<span>02. Algorithm &amp; Logic</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</a>
+<a class="py-1 px-2 rounded hover:bg-surface-container text-on-surface flex items-center justify-between transition-colors" href="#">
+<span>03. Source Code Buffer</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</a>
+<a class="py-1 px-2 rounded hover:bg-surface-container text-on-surface flex items-center justify-between transition-colors" href="#">
+<span>04. Output Verification</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</a>
+<a class="py-1 px-2 rounded hover:bg-surface-container text-on-surface flex items-center justify-between transition-colors" href="#">
+<span>05. Oral Viva Prep</span>
+<span class="font-code-sm text-[11px] text-secondary">3 items</span>
+</a>
+</nav>
+<!-- Lab Verification Sign-off Box -->
+<div class="mt-space-md pt-space-sm border-t border-surface-container flex flex-col gap-space-xs">
+<div class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Evaluator Signature</div>
+<div class="p-space-sm rounded bg-surface-container-low flex flex-col gap-1">
+<span class="font-body-md text-on-surface italic text-[14px]">Dr. Eleanor Vance</span>
+<span class="font-code-sm text-code-sm text-secondary">Department of Computer Engg.</span>
+<span class="font-code-sm text-[11px] text-secondary">Sign status: Digital Token Verified</span>
+</div>
+</div>
+<!-- Inline Visual Topology Diagram (SVG) -->
+<div class="mt-space-sm pt-space-sm border-t border-surface-container flex flex-col gap-space-xs">
+<div class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Topology Schematic</div>
+<div class="w-full bg-surface-container-low rounded p-2 flex items-center justify-center">
+<svg class="w-full h-36 text-primary" fill="none" viewbox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+<!-- Graph Edges -->
+<line stroke="currentColor" stroke-dasharray="2 2" stroke-width="1.5" x1="40" x2="90" y1="60" y2="25"></line>
+<line stroke="currentColor" stroke-width="1.5" x1="90" x2="160" y1="25" y2="60"></line>
+<line stroke="currentColor" stroke-width="1.5" x1="40" x2="90" y1="60" y2="95"></line>
+<line stroke="currentColor" stroke-width="1.5" x1="90" x2="160" y1="95" y2="60"></line>
+<line stroke="currentColor" stroke-width="1.5" x1="90" x2="90" y1="25" y2="95"></line>
+<!-- Edge Weights -->
+<text fill="currentColor" font-family="Space Grotesk" font-size="9" x="56" y="38">c=2</text>
+<text fill="currentColor" font-family="Space Grotesk" font-size="9" x="130" y="38">c=8</text>
+<text fill="currentColor" font-family="Space Grotesk" font-size="9" x="56" y="88">c=7</text>
+<text fill="currentColor" font-family="Space Grotesk" font-size="9" x="130" y="88">c=1</text>
+<text fill="currentColor" font-family="Space Grotesk" font-size="9" x="94" y="62">c=3</text>
+<!-- Node Circles -->
+<circle cx="40" cy="60" fill="#EAE8E5" r="10" stroke="currentColor" stroke-width="1.5"></circle>
+<text fill="currentColor" font-family="Space Grotesk" font-size="10" font-weight="600" x="37" y="64">A</text>
+<circle cx="90" cy="25" fill="#EAE8E5" r="10" stroke="currentColor" stroke-width="1.5"></circle>
+<text fill="currentColor" font-family="Space Grotesk" font-size="10" font-weight="600" x="87" y="29">B</text>
+<circle cx="90" cy="95" fill="#EAE8E5" r="10" stroke="currentColor" stroke-width="1.5"></circle>
+<text fill="currentColor" font-family="Space Grotesk" font-size="10" font-weight="600" x="87" y="99">C</text>
+<circle cx="160" cy="60" fill="#EAE8E5" r="10" stroke="currentColor" stroke-width="1.5"></circle>
+<text fill="currentColor" font-family="Space Grotesk" font-size="10" font-weight="600" x="156" y="64">D</text>
+</svg>
+</div>
+<span class="font-code-sm text-[11px] text-secondary text-center">Fig 4.1: Simulated mesh graph</span>
+</div>
+<!-- Archival Lab Reference Card with photo-rich representation -->
+<div class="mt-space-sm pt-space-sm border-t border-surface-container flex flex-col gap-space-xs">
+<div class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Physical Station Evidence</div>
+<div class="rounded overflow-hidden bg-surface-container-high h-28 relative">
+<img class="w-full h-full object-cover" data-alt="A clean top-down architectural photograph of an engineering lab desk with an open leather folio, fine black technical pens, and an oscilloscope monitor softly illuminated in warm tungsten light matching natural paper aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPM14lSmlmGKiYx3aCNVpqHnbTyEqhASwCsiQzNjwo1pWAEN5KKXgRcdbeshHyVqtviC8Or2OKX847zhzOYtfC9pD4ENtK303U7E1F5okmMgmSINcWuj8fY3FzuUSNcsWVdGMCSAmJ1zLzTpXxFvUF-Ihyp3tUSWa_BgN2d24NJRMWln6IoDxPvHJd3jRwHbMmZy5BQWSZxs_45PIGMCHWlVpGoRHF4hAeftx19WfkiipHIJVZs-p5mA"/>
+<div class="absolute bottom-1 right-1 bg-surface-container-lowest/90 px-1.5 py-0.5 rounded font-code-sm text-[10px] text-primary">Station #08</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+<script>
+  // Copy to clipboard interaction
+  const copyBtn = document.getElementById('copyCodeBtn');
+  const copyText = document.getElementById('copyText');
+  if (copyBtn && copyText) {
+    copyBtn.addEventListener('click', () => {
+      copyText.textContent = 'Copied!';
+      setTimeout(() => {
+        copyText.textContent = 'Copy Buffer';
+      }, 2000);
+    });
+  }
+
+  // Viva accordion micro-interaction
+  const vivaToggles = document.querySelectorAll('.viva-toggle');
+  vivaToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const targetId = toggle.getAttribute('data-target');
+      const targetContent = document.getElementById(targetId);
+      const icon = toggle.querySelector('.viva-icon');
+
+      if (targetContent) {
+        const isHidden = targetContent.classList.contains('hidden');
+        if (isHidden) {
+          targetContent.classList.remove('hidden');
+          if (icon) icon.classList.add('rotate-180');
+        } else {
+          targetContent.classList.add('hidden');
+          if (icon) icon.classList.remove('rotate-180');
+        }
+      }
+    });
+  });
+
+  // Export PDF prompt trigger
+  const exportBtn = document.getElementById('exportPdfBtn');
+  if (exportBtn) {
+    exportBtn.addEventListener('click', () => {
+      const originalText = exportBtn.innerHTML;
+      exportBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span><span>Compiling Folio...</span>';
+      setTimeout(() => {
+        exportBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">done</span><span>Generated</span>';
+        setTimeout(() => {
+          exportBtn.innerHTML = originalText;
+        }, 2200);
+      }, 1200);
+    });
+  }
+</script></main></div></body></html>

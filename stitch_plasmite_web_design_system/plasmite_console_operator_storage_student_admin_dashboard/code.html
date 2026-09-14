@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Plasmite Admin Console</title><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"inverse-surface":"#213145","primary":"#000000","surface-container":"#e5eeff","on-error":"#ffffff","surface-container-high":"#dce9ff","on-secondary-container":"#57657a","tertiary-container":"#131b2e","on-background":"#0b1c30","secondary-fixed-dim":"#b9c7df","inverse-on-surface":"#eaf1ff","on-secondary-fixed":"#0d1c2e","outline":"#77767b","primary-fixed-dim":"#c8c5ca","on-error-container":"#93000a","on-surface-variant":"#47464b","secondary":"#515f74","surface-container-low":"#eff4ff","outline-variant":"#c8c5cb","surface-tint":"#5f5e61","inverse-primary":"#c8c5ca","primary-container":"#1b1b1e","on-primary-fixed-variant":"#47464a","tertiary":"#000000","error":"#ba1a1a","tertiary-fixed":"#dae2fd","surface-container-lowest":"#ffffff","on-tertiary":"#ffffff","surface-container-highest":"#d3e4fe","tertiary-fixed-dim":"#bec6e0","background":"#f8f9ff","primary-fixed":"#e4e1e6","secondary-container":"#d5e3fc","on-primary":"#ffffff","on-tertiary-fixed":"#131b2e","error-container":"#ffdad6","surface-variant":"#d3e4fe","on-surface":"#0b1c30","on-tertiary-fixed-variant":"#3f465c","surface":"#f8f9ff","surface-bright":"#f8f9ff","on-tertiary-container":"#7c839b","on-secondary-fixed-variant":"#3a485b","on-primary-fixed":"#1b1b1e","surface-dim":"#cbdbf5","on-secondary":"#ffffff","on-primary-container":"#858387","secondary-fixed":"#d5e3fc"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-lg":"1rem","margin":"1rem","space-md":"0.75rem","gutter":"0.75rem","space-xs":"0.25rem","space-xl":"1.5rem","space-sm":"0.375rem"},"fontFamily":{"label-md":["Inter"],"label-sm":["Inter"],"display":["Inter"],"headline-lg":["Inter"],"code-sm":["JetBrains Mono"],"body-sm":["Inter"],"body-lg":["Inter"],"body-md":["Inter"],"headline-sm":["Inter"],"code-md":["JetBrains Mono"]},"fontSize":{"label-md":["0.8125rem",{"lineHeight":"1.25rem","letterSpacing":"0.005em","fontWeight":"500"}],"label-sm":["0.6875rem",{"lineHeight":"1rem","letterSpacing":"0.04em","fontWeight":"600"}],"display":["1.75rem",{"lineHeight":"2.25rem","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-lg":["1.25rem",{"lineHeight":"1.75rem","letterSpacing":"-0.015em","fontWeight":"600"}],"code-sm":["0.6875rem",{"lineHeight":"1rem","fontWeight":"400"}],"body-sm":["0.75rem",{"lineHeight":"1.125rem","fontWeight":"400"}],"body-lg":["0.875rem",{"lineHeight":"1.375rem","fontWeight":"400"}],"body-md":["0.8125rem",{"lineHeight":"1.25rem","fontWeight":"400"}],"headline-sm":["1rem",{"lineHeight":"1.5rem","letterSpacing":"-0.01em","fontWeight":"600"}],"code-md":["0.75rem",{"lineHeight":"1.25rem","fontWeight":"500"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface-container-lowest border-b border-outline-variant"><div class="h-20 w-full flex flex-col justify-between"><div class="h-11 px-space-md flex items-center justify-between border-b border-outline-variant bg-surface-container-lowest"><div class="flex items-center gap-space-sm"><div class="flex items-center justify-center w-6 h-6 bg-primary text-on-primary rounded font-code-md text-code-md font-semibold">P</div><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Plasmite Console</span><span class="px-space-xs py-0.5 bg-error-container text-on-error-container font-code-sm text-code-sm border border-error rounded">ADMIN ONLY</span><span class="text-outline font-code-sm text-code-sm px-space-xs">|</span><span class="font-code-sm text-code-sm text-on-surface-variant">prod-ap-south-1 / supabase-cluster-04 / tenant-default</span></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-xs py-0.5 bg-surface-container-low rounded"><span class="w-1.5 h-1.5 rounded-full bg-secondary ring-2 ring-surface-container-lowest animate-pulse"></span><span class="font-code-sm text-code-sm text-on-surface">Connected via Service Role</span></div><span class="font-code-sm text-code-sm text-secondary bg-surface-container-low px-space-xs py-0.5 rounded">12ms</span><span class="text-outline font-code-sm text-code-sm">•</span><span class="font-code-sm text-code-sm text-on-surface-variant">Operator: sysadmin@plasmite.internal</span><button class="px-space-xs py-0.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded font-label-sm text-label-sm transition-colors">Logout</button><img alt="Profile" class="w-8 h-8 rounded-full object-cover ml-space-xs" src="https://lh3.googleusercontent.com/aida/AEtjO1Xl87CDHJUVHF4MVs3glWdU43ecdB8purWkNcUlWELJAyUnQTUftBL04BlMhagcmaoYXKT1UpJd2ySl7qKkUmQU7N7guRHi6awZ8XJPhhrbRKu6r5Y6BkvDu3gDsKj_VVU7KGT9eLECJExryJ7M5WvXae9BgxYpo9quCohSzDh1dBpBi80yX0HaBl9pPIxxUOIQfq8kRaLDaBmUHBw9WfEHN1VlhZZCaw9U1f5VWvWt7PNY-hU-yMD5eSY5V38fYhOQUNb18Uxc4Nw"/></div></div><div class="h-9 px-space-md flex items-center bg-surface-container-low"><nav class="flex items-center gap-space-xs h-full" data-active-classes="bg-surface-container-lowest text-on-surface font-semibold border-b-2 border-primary"><a class="px-space-sm h-full flex items-center font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="students-and-quotas" href="#">Students &amp; Quotas</a><a class="px-space-sm h-full flex items-center font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="storage-buckets" href="#">Storage Buckets (S3/Supabase)</a><a class="px-space-sm h-full flex items-center font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="postgres-schemas-and-rls" href="#">Postgres Schemas &amp; RLS</a><a class="px-space-sm h-full flex items-center font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="audit-log-and-telemetry" href="#">Audit Log &amp; Telemetry</a><a class="px-space-sm h-full flex items-center font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="system-health-and-backups" href="#">System Health &amp; Backups</a></nav></div></div></header><main class="w-full pt-20 px-space-md bg-background min-h-screen"><div class="flex flex-col w-full">
+<div class="w-full max-w-7xl mx-auto px-6 py-6 flex flex-col gap-5 text-on-surface">
+<!-- SUB-BANNER / RUNTIME STATUS -->
+<div class="w-full bg-surface-container-lowest shadow-sm rounded-lg p-3 px-4 flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-3 flex-wrap">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary ring-4 ring-surface-container-high"></span>
+<span class="font-code-md text-code-md text-on-surface font-semibold">Cluster: prod-ap-south-1</span>
+</div>
+<span class="text-outline-variant font-code-sm text-code-sm">/</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Engine v2.4-enterprise</span>
+<span class="text-outline-variant font-code-sm text-code-sm">/</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">PostgreSQL 16.2 on AWS RDS</span>
+<span class="text-outline-variant font-code-sm text-code-sm">/</span>
+<div class="flex items-center gap-1 font-code-sm text-code-sm text-secondary">
+<span class="material-symbols-outlined text-sm">database</span>
+<span>Supabase S3 Object Store</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-7 px-3 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded flex items-center gap-1.5 transition-colors" id="btn-gc">
+<span class="material-symbols-outlined text-sm">cleaning_services</span>
+<span>Trigger Garbage Collection</span>
+</button>
+<button class="h-7 px-3 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded flex items-center gap-1.5 transition-colors" id="btn-sync">
+<span class="material-symbols-outlined text-sm">sync</span>
+<span>Sync Quotas</span>
+</button>
+<button class="h-7 px-3 bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md rounded flex items-center gap-1.5 transition-colors" id="btn-export">
+<span class="material-symbols-outlined text-sm">download</span>
+<span>Export CSV Audit Report</span>
+</button>
+</div>
+</div>
+<!-- TOP METRICS ROW (4 COMPACT CARDS) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1: Registered Students -->
+<div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Students Registered</span>
+<span class="material-symbols-outlined text-secondary text-base">group</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-display text-display text-on-surface tracking-tight font-semibold">284</span>
+<span class="font-code-sm text-code-sm px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface font-medium">+18 this wk</span>
+</div>
+<div class="mt-3 flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-2">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            99.3% active rate
+          </span>
+<span class="font-code-sm text-code-sm text-outline">sync: 4m ago</span>
+</div>
+</div>
+<!-- Card 2: Active Storage Consumed -->
+<div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Active Storage Consumed</span>
+<span class="material-symbols-outlined text-secondary text-base">cloud</span>
+</div>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="font-display text-display text-on-surface tracking-tight font-semibold">4.2 GB</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-medium">/ 50.0 GB (8.4%)</span>
+</div>
+<div class="mt-3 w-full">
+<div class="w-full bg-surface-container-high rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 8.4%"></div>
+</div>
+<div class="mt-1.5 flex justify-between font-code-sm text-code-sm text-outline">
+<span>S3 Bucket: tenant-default</span>
+<span>45.8 GB remaining</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Notes Created -->
+<div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Notes Created</span>
+<span class="material-symbols-outlined text-secondary text-base">description</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-display text-display text-on-surface tracking-tight font-semibold">4,821</span>
+<span class="font-code-sm text-code-sm text-secondary">μ = 17.0 / user</span>
+</div>
+<div class="mt-3 flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-2">
+<span class="flex items-center gap-1 font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-xs text-outline">functions</span>
+            1,240 with LaTeX/code
+          </span>
+<span class="font-code-sm text-code-sm text-outline">25.7% enriched</span>
+</div>
+</div>
+<!-- Card 4: Average Storage / User -->
+<div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Average Storage / User</span>
+<span class="material-symbols-outlined text-secondary text-base">data_usage</span>
+</div>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="font-display text-display text-on-surface tracking-tight font-semibold">14.8 MB</span>
+<span class="font-code-sm text-code-sm px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-semibold">Peak: 47.9 MB</span>
+</div>
+<div class="mt-3 flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-2">
+<span class="font-code-sm text-code-sm text-on-surface-variant">Hard ceiling: 50.0 MB</span>
+<span class="font-code-sm text-code-sm text-error">1 near throttle</span>
+</div>
+</div>
+</div>
+<!-- FILTER CONTROLS & TOOLBAR -->
+<div class="w-full bg-surface-container-lowest p-3 rounded-lg shadow-sm flex flex-col lg:flex-row items-center justify-between gap-3">
+<div class="flex items-center flex-wrap gap-2 w-full lg:w-auto">
+<!-- Search -->
+<div class="relative min-w-[280px] max-w-sm flex-1">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-base">search</span>
+<input class="w-full h-8 pl-8 pr-3 text-body-sm font-body-md rounded bg-surface-container-low text-on-surface placeholder:text-outline focus:bg-surface-container-lowest focus:outline-none focus:ring-1 focus:ring-primary" id="table-search" placeholder="Search student name, email, roll ID (e.g. 24IT1042)..." type="text"/>
+</div>
+<!-- Branch filter -->
+<select class="h-8 px-2 text-body-sm font-body-md rounded bg-surface-container-low text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" id="filter-branch">
+<option value="all">All Branches</option>
+<option value="cs">Computer Science / CSE</option>
+<option value="it">Information Tech</option>
+<option value="ece">Electronics &amp; Comm</option>
+<option value="mech">Mechanical</option>
+<option value="civil">Civil Engg</option>
+</select>
+<!-- Institution filter -->
+<select class="h-8 px-2 text-body-sm font-body-md rounded bg-surface-container-low text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" id="filter-inst">
+<option value="all">All Institutions</option>
+<option value="nitt">NIT Trichy</option>
+<option value="iitm">IIT Madras</option>
+<option value="bits">BITS Pilani</option>
+<option value="mit">MIT</option>
+<option value="berkeley">UC Berkeley</option>
+<option value="cmu">Carnegie Mellon</option>
+<option value="ethz">ETH Zürich</option>
+</select>
+<!-- Quota level -->
+<select class="h-8 px-2 text-body-sm font-body-md rounded bg-surface-container-low text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" id="filter-quota">
+<option value="all">All Quota Levels</option>
+<option value="normal">Normal (&lt; 70%)</option>
+<option value="warning">Warning (70% - 90%)</option>
+<option value="critical">Near Limit (&gt; 90%)</option>
+</select>
+<!-- Sort control -->
+<select class="h-8 px-2 text-body-sm font-body-md rounded bg-surface-container-low text-on-surface focus:outline-none focus:ring-1 focus:ring-primary" id="sort-order">
+<option value="storage-desc">Sort: Storage Consumed (High to Low)</option>
+<option value="storage-asc">Sort: Storage Consumed (Low to High)</option>
+<option value="notes-desc">Sort: Notes Volume (High to Low)</option>
+<option value="reg-desc">Sort: Registered (Recent First)</option>
+</select>
+</div>
+<!-- Right stats chip -->
+<div class="flex items-center gap-2 self-end lg:self-center font-code-sm text-code-sm">
+<span class="px-2 py-1 rounded bg-surface-container-high text-on-surface">Showing 8 of 284 accounts</span>
+<span class="px-2 py-1 rounded bg-error-container text-on-error-container font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">warning</span>
+          4 accounts flagged near quota
+        </span>
+</div>
+</div>
+<!-- STUDENT STORAGE MANAGEMENT DATA TABLE -->
+<div class="w-full bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low h-9">
+<th class="px-4 py-2 font-code-sm text-code-sm font-semibold uppercase tracking-wider text-on-surface-variant">Student &amp; Credentials</th>
+<th class="px-4 py-2 font-code-sm text-code-sm font-semibold uppercase tracking-wider text-on-surface-variant">College &amp; Branch</th>
+<th class="px-4 py-2 font-code-sm text-code-sm font-semibold uppercase tracking-wider text-on-surface-variant">Registered (UTC)</th>
+<th class="px-4 py-2 font-code-sm text-code-sm font-semibold uppercase tracking-wider text-on-surface-variant">Notes &amp; Labs</th>
+<th class="px-4 py-2 font-code-sm text-code-sm font-semibold uppercase tracking-wider text-on-surface-variant min-w-[210px]">Storage Consumed</th>
+<th class="px-4 py-2 font-code-sm text-code-sm font-semibold uppercase tracking-wider text-on-surface-variant">Status &amp; Integrity</th>
+<th class="px-4 py-2 font-code-sm text-code-sm font-semibold uppercase tracking-wider text-on-surface-variant text-right">Operator Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0" id="student-table-body">
+<!-- ROW 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-4 py-2.5 align-middle">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center font-code-md text-code-md text-on-surface font-semibold shrink-0">AM</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium truncate">Alex Mercer</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant truncate">alex.mercer@nit.ac.in · <span class="text-on-surface">24IT1042</span></span>
+</div>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">NIT Trichy</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Computer Science</span>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle font-code-sm text-code-sm text-on-surface">
+<div>2024-09-02</div>
+<div class="text-outline">12:41:19 UTC</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm">
+<span class="font-medium text-on-surface">42 Notes</span>
+<span class="text-outline">·</span>
+<span class="text-secondary">14 Labs</span>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="font-semibold text-on-surface">38.2 MB</span>
+<span class="text-on-surface-variant">76.4% / 50 MB</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 76.4%"></div>
+</div>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-code-sm text-code-sm bg-surface-container text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Active · Signed
+                </span>
+</td>
+<td class="px-4 py-2.5 align-middle text-right">
+<div class="inline-flex items-center gap-1.5 justify-end">
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('purge', 'Alex Mercer')">Purge Inactive</button>
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('quota', 'Alex Mercer')">Adjust Quota</button>
+<button class="px-2 py-1 text-error hover:bg-error-container rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('suspend', 'Alex Mercer')">Suspend</button>
+</div>
+</td>
+</tr>
+<!-- ROW 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group bg-error-container/20">
+<td class="px-4 py-2.5 align-middle">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-error-container flex items-center justify-center font-code-md text-code-md text-on-error-container font-semibold shrink-0">EV</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium truncate">Dr. Eleanor Vance</span>
+<span class="px-1 py-0.2 bg-error text-on-error rounded font-code-sm text-code-sm font-semibold">95.8%</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant truncate">e.vance@mit.edu · <span class="text-on-surface">FAC-088</span></span>
+</div>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">MIT</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Distributed Systems</span>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle font-code-sm text-code-sm text-on-surface">
+<div>2024-08-15</div>
+<div class="text-outline">08:20:44 UTC</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm">
+<span class="font-medium text-on-surface">94 Notes</span>
+<span class="text-outline">·</span>
+<span class="text-secondary">28 Labs</span>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="font-semibold text-error">47.9 MB</span>
+<span class="text-error font-medium">Near Limit (95.8%)</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-error h-1.5 rounded-full" style="width: 95.8%"></div>
+</div>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-code-sm text-code-sm bg-surface-container text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Active · Verified
+                </span>
+</td>
+<td class="px-4 py-2.5 align-middle text-right">
+<div class="inline-flex items-center gap-1.5 justify-end">
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('purge', 'Dr. Eleanor Vance')">Purge Inactive</button>
+<button class="px-2 py-1 bg-primary text-on-primary rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('quota', 'Dr. Eleanor Vance')">Adjust Quota</button>
+<button class="px-2 py-1 text-error hover:bg-error-container rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('suspend', 'Dr. Eleanor Vance')">Suspend</button>
+</div>
+</td>
+</tr>
+<!-- ROW 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-4 py-2.5 align-middle">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center font-code-md text-code-md text-on-surface font-semibold shrink-0">MV</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium truncate">Marcus Vance</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant truncate">marcus.v@bits.ac.in · <span class="text-on-surface">2023CS019</span></span>
+</div>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">BITS Pilani</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">CSE</span>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle font-code-sm text-code-sm text-on-surface">
+<div>2024-09-11</div>
+<div class="text-outline">18:04:02 UTC</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm">
+<span class="font-medium text-on-surface">31 Notes</span>
+<span class="text-outline">·</span>
+<span class="text-secondary">8 Labs</span>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="font-semibold text-on-surface">22.4 MB</span>
+<span class="text-on-surface-variant">44.8% / 50 MB</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 44.8%"></div>
+</div>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-code-sm text-code-sm bg-surface-container text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Active
+                </span>
+</td>
+<td class="px-4 py-2.5 align-middle text-right">
+<div class="inline-flex items-center gap-1.5 justify-end">
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('purge', 'Marcus Vance')">Purge Inactive</button>
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('quota', 'Marcus Vance')">Adjust Quota</button>
+<button class="px-2 py-1 text-error hover:bg-error-container rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('suspend', 'Marcus Vance')">Suspend</button>
+</div>
+</td>
+</tr>
+<!-- ROW 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-4 py-2.5 align-middle">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center font-code-md text-code-md text-on-surface font-semibold shrink-0">PS</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium truncate">Priya Sharma</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant truncate">psharma@iitm.ac.in · <span class="text-on-surface">EE22B041</span></span>
+</div>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">IIT Madras</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Electrical Engg</span>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle font-code-sm text-code-sm text-on-surface">
+<div>2024-08-29</div>
+<div class="text-outline">10:15:33 UTC</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm">
+<span class="font-medium text-on-surface">56 Notes</span>
+<span class="text-outline">·</span>
+<span class="text-secondary">19 Labs</span>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="font-semibold text-on-surface">41.1 MB</span>
+<span class="text-on-surface-variant">82.2% / 50 MB</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 82.2%"></div>
+</div>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-code-sm text-code-sm bg-surface-container text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Active
+                </span>
+</td>
+<td class="px-4 py-2.5 align-middle text-right">
+<div class="inline-flex items-center gap-1.5 justify-end">
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('purge', 'Priya Sharma')">Purge Inactive</button>
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('quota', 'Priya Sharma')">Adjust Quota</button>
+<button class="px-2 py-1 text-error hover:bg-error-container rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('suspend', 'Priya Sharma')">Suspend</button>
+</div>
+</td>
+</tr>
+<!-- ROW 5 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-4 py-2.5 align-middle">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center font-code-md text-code-md text-on-surface font-semibold shrink-0">LC</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium truncate">Liam Chen</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant truncate">lchen@berkeley.edu · <span class="text-on-surface">303491</span></span>
+</div>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">UC Berkeley</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">EECS</span>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle font-code-sm text-code-sm text-on-surface">
+<div>2024-09-18</div>
+<div class="text-outline">22:50:11 UTC</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm">
+<span class="font-medium text-on-surface">18 Notes</span>
+<span class="text-outline">·</span>
+<span class="text-secondary">4 Labs</span>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="font-semibold text-on-surface">8.6 MB</span>
+<span class="text-on-surface-variant">17.2% / 50 MB</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 17.2%"></div>
+</div>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-code-sm text-code-sm bg-surface-container text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Active
+                </span>
+</td>
+<td class="px-4 py-2.5 align-middle text-right">
+<div class="inline-flex items-center gap-1.5 justify-end">
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('purge', 'Liam Chen')">Purge Inactive</button>
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('quota', 'Liam Chen')">Adjust Quota</button>
+<button class="px-2 py-1 text-error hover:bg-error-container rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('suspend', 'Liam Chen')">Suspend</button>
+</div>
+</td>
+</tr>
+<!-- ROW 6 -->
+<tr class="hover:bg-surface-container-low transition-colors group opacity-85">
+<td class="px-4 py-2.5 align-middle">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center font-code-md text-code-md text-outline font-semibold shrink-0">AI</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium truncate">Ananya Iyer</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant truncate">ananya.i@nitt.edu · <span class="text-on-surface">24CS109</span></span>
+</div>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">NIT Trichy</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Computer Science</span>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle font-code-sm text-code-sm text-on-surface">
+<div>2024-10-01</div>
+<div class="text-outline">14:32:05 UTC</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm">
+<span class="font-medium text-on-surface">12 Notes</span>
+<span class="text-outline">·</span>
+<span class="text-secondary">2 Labs</span>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="font-semibold text-on-surface">4.1 MB</span>
+<span class="text-on-surface-variant">8.2% / 50 MB</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 8.2%"></div>
+</div>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-code-sm text-code-sm bg-surface-container-high text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                  Inactive (30d)
+                </span>
+</td>
+<td class="px-4 py-2.5 align-middle text-right">
+<div class="inline-flex items-center gap-1.5 justify-end">
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('purge', 'Ananya Iyer')">Purge Inactive</button>
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('quota', 'Ananya Iyer')">Adjust Quota</button>
+<button class="px-2 py-1 text-error hover:bg-error-container rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('suspend', 'Ananya Iyer')">Suspend</button>
+</div>
+</td>
+</tr>
+<!-- ROW 7 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-4 py-2.5 align-middle">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center font-code-md text-code-md text-on-surface font-semibold shrink-0">DR</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium truncate">David K. Ross</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant truncate">d.ross@cmu.edu · <span class="text-on-surface">CMU-9941</span></span>
+</div>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">Carnegie Mellon</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Comp Engg</span>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle font-code-sm text-code-sm text-on-surface">
+<div>2024-07-22</div>
+<div class="text-outline">09:12:40 UTC</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm">
+<span class="font-medium text-on-surface">73 Notes</span>
+<span class="text-outline">·</span>
+<span class="text-secondary">21 Labs</span>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="font-semibold text-on-surface">34.0 MB</span>
+<span class="text-on-surface-variant">68.0% / 50 MB</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 68.0%"></div>
+</div>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-code-sm text-code-sm bg-surface-container text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Active
+                </span>
+</td>
+<td class="px-4 py-2.5 align-middle text-right">
+<div class="inline-flex items-center gap-1.5 justify-end">
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('purge', 'David K. Ross')">Purge Inactive</button>
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('quota', 'David K. Ross')">Adjust Quota</button>
+<button class="px-2 py-1 text-error hover:bg-error-container rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('suspend', 'David K. Ross')">Suspend</button>
+</div>
+</td>
+</tr>
+<!-- ROW 8 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-4 py-2.5 align-middle">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center font-code-md text-code-md text-on-surface font-semibold shrink-0">SL</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium truncate">Sophia Lin</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant truncate">sophia.l@ethz.ch · <span class="text-on-surface">22-901-44</span></span>
+</div>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">ETH Zürich</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Quantum Info</span>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle font-code-sm text-code-sm text-on-surface">
+<div>2024-08-04</div>
+<div class="text-outline">11:05:52 UTC</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm">
+<span class="font-medium text-on-surface">65 Notes</span>
+<span class="text-outline">·</span>
+<span class="text-secondary">16 Labs</span>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="font-semibold text-on-surface">29.5 MB</span>
+<span class="text-on-surface-variant">59.0% / 50 MB</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 59.0%"></div>
+</div>
+</div>
+</td>
+<td class="px-4 py-2.5 align-middle">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-code-sm text-code-sm bg-surface-container text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Active
+                </span>
+</td>
+<td class="px-4 py-2.5 align-middle text-right">
+<div class="inline-flex items-center gap-1.5 justify-end">
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('purge', 'Sophia Lin')">Purge Inactive</button>
+<button class="px-2 py-1 bg-surface-container-low hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('quota', 'Sophia Lin')">Adjust Quota</button>
+<button class="px-2 py-1 text-error hover:bg-error-container rounded font-code-sm text-code-sm transition-colors" onclick="triggerAction('suspend', 'Sophia Lin')">Suspend</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- TABLE FOOTER & PAGINATION -->
+<div class="bg-surface-container-low px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-3 font-code-sm text-code-sm text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span>Showing 1–8 of 284 accounts</span>
+<span class="text-outline">·</span>
+<span>Row limit: 25</span>
+<span class="text-outline">·</span>
+<span class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-xs">database</span>
+            IndexedDB sync enabled
+          </span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 bg-surface-container-lowest hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors disabled:opacity-40" disabled="">First</button>
+<button class="px-2 py-1 bg-surface-container-lowest hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors disabled:opacity-40" disabled="">Prev</button>
+<button class="w-6 h-6 bg-primary text-on-primary rounded font-code-sm text-code-sm font-semibold flex items-center justify-center">1</button>
+<button class="w-6 h-6 bg-surface-container-lowest hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm flex items-center justify-center transition-colors">2</button>
+<button class="w-6 h-6 bg-surface-container-lowest hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm flex items-center justify-center transition-colors">3</button>
+<button class="px-2 py-1 bg-surface-container-lowest hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors">Next</button>
+<button class="px-2 py-1 bg-surface-container-lowest hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm transition-colors">Last</button>
+</div>
+</div>
+</div>
+<!-- LOWER DIAGNOSTIC & TELEMETRY PANELS (SPLIT 2 COLUMNS) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+<!-- Diagnostic Card 1: Storage Allocation Breakdown -->
+<div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-base">pie_chart</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium">Storage Bucket Capacity Breakdown</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">S3 / bucket-04</span>
+</div>
+<div class="my-4 flex flex-col gap-3">
+<!-- Item 1: Prose & Markdown -->
+<div>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface mb-1">
+<span class="font-medium flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                Prose &amp; Markdown Notes
+              </span>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">1.8 GB <span class="text-outline font-normal">(42.8%)</span></span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-2 rounded-full" style="width: 42.8%"></div>
+</div>
+</div>
+<!-- Item 2: Schematics & Diagrams -->
+<div>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface mb-1">
+<span class="font-medium flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                Schematics, Vector Art &amp; Canvas Diagrams
+              </span>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">1.6 GB <span class="text-outline font-normal">(38.1%)</span></span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-2 rounded-full" style="width: 38.1%"></div>
+</div>
+</div>
+<!-- Item 3: Compiled Lab PDFs -->
+<div>
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface mb-1">
+<span class="font-medium flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-surface-tint"></span>
+                Compiled Lab Artifacts &amp; PDF Exports
+              </span>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">0.8 GB <span class="text-outline font-normal">(19.1%)</span></span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-surface-tint h-2 rounded-full" style="width: 19.1%"></div>
+</div>
+</div>
+</div>
+<div class="pt-3 flex items-center justify-between font-code-sm text-code-sm bg-surface-container-low p-2.5 rounded">
+<span class="text-on-surface">Aggregated Footprint: <span class="font-semibold">4.2 GB / 50.0 GB</span></span>
+<span class="text-secondary font-medium">91.6% Available Headroom</span>
+</div>
+</div>
+<!-- Diagnostic Card 2: Recent Security & Administrative Logs -->
+<div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-base">shield_person</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium">Recent Operator Security Events</span>
+</div>
+<span class="font-code-sm text-code-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface font-semibold">AUDIT ENFORCED</span>
+</div>
+<div class="my-3 flex flex-col gap-2 font-code-sm text-code-sm">
+<!-- Log item 1 -->
+<div class="flex items-start justify-between p-2 rounded bg-surface-container-low gap-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-semibold text-on-surface">QUOTA_RECALCULATION</span>
+<span class="text-outline">·</span>
+<span class="text-secondary">actor: sysadmin@plasmite.internal</span>
+</div>
+<span class="text-on-surface-variant">Batch trigger on tenant-default. S3 bucket indexed without mismatches.</span>
+</div>
+<div class="text-right shrink-0">
+<div class="text-on-surface font-medium">13:12:04 UTC</div>
+<div class="text-outline">IP 10.240.12.9</div>
+</div>
+</div>
+<!-- Log item 2 -->
+<div class="flex items-start justify-between p-2 rounded bg-surface-container-low gap-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-semibold text-on-surface">RLS_POLICY_BYPASS_AUDIT</span>
+<span class="text-outline">·</span>
+<span class="text-secondary">actor: service-role</span>
+</div>
+<span class="text-on-surface-variant">Automated student storage aggregate sync via internal cron job worker-08.</span>
+</div>
+<div class="text-right shrink-0">
+<div class="text-on-surface font-medium">13:00:00 UTC</div>
+<div class="text-outline">IP 10.240.0.1</div>
+</div>
+</div>
+<!-- Log item 3 -->
+<div class="flex items-start justify-between p-2 rounded bg-surface-container-low gap-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-semibold text-error">STORAGE_FLAG_WARNING</span>
+<span class="text-outline">·</span>
+<span class="text-on-error-container">target: e.vance@mit.edu</span>
+</div>
+<span class="text-on-surface-variant">Exceeded 90% threshold (47.9 MB / 50.0 MB). Automated operator notice emitted.</span>
+</div>
+<div class="text-right shrink-0">
+<div class="text-on-surface font-medium">12:48:19 UTC</div>
+<div class="text-outline">hash: 9f8a...c12e</div>
+</div>
+</div>
+</div>
+<div class="pt-2 flex items-center justify-between font-code-sm text-code-sm text-on-surface-variant">
+<span>Log verification hash: SHA-256 (tamper-evident)</span>
+<a class="text-on-surface font-medium hover:underline flex items-center gap-0.5" href="#">
+            View Live Stream
+            <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- OPERATIONAL MODAL INTERACTION (HIDDEN BY DEFAULT) -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/40 flex items-center justify-center p-4 hidden" id="action-modal">
+<div class="bg-surface-container-lowest rounded-lg shadow-xl max-w-md w-full p-5 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">admin_panel_settings</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold" id="modal-title">Operator Action</span>
+</div>
+<button class="text-outline hover:text-on-surface transition-colors" id="modal-close-x">
+<span class="material-symbols-outlined text-base">close</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant" id="modal-desc">
+        Confirm execution of administrative action.
+      </p>
+<div class="bg-surface-container-low p-3 rounded font-code-sm text-code-sm text-on-surface flex flex-col gap-1">
+<div class="flex justify-between">
+<span class="text-outline">Target Operator:</span>
+<span>sysadmin@plasmite.internal</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">Cluster Execution:</span>
+<span>prod-ap-south-1</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">RLS Audit Signature:</span>
+<span class="font-mono">SIG-9082-OK</span>
+</div>
+</div>
+<div class="flex items-center justify-end gap-2 pt-2">
+<button class="px-3 py-1.5 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded transition-colors" id="modal-cancel-btn">Cancel</button>
+<button class="px-3 py-1.5 bg-primary text-on-primary font-label-md text-label-md rounded transition-colors" id="modal-confirm-btn">Confirm Execution</button>
+</div>
+</div>
+</div>
+<!-- INLINE CONTROLLER SCRIPT -->
+<script>
+    (function() {
+      const modal = document.getElementById('action-modal');
+      const modalTitle = document.getElementById('modal-title');
+      const modalDesc = document.getElementById('modal-desc');
+      const modalCancel = document.getElementById('modal-cancel-btn');
+      const modalCloseX = document.getElementById('modal-close-x');
+      const modalConfirm = document.getElementById('modal-confirm-btn');
+
+      window.triggerAction = function(type, studentName) {
+        if (!modal) return;
+        if (type === 'purge') {
+          modalTitle.innerText = 'Purge Inactive Sessions & Cache';
+          modalDesc.innerText = 'This will evict all disconnected sessions, cached note revisions, and temporary blob staging for ' + studentName + '.';
+          modalConfirm.className = 'px-3 py-1.5 bg-primary text-on-primary font-label-md text-label-md rounded transition-colors';
+          modalConfirm.innerText = 'Purge Artifacts';
+        } else if (type === 'quota') {
+          modalTitle.innerText = 'Adjust Quota Ceiling';
+          modalDesc.innerText = 'Modify the S3 Supabase storage ceiling for ' + studentName + ' from default 50.0 MB up to 250.0 MB.';
+          modalConfirm.className = 'px-3 py-1.5 bg-primary text-on-primary font-label-md text-label-md rounded transition-colors';
+          modalConfirm.innerText = 'Update Quota';
+        } else if (type === 'suspend') {
+          modalTitle.innerText = 'Suspend Student Account';
+          modalDesc.innerText = 'Immediate RLS revocation. ' + studentName + ' will be locked out from editing notes and accessing the Supabase object bucket.';
+          modalConfirm.className = 'px-3 py-1.5 bg-error text-on-error font-label-md text-label-md rounded transition-colors';
+          modalConfirm.innerText = 'Execute Suspension';
+        }
+        modal.classList.remove('hidden');
+      };
+
+      function closeModal() {
+        if (modal) modal.classList.add('hidden');
+      }
+
+      if (modalCancel) modalCancel.addEventListener('click', closeModal);
+      if (modalCloseX) modalCloseX.addEventListener('click', closeModal);
+      if (modalConfirm) modalConfirm.addEventListener('click', function() {
+        modalConfirm.innerText = 'Executed';
+        setTimeout(closeModal, 400);
+      });
+
+      // Quick toolbar buttons interactions
+      const gcBtn = document.getElementById('btn-gc');
+      if (gcBtn) {
+        gcBtn.addEventListener('click', function() {
+          const orig = gcBtn.innerHTML;
+          gcBtn.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin">refresh</span> Cleaning...';
+          setTimeout(function() {
+            gcBtn.innerHTML = '<span class="material-symbols-outlined text-sm">check</span> GC Completed';
+            setTimeout(function() { gcBtn.innerHTML = orig; }, 1800);
+          }, 1000);
+        });
+      }
+
+      const syncBtn = document.getElementById('btn-sync');
+      if (syncBtn) {
+        syncBtn.addEventListener('click', function() {
+          const orig = syncBtn.innerHTML;
+          syncBtn.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin">sync</span> Syncing...';
+          setTimeout(function() {
+            syncBtn.innerHTML = '<span class="material-symbols-outlined text-sm">done_all</span> Synchronized';
+            setTimeout(function() { syncBtn.innerHTML = orig; }, 1800);
+          }, 900);
+        });
+      }
+
+      const exportBtn = document.getElementById('btn-export');
+      if (exportBtn) {
+        exportBtn.addEventListener('click', function() {
+          const orig = exportBtn.innerHTML;
+          exportBtn.innerHTML = '<span class="material-symbols-outlined text-sm">download_done</span> Exporting CSV...';
+          setTimeout(function() { exportBtn.innerHTML = orig; }, 1500);
+        });
+      }
+
+      // Filter search simple feedback
+      const searchInput = document.getElementById('table-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+          const term = e.target.value.toLowerCase();
+          const rows = document.querySelectorAll('#student-table-body tr');
+          rows.forEach(function(row) {
+            const text = row.innerText.toLowerCase();
+            row.style.display = text.includes(term) ? '' : 'none';
+          });
+        });
+      }
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant py-space-sm px-space-md"><div class="w-full flex items-center justify-between font-code-sm text-code-sm text-on-surface-variant"><div>Plasmite Operational Runtime v4.19.2-admin // strict-tls-enforced</div><div>Cluster: ap-south-1-cluster04 [HEALTHY]</div></div></footer></body></html>

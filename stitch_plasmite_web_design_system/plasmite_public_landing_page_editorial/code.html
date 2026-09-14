@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plasmite — Your engineering knowledge, organized.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-parchment: #FAF8F5;
+      --border-hairline: #EAE6DF;
+      --ink-primary: #1A1917;
+      --ink-secondary: #797670;
+      --ink-muted: #B8B4AC;
+      --accent-blue: #2563EB;
+    }
+    body {
+      background-color: var(--bg-parchment);
+      color: var(--ink-primary);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .font-serif-editorial {
+      font-family: 'Newsreader', Georgia, serif;
+    }
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+  </style>
+</head>
+<body class="min-h-screen selection:bg-[#EAE6DF] selection:text-[#1A1917]">
+
+  <!-- 1. Fixed Top Navigation -->
+  <header class="h-16 sticky top-0 z-50 backdrop-blur-md bg-[#FAF8F5]/85 border-b border-[#EAE6DF] transition-all">
+    <div class="max-w-5xl mx-auto px-8 h-full flex items-center justify-between">
+      <!-- Left: Logo -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <!-- Blue line-art P mark -->
+        <svg class="w-6 h-6 text-[#2563EB] transition-transform group-hover:scale-105" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 23V5h7a6 6 0 0 1 6 6v0a6 6 0 0 1-6 6H7" />
+          <path d="M7 17l8-8" />
+          <path d="M11 9h4v4" />
+        </svg>
+        <span class="text-[17px] font-semibold text-[#1A1917] tracking-tight font-serif-editorial">Plasmite</span>
+      </a>
+
+      <!-- Center: Understated Links -->
+      <nav class="hidden md:flex items-center gap-7">
+        <a href="#philosophy" class="text-[13px] text-[#797670] hover:text-[#1A1917] transition-colors">Philosophy</a>
+        <a href="#learning-loop" class="text-[13px] text-[#797670] hover:text-[#1A1917] transition-colors">Learning Loop</a>
+        <a href="#features" class="text-[13px] text-[#797670] hover:text-[#1A1917] transition-colors">Features</a>
+        <a href="#open-formats" class="text-[13px] text-[#797670] hover:text-[#1A1917] transition-colors">Open Formats</a>
+      </nav>
+
+      <!-- Right: Sign In & Primary CTA -->
+      <div class="flex items-center gap-5">
+        <a href="#" class="text-[13px] text-[#797670] hover:text-[#1A1917] transition-colors">Sign In</a>
+        <a href="#" class="h-9 px-4 rounded-lg bg-[#1A1917] hover:bg-[#2C2A26] text-white text-[13px] font-medium inline-flex items-center justify-center transition-colors shadow-sm">
+          Start Writing
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-8">
+
+    <!-- 2. Editorial Hero Section -->
+    <section class="py-24 text-center max-w-3xl mx-auto">
+      <!-- Monospace Eyebrow -->
+      <div class="inline-block font-mono-code text-[11px] uppercase tracking-widest text-[#797670] mb-5 px-3 py-1 bg-white/70 border border-[#EAE6DF] rounded-full">
+        A Digital Notebook for Engineering Students
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="font-serif-editorial text-5xl sm:text-[56px] font-normal text-[#1A1917] tracking-tight leading-[1.1] text-balance">
+        Your engineering knowledge, organized.
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-[17px] sm:text-[18px] text-[#797670] mt-6 leading-relaxed max-w-2xl mx-auto text-balance">
+        A calm, structured workspace combining lecture notes, lab records, code blocks, and exam revision into a single long-term memory.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 mt-9">
+        <a href="#" class="w-full sm:w-auto h-11 px-6 rounded-lg bg-[#1A1917] hover:bg-[#2C2A26] text-white text-[14px] font-medium inline-flex items-center justify-center transition-all shadow-sm">
+          Start Writing — Free
+        </a>
+        <a href="#philosophy" class="w-full sm:w-auto h-11 px-5 rounded-lg border border-[#EAE6DF] bg-white hover:bg-[#FAF8F5] text-[14px] text-[#1A1917] font-medium inline-flex items-center justify-center gap-1.5 transition-colors">
+          Read Product Philosophy
+          <span class="text-[#797670] text-xs">↓</span>
+        </a>
+      </div>
+
+      <!-- Trust Micro-copy -->
+      <div class="font-mono-code text-[12px] text-[#797670] mt-4 flex items-center justify-center gap-2">
+        <span>No credit card</span>
+        <span class="text-[#B8B4AC]">·</span>
+        <span>Completely free for students</span>
+        <span class="text-[#B8B4AC]">·</span>
+        <span>Export your data anytime</span>
+      </div>
+    </section>
+
+    <!-- 3. Living Product Preview Frame -->
+    <section class="mb-28">
+      <div class="rounded-2xl border border-[#EAE6DF] bg-white shadow-[0_12px_40px_rgba(26,25,23,0.06)] p-2 sm:p-2.5 overflow-hidden transition-all">
+        <!-- Browser Window Chrome -->
+        <div class="bg-[#FAF8F5] rounded-xl border border-[#EAE6DF] overflow-hidden">
+          <!-- Window Header Bar -->
+          <div class="h-10 px-4 border-b border-[#EAE6DF] flex items-center justify-between bg-white/70">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#EAE6DF] inline-block"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#EAE6DF] inline-block"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#EAE6DF] inline-block"></span>
+            </div>
+            <div class="font-mono-code text-[11px] text-[#797670] bg-[#FAF8F5] px-3 py-0.5 rounded border border-[#EAE6DF] flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              <span>plasmite.internal / cs301 / binary-search-trees.folio</span>
+            </div>
+            <div class="font-mono-code text-[11px] text-[#797670]">Saved · 0ms offline sync</div>
+          </div>
+
+          <!-- Internal App Layout Grid -->
+          <div class="grid grid-cols-12 min-h-[460px] bg-[#FAF8F5]">
+            <!-- Left Mini-Sidebar: Subjects & Context -->
+            <div class="col-span-3 border-r border-[#EAE6DF] p-4 bg-[#FAF8F5]/60 flex flex-col justify-between hidden md:flex">
+              <div>
+                <div class="font-mono-code text-[10px] uppercase tracking-wider text-[#797670] mb-3 px-1">Curriculum Nodes</div>
+                <ul class="space-y-1 text-[13px]">
+                  <li>
+                    <a href="#" class="flex items-center justify-between px-2.5 py-1.5 rounded-md bg-white border border-[#EAE6DF] text-[#1A1917] font-medium shadow-2xs">
+                      <span>Data Structures</span>
+                      <span class="font-mono-code text-[11px] text-[#797670]">8/8</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="flex items-center justify-between px-2.5 py-1.5 rounded-md text-[#797670] hover:text-[#1A1917] hover:bg-white/50 transition-colors">
+                      <span>Operating Systems</span>
+                      <span class="font-mono-code text-[11px] text-[#797670]">5/9</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="flex items-center justify-between px-2.5 py-1.5 rounded-md text-[#797670] hover:text-[#1A1917] hover:bg-white/50 transition-colors">
+                      <span>Computer Networks</span>
+                      <span class="font-mono-code text-[11px] text-[#797670]">6/7</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="flex items-center justify-between px-2.5 py-1.5 rounded-md text-[#797670] hover:text-[#1A1917] hover:bg-white/50 transition-colors">
+                      <span>Database Systems</span>
+                      <span class="font-mono-code text-[11px] text-[#797670]">4/6</span>
+                    </a>
+                  </li>
+                </ul>
+
+                <div class="font-mono-code text-[10px] uppercase tracking-wider text-[#797670] mt-6 mb-2 px-1">Active Ledger</div>
+                <div class="p-2.5 bg-white rounded-lg border border-[#EAE6DF] text-[12px]">
+                  <div class="text-[#797670] text-[11px]">Next Exam Target</div>
+                  <div class="font-medium text-[#1A1917] mt-0.5">CS301 Midterm 01</div>
+                  <div class="font-mono-code text-[10px] text-[#797670] mt-1">In 4 days · 14 proofs</div>
+                </div>
+              </div>
+
+              <div class="pt-3 border-t border-[#EAE6DF] text-[11px] font-mono-code text-[#797670] flex items-center justify-between">
+                <span>Vault: 14.2 MB / 50 MB</span>
+                <span class="text-[#1A1917]">Synced</span>
+              </div>
+            </div>
+
+            <!-- Center: Open Note Canvas -->
+            <div class="col-span-12 md:col-span-6 p-6 bg-white overflow-y-auto">
+              <!-- Note Metadata -->
+              <div class="flex items-center gap-2 font-mono-code text-[11px] text-[#797670] mb-2">
+                <span>Data Structures</span>
+                <span>/</span>
+                <span>Unit 03: Balanced Trees</span>
+                <span>·</span>
+                <span class="text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200/60">Verified Note</span>
+              </div>
+
+              <h2 class="font-serif-editorial text-2xl text-[#1A1917] font-medium tracking-tight mb-4">
+                Binary Search Trees & Complexity Analysis
+              </h2>
+
+              <!-- Definition Callout Box -->
+              <div class="p-3.5 mb-4 rounded-lg bg-[#FAF8F5] border border-[#EAE6DF] border-l-2 border-l-[#1A1917]">
+                <div class="font-mono-code text-[10px] uppercase tracking-wider text-[#1A1917] font-semibold mb-1">
+                  § Invariant Definition · BST Property
+                </div>
+                <p class="text-[13px] text-[#1A1917] leading-relaxed">
+                  For every node <span class="font-mono-code bg-white px-1 py-0.5 rounded border border-[#EAE6DF]">x</span>: all keys in its left subtree are strictly strictly less than <span class="font-mono-code">key(x)</span>, and all keys in its right subtree are strictly greater than <span class="font-mono-code">key(x)</span>.
+                </p>
+              </div>
+
+              <!-- Mathematical Equation Callout -->
+              <div class="p-3 mb-4 rounded-lg bg-white border border-[#EAE6DF] flex items-center justify-between">
+                <div>
+                  <div class="text-[12px] font-medium text-[#1A1917]">Search & Insertion Time Complexity</div>
+                  <div class="text-[11px] text-[#797670]">As a function of tree height under balanced partitioning</div>
+                </div>
+                <div class="font-mono-code text-[14px] bg-[#FAF8F5] px-3 py-1 rounded border border-[#EAE6DF] font-semibold text-[#1A1917]">
+                  T(n) = O(log n)
+                </div>
+              </div>
+
+              <!-- Clean C++ Code Block -->
+              <div class="rounded-lg bg-[#16161D] p-3.5 font-mono-code text-[12px] text-[#E4E4E7] leading-relaxed border border-[#27272A] relative">
+                <div class="flex items-center justify-between text-[10px] text-[#71717A] mb-2 pb-1.5 border-b border-[#27272A]">
+                  <span>bst_search.cpp</span>
+                  <span class="text-[#A1A1AA]">C++20 std::optional</span>
+                </div>
+                <pre class="text-[11px] leading-relaxed overflow-x-auto"><span class="text-[#93C5FD]">Node*</span> <span class="text-[#FDE047]">search</span>(<span class="text-[#93C5FD]">Node*</span> root, <span class="text-[#93C5FD]">int</span> key) {
+  <span class="text-[#F472B6]">if</span> (!root || root->key == key)
+    <span class="text-[#F472B6]">return</span> root;
+  <span class="text-[#F472B6]">if</span> (root->key < key)
+    <span class="text-[#F472B6]">return</span> search(root->right, key);
+  <span class="text-[#F472B6]">return</span> search(root->left, key);
+}</pre>
+              </div>
+            </div>
+
+            <!-- Right Mini-Sidebar: Deadlines & Interactive Checklist -->
+            <div class="col-span-3 border-l border-[#EAE6DF] p-4 bg-[#FAF8F5]/60 flex flex-col justify-between hidden md:flex">
+              <div>
+                <div class="font-mono-code text-[10px] uppercase tracking-wider text-[#797670] mb-3 px-1">Upcoming Deliverables</div>
+                
+                <!-- Lab Submission Deadline Card -->
+                <div class="p-3 bg-white rounded-lg border border-[#EAE6DF] mb-4">
+                  <div class="flex items-center justify-between">
+                    <span class="font-mono-code text-[10px] font-semibold text-[#2563EB] bg-blue-50 px-1.5 py-0.5 rounded border border-blue-100">EXP 04</span>
+                    <span class="font-mono-code text-[10px] text-[#797670]">Due Tomorrow</span>
+                  </div>
+                  <div class="font-medium text-[12.5px] text-[#1A1917] mt-1.5">Distance Vector Routing</div>
+                  <div class="font-mono-code text-[10px] text-[#797670] mt-0.5">Computer Networks Lab</div>
+                  <div class="mt-2 text-[11px] text-[#797670] flex items-center justify-between pt-2 border-t border-[#EAE6DF]">
+                    <span>Submission Status</span>
+                    <span class="text-amber-700 font-medium font-mono-code text-[10px]">3/5 steps</span>
+                  </div>
+                </div>
+
+                <!-- Active Invariant Checklist -->
+                <div class="font-mono-code text-[10px] uppercase tracking-wider text-[#797670] mb-2 px-1">Section Checklist</div>
+                <div class="space-y-2">
+                  <label class="flex items-start gap-2 text-[12px] cursor-pointer group">
+                    <input type="checkbox" checked class="mt-0.5 rounded border-[#797670] accent-[#1A1917]">
+                    <span class="line-through text-[#797670]">Prove O(log n) recurrence</span>
+                  </label>
+                  <label class="flex items-start gap-2 text-[12px] cursor-pointer group">
+                    <input type="checkbox" checked class="mt-0.5 rounded border-[#797670] accent-[#1A1917]">
+                    <span class="line-through text-[#797670]">C++ recursive lookup stub</span>
+                  </label>
+                  <label class="flex items-start gap-2 text-[12px] cursor-pointer group">
+                    <input type="checkbox" class="mt-0.5 rounded border-[#797670] accent-[#1A1917]">
+                    <span class="text-[#1A1917]">Complete AVL rotation viva drill</span>
+                  </label>
+                  <label class="flex items-start gap-2 text-[12px] cursor-pointer group">
+                    <input type="checkbox" class="mt-0.5 rounded border-[#797670] accent-[#1A1917]">
+                    <span class="text-[#1A1917]">Generate printable PDF revision card</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-lg border border-[#EAE6DF] bg-white text-center">
+                <div class="font-mono-code text-[10px] text-[#797670]">Viva Practice Mode</div>
+                <div class="text-[12px] font-medium text-[#1A1917] mt-0.5">3 Question Checkpoints</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Core Difference Section: The Engineering Learning Loop -->
+    <section id="learning-loop" class="py-12 mb-20">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="font-serif-editorial text-3xl sm:text-[32px] font-normal text-[#1A1917] tracking-tight">
+          Built around how engineers actually study.
+        </h2>
+        <p class="text-[15px] text-[#797670] mt-2 leading-relaxed">
+          Generic notes apps scatter your thinking across disorganized pages. Plasmite connects every phase of your degree into a compounding memory.
+        </p>
+      </div>
+
+      <!-- Structural Loop Diagram (Horizontal Process Strip) -->
+      <div class="border border-[#EAE6DF] rounded-xl bg-white p-6 sm:p-7 mt-9 shadow-xs">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
+          
+          <!-- Step 1 -->
+          <div class="flex flex-col items-center text-center p-3 rounded-lg hover:bg-[#FAF8F5] transition-colors">
+            <span class="font-mono-code text-[10px] uppercase text-[#797670] mb-1">Phase 01</span>
+            <span class="font-mono-code text-[13px] font-semibold text-[#1A1917] uppercase tracking-wider">Step 1: Learn</span>
+            <span class="text-[12px] text-[#797670] mt-1">Lecture Notes & Concepts</span>
+          </div>
+
+          <!-- Arrow -->
+          <div class="hidden md:flex justify-center text-[#B8B4AC] font-mono-code">→</div>
+
+          <!-- Step 2 -->
+          <div class="flex flex-col items-center text-center p-3 rounded-lg hover:bg-[#FAF8F5] transition-colors">
+            <span class="font-mono-code text-[10px] uppercase text-[#797670] mb-1">Phase 02</span>
+            <span class="font-mono-code text-[13px] font-semibold text-[#1A1917] uppercase tracking-wider">Step 2: Write</span>
+            <span class="text-[12px] text-[#797670] mt-1">Formulas & Mathematical Proofs</span>
+          </div>
+
+          <!-- Arrow -->
+          <div class="hidden md:flex justify-center text-[#B8B4AC] font-mono-code">→</div>
+
+          <!-- Step 3 -->
+          <div class="flex flex-col items-center text-center p-3 rounded-lg hover:bg-[#FAF8F5] transition-colors">
+            <span class="font-mono-code text-[10px] uppercase text-[#797670] mb-1">Phase 03</span>
+            <span class="font-mono-code text-[13px] font-semibold text-[#1A1917] uppercase tracking-wider">Step 3: Build</span>
+            <span class="text-[12px] text-[#797670] mt-1">Lab Code & Project Schematics</span>
+          </div>
+        </div>
+
+        <div class="border-t border-[#EAE6DF] mt-4 pt-4 grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
+          <div class="md:col-start-2 flex flex-col items-center text-center p-3 rounded-lg hover:bg-[#FAF8F5] transition-colors">
+            <span class="font-mono-code text-[10px] uppercase text-[#797670] mb-1">Phase 04</span>
+            <span class="font-mono-code text-[13px] font-semibold text-[#1A1917] uppercase tracking-wider">Step 4: Break</span>
+            <span class="text-[12px] text-[#797670] mt-1">Hardware & Bug Journals</span>
+          </div>
+
+          <!-- Arrow -->
+          <div class="hidden md:flex justify-center text-[#B8B4AC] font-mono-code">→</div>
+
+          <div class="flex flex-col items-center text-center p-3 rounded-lg hover:bg-[#FAF8F5] transition-colors">
+            <span class="font-mono-code text-[10px] uppercase text-[#797670] mb-1">Phase 05</span>
+            <span class="font-mono-code text-[13px] font-semibold text-[#1A1917] uppercase tracking-wider">Step 5: Revise</span>
+            <span class="text-[12px] text-[#797670] mt-1">Oral Viva Prep & Spaced Decks</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Core Features Grid (2x2 Asymmetric White Cards) -->
+    <section id="features" class="py-8 mb-24">
+      <div class="mb-10 text-center md:text-left">
+        <span class="font-mono-code text-[11px] uppercase tracking-widest text-[#797670]">Crafted for Engineering Precision</span>
+        <h2 class="font-serif-editorial text-3xl font-normal text-[#1A1917] tracking-tight mt-1">
+          Everything your semester demands. Nothing superfluous.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Card 1 -->
+        <div class="border border-[#EAE6DF] rounded-xl bg-white p-8 hover:border-[#1A1917] transition-all flex flex-col justify-between shadow-2xs">
+          <div>
+            <div class="font-mono-code text-[11px] text-[#2563EB] mb-3 uppercase tracking-wider font-medium">01 // Specialized Blocks</div>
+            <h3 class="font-serif-editorial text-2xl text-[#1A1917] mb-2.5">Specialized Engineering Blocks</h3>
+            <p class="text-[14px] text-[#797670] leading-relaxed">
+              Never wrestle with broken formatting. Insert native Definition callouts, LaTeX mathematical formulations, syntax-highlighted code blocks, and collapsible viva question prompts directly into standard Markdown.
+            </p>
+          </div>
+          <div class="mt-6 pt-5 border-t border-[#EAE6DF] font-mono-code text-[12px] text-[#797670] flex items-center justify-between">
+            <span>Inline formulas with KaTeX</span>
+            <span class="text-[#1A1917]">Cmd + Shift + M</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="border border-[#EAE6DF] rounded-xl bg-white p-8 hover:border-[#1A1917] transition-all flex flex-col justify-between shadow-2xs">
+          <div>
+            <div class="font-mono-code text-[11px] text-[#2563EB] mb-3 uppercase tracking-wider font-medium">02 // Submission Engine</div>
+            <h3 class="font-serif-editorial text-2xl text-[#1A1917] mb-2.5">Structured Lab Notebooks</h3>
+            <p class="text-[14px] text-[#797670] leading-relaxed">
+              Standardize your practical coursework. Document experiment aims, algorithmic procedures, verified terminal executions, and faculty sign-offs. Generate clean, publication-ready submission PDFs with a single keystroke.
+            </p>
+          </div>
+          <div class="mt-6 pt-5 border-t border-[#EAE6DF] font-mono-code text-[12px] text-[#797670] flex items-center justify-between">
+            <span>Institutional PDF Export</span>
+            <span class="text-[#1A1917]">Instant Compile</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="border border-[#EAE6DF] rounded-xl bg-white p-8 hover:border-[#1A1917] transition-all flex flex-col justify-between shadow-2xs">
+          <div>
+            <div class="font-mono-code text-[11px] text-[#2563EB] mb-3 uppercase tracking-wider font-medium">03 // Spaced Retention</div>
+            <h3 class="font-serif-editorial text-2xl text-[#1A1917] mb-2.5">Questions Vault & Spaced Revision</h3>
+            <p class="text-[14px] text-[#797670] leading-relaxed">
+              Flag difficult theorems and edge-case invariants as you write. Plasmite surfaces weak topics through scheduled spaced review intervals before your midterms, complete with an interactive Practice Viva mode.
+            </p>
+          </div>
+          <div class="mt-6 pt-5 border-t border-[#EAE6DF] font-mono-code text-[12px] text-[#797670] flex items-center justify-between">
+            <span>Retention Algorithm</span>
+            <span class="text-[#1A1917]">Mastered / Weak Tags</span>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div id="open-formats" class="border border-[#EAE6DF] rounded-xl bg-white p-8 hover:border-[#1A1917] transition-all flex flex-col justify-between shadow-2xs">
+          <div>
+            <div class="font-mono-code text-[11px] text-[#2563EB] mb-3 uppercase tracking-wider font-medium">04 // Sovereign Archival</div>
+            <h3 class="font-serif-editorial text-2xl text-[#1A1917] mb-2.5">Local-First & Full Data Ownership</h3>
+            <p class="text-[14px] text-[#797670] leading-relaxed">
+              Operates entirely offline using indexed local storage. Zero telemetry on your technical drafts. Download your complete notebook anytime as pure CommonMark Markdown, raw JSON schemas, or merged ZIP archives.
+            </p>
+          </div>
+          <div class="mt-6 pt-5 border-t border-[#EAE6DF] font-mono-code text-[12px] text-[#797670] flex items-center justify-between">
+            <span>No proprietary lock-in</span>
+            <span class="text-[#1A1917]">Export ZIP / JSON</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Product Philosophy Anchor Section -->
+    <section id="philosophy" class="py-16 mb-20 border-t border-b border-[#EAE6DF]">
+      <div class="max-w-2xl mx-auto text-center">
+        <span class="font-mono-code text-[11px] uppercase tracking-widest text-[#797670]">Our Design Philosophy</span>
+        <h3 class="font-serif-editorial text-3xl text-[#1A1917] font-normal tracking-tight mt-2 mb-4">
+          Software that honors your attention.
+        </h3>
+        <p class="text-[15px] text-[#797670] leading-relaxed">
+          We built Plasmite because engineering education is already intense enough without software screaming for your focus. No gamification streaks, no social badges, no noisy feeds. Just clear typography, honest tools, and a reliable space to cultivate deep technical mastery.
+        </p>
+        <div class="mt-8">
+          <a href="#" class="h-10 px-6 rounded-lg bg-[#1A1917] hover:bg-[#2C2A26] text-white text-[13px] font-medium inline-flex items-center justify-center transition-colors">
+            Join Fellow Engineers
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Minimalist Editorial Footer -->
+    <footer class="py-16 border-t border-[#EAE6DF] flex flex-col md:flex-row justify-between items-center gap-6 text-[12px] text-[#797670]">
+      <!-- Left: Plasmite Mission -->
+      <div class="flex items-center gap-2.5">
+        <svg class="w-4 h-4 text-[#2563EB]" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M7 23V5h7a6 6 0 0 1 6 6v0a6 6 0 0 1-6 6H7" />
+          <path d="M7 17l8-8" />
+        </svg>
+        <span class="font-serif-editorial text-[14px] text-[#1A1917] font-medium">Plasmite</span>
+        <span class="text-[#B8B4AC]">·</span>
+        <span>Your engineering knowledge, organized.</span>
+      </div>
+
+      <!-- Center: Open Data Commitment -->
+      <div class="text-center">
+        <span>Built for engineers. Free and open data formats.</span>
+      </div>
+
+      <!-- Right: Links -->
+      <div class="flex items-center gap-6 font-mono-code text-[11px]">
+        <a href="#" class="hover:text-[#1A1917] transition-colors">GitHub</a>
+        <a href="#" class="hover:text-[#1A1917] transition-colors">Documentation</a>
+        <a href="#" class="hover:text-[#1A1917] transition-colors">Terms</a>
+        <a href="#" class="hover:text-[#1A1917] transition-colors">Privacy</a>
+      </div>
+    </footer>
+
+  </main>
+
+</body>
+</html>

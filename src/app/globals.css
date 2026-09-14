@@ -1,0 +1,395 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================
+   PLASMITE Design Tokens
+   Source: technical_editorial_parchment/DESIGN.md
+   "Clean. Calm. Technical. Premium." — warm parchment + mineral ink
+   ============================================================ */
+
+:root {
+  color-scheme: light;
+
+  /* Surfaces — warm parchment scale */
+  --background: #fbf9f6;
+  --foreground: #1b1c1a;
+  --surface: #fbf9f6;
+  --surface-dim: #dbdad7;
+  --surface-bright: #fbf9f6;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f5f3f0;
+  --surface-container: #efeeeb;
+  --surface-container-high: #eae8e5;
+  --surface-container-highest: #e4e2df;
+  --surface-variant: #e4e2df;
+  --on-surface: #1b1c1a;
+  --on-surface-variant: #4c463f;
+  --outline: #7d766e;
+  --outline-variant: #cec5bc;
+  --inverse-surface: #30312f;
+  --inverse-on-surface: #f2f0ed;
+  --surface-tint: #645d54;
+
+  /* Ink — primary actions & type */
+  --primary: #28231b;
+  --on-primary: #ffffff;
+  --primary-container: #3e3830;
+  --on-primary-container: #aaa197;
+  --inverse-primary: #cfc5ba;
+  --primary-fixed: #ece1d5;
+  --primary-fixed-dim: #cfc5ba;
+  --on-primary-fixed: #201b14;
+  --on-primary-fixed-variant: #4c463d;
+
+  /* Secondary — metadata & muted actions */
+  --secondary: #615e58;
+  --on-secondary: #ffffff;
+  --secondary-container: #e7e2da;
+  --on-secondary-container: #67645e;
+  --secondary-fixed: #e7e2da;
+  --secondary-fixed-dim: #cac6bf;
+  --on-secondary-fixed: #1d1b17;
+  --on-secondary-fixed-variant: #494741;
+
+  /* Tertiary — supporting ink */
+  --tertiary: #25231e;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #3b3933;
+  --on-tertiary-container: #a7a29b;
+  --tertiary-fixed: #e7e2d9;
+  --tertiary-fixed-dim: #cbc6be;
+  --on-tertiary-fixed: #1d1b16;
+  --on-tertiary-fixed-variant: #494640;
+
+  /* Semantic */
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+  --error-container: #ffdad6;
+  --on-error-container: #93000a;
+
+  /* Component aliases */
+  --card: #ffffff;
+  --card-foreground: #1b1c1a;
+  --popover: #ffffff;
+  --popover-foreground: #1b1c1a;
+  --muted: #efeeeb;
+  --muted-foreground: #4c463f;
+  --accent: #eae8e5;
+  --accent-foreground: #1b1c1a;
+  --destructive: #ba1a1a;
+  --destructive-foreground: #ffffff;
+  --border: #e4e2df;
+  --input: #e4e2df;
+  --ring: #3e3830;
+
+  /* Elevation — hairline paper model */
+  --plasmite-shadow-card: 0 2px 12px rgba(26, 25, 23, 0.03);
+  --plasmite-shadow-floating: 0 8px 24px rgba(26, 25, 23, 0.06);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: #161411;
+  --foreground: #e8e4de;
+  --surface: #161411;
+  --surface-dim: #0f0e0c;
+  --surface-bright: #1c1a17;
+  --surface-container-lowest: #1c1a17;
+  --surface-container-low: #1f1d1a;
+  --surface-container: #23211e;
+  --surface-container-high: #2c2a26;
+  --surface-container-highest: #37342f;
+  --surface-variant: #45413a;
+  --on-surface: #e8e4de;
+  --on-surface-variant: #c2bab0;
+  --outline: #8d857a;
+  --outline-variant: #403c36;
+  --inverse-surface: #e8e4de;
+  --inverse-on-surface: #2d2b28;
+  --surface-tint: #cfc5ba;
+
+  --primary: #d8cfc3;
+  --on-primary: #27231d;
+  --primary-container: #4a443c;
+  --on-primary-container: #e0d8cd;
+  --inverse-primary: #3e3830;
+  --primary-fixed: #ece1d5;
+  --primary-fixed-dim: #cfc5ba;
+  --on-primary-fixed: #201b14;
+  --on-primary-fixed-variant: #4c463d;
+
+  --secondary: #b9b3a9;
+  --on-secondary: #262420;
+  --secondary-container: #3c3934;
+  --on-secondary-container: #ddd7ce;
+  --secondary-fixed: #e7e2da;
+  --secondary-fixed-dim: #cac6bf;
+  --on-secondary-fixed: #1d1b17;
+  --on-secondary-fixed-variant: #494741;
+
+  --tertiary: #d7d1c7;
+  --on-tertiary: #2b2722;
+  --tertiary-container: #413d36;
+  --on-tertiary-container: #e2ddd5;
+  --tertiary-fixed: #e7e2d9;
+  --tertiary-fixed-dim: #cbc6be;
+  --on-tertiary-fixed: #1d1b16;
+  --on-tertiary-fixed-variant: #494640;
+
+  --error: #ffb4ab;
+  --on-error: #690005;
+  --error-container: #93000a;
+  --on-error-container: #ffdad6;
+
+  --card: #1c1a17;
+  --card-foreground: #e8e4de;
+  --popover: #1c1a17;
+  --popover-foreground: #e8e4de;
+  --muted: #23211e;
+  --muted-foreground: #a79f94;
+  --accent: #2c2a26;
+  --accent-foreground: #e8e4de;
+  --destructive: #ffb4ab;
+  --destructive-foreground: #690005;
+  --border: #3a3731;
+  --input: #44403a;
+  --ring: #cfc5ba;
+
+  --plasmite-shadow-card: 0 2px 12px rgba(0, 0, 0, 0.35);
+  --plasmite-shadow-floating: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Follow the system unless a class explicitly overrides */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    color-scheme: dark;
+
+    --background: #161411;
+    --foreground: #e8e4de;
+    --surface: #161411;
+    --surface-dim: #0f0e0c;
+    --surface-bright: #1c1a17;
+    --surface-container-lowest: #1c1a17;
+    --surface-container-low: #1f1d1a;
+    --surface-container: #23211e;
+    --surface-container-high: #2c2a26;
+    --surface-container-highest: #37342f;
+    --surface-variant: #45413a;
+    --on-surface: #e8e4de;
+    --on-surface-variant: #c2bab0;
+    --outline: #8d857a;
+    --outline-variant: #403c36;
+    --inverse-surface: #e8e4de;
+    --inverse-on-surface: #2d2b28;
+    --surface-tint: #cfc5ba;
+
+    --primary: #d8cfc3;
+    --on-primary: #27231d;
+    --primary-container: #4a443c;
+    --on-primary-container: #e0d8cd;
+    --inverse-primary: #3e3830;
+
+    --secondary: #b9b3a9;
+    --on-secondary: #262420;
+    --secondary-container: #3c3934;
+    --on-secondary-container: #ddd7ce;
+
+    --tertiary: #d7d1c7;
+    --on-tertiary: #2b2722;
+    --tertiary-container: #413d36;
+    --on-tertiary-container: #e2ddd5;
+
+    --error: #ffb4ab;
+    --on-error: #690005;
+    --error-container: #93000a;
+    --on-error-container: #ffdad6;
+
+    --card: #1c1a17;
+    --card-foreground: #e8e4de;
+    --popover: #1c1a17;
+    --popover-foreground: #e8e4de;
+    --muted: #23211e;
+    --muted-foreground: #a79f94;
+    --accent: #2c2a26;
+    --accent-foreground: #e8e4de;
+    --destructive: #ffb4ab;
+    --destructive-foreground: #690005;
+    --border: #3a3731;
+    --input: #44403a;
+    --ring: #cfc5ba;
+
+    --plasmite-shadow-card: 0 2px 12px rgba(0, 0, 0, 0.35);
+    --plasmite-shadow-floating: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ============================================================
+   Theme mapping (reactive so .dark overrides apply live)
+   ============================================================ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--on-primary);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--on-secondary);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Parchment surface scale */
+  --color-surface: var(--surface);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-surface-variant: var(--surface-variant);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --color-inverse-surface: var(--inverse-surface);
+  --color-inverse-on-surface: var(--inverse-on-surface);
+  --color-surface-tint: var(--surface-tint);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-inverse-primary: var(--inverse-primary);
+  --color-primary-fixed: var(--primary-fixed);
+  --color-primary-fixed-dim: var(--primary-fixed-dim);
+  --color-on-primary-fixed: var(--on-primary-fixed);
+  --color-on-primary-fixed-variant: var(--on-primary-fixed-variant);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+  --color-secondary-fixed: var(--secondary-fixed);
+  --color-secondary-fixed-dim: var(--secondary-fixed-dim);
+  --color-on-secondary-fixed: var(--on-secondary-fixed);
+  --color-on-secondary-fixed-variant: var(--on-secondary-fixed-variant);
+  --color-tertiary: var(--tertiary);
+  --color-on-tertiary: var(--on-tertiary);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-tertiary-container: var(--on-tertiary-container);
+  --color-tertiary-fixed: var(--tertiary-fixed);
+  --color-tertiary-fixed-dim: var(--tertiary-fixed-dim);
+  --color-on-tertiary-fixed: var(--on-tertiary-fixed);
+  --color-on-tertiary-fixed-variant: var(--on-tertiary-fixed-variant);
+  --color-error: var(--error);
+  --color-on-error: var(--on-error);
+  --color-error-container: var(--error-container);
+  --color-on-error-container: var(--on-error-container);
+
+  /* Typography — Space Grotesk (display/UI) + Literata (body) */
+  --font-sans: var(--font-literata);
+  --font-display: var(--font-space-grotesk);
+  --font-mono: var(--font-space-grotesk);
+
+  /* Elevation */
+  --shadow-card: var(--plasmite-shadow-card);
+  --shadow-floating: var(--plasmite-shadow-floating);
+}
+
+/* ============================================================
+   Static scales: radii, spacing, type sizes
+   ============================================================ */
+@theme {
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+
+  --spacing-space-xs: 0.25rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-lg: 1.5rem;
+  --spacing-space-xl: 2.5rem;
+
+  --text-display-lg: 2.75rem;
+  --text-display-lg--line-height: 3.25rem;
+  --text-display-lg--letter-spacing: -0.03em;
+  --text-headline-xl: 2rem;
+  --text-headline-xl--line-height: 2.5rem;
+  --text-headline-xl--letter-spacing: -0.02em;
+  --text-headline-lg: 1.5rem;
+  --text-headline-lg--line-height: 2rem;
+  --text-headline-lg--letter-spacing: -0.01em;
+  --text-headline-md: 1.25rem;
+  --text-headline-md--line-height: 1.75rem;
+  --text-headline-md--letter-spacing: -0.005em;
+  --text-headline-sm: 1rem;
+  --text-headline-sm--line-height: 1.5rem;
+  --text-body-xl: 1.25rem;
+  --text-body-xl--line-height: 2rem;
+  --text-body-xl--letter-spacing: -0.005em;
+  --text-body-lg: 1.0625rem;
+  --text-body-lg--line-height: 1.75rem;
+  --text-body-md: 0.9375rem;
+  --text-body-md--line-height: 1.5rem;
+  --text-body-md--letter-spacing: 0.005em;
+  --text-body-sm: 0.8125rem;
+  --text-body-sm--line-height: 1.25rem;
+  --text-body-sm--letter-spacing: 0.01em;
+  --text-label-md: 0.8125rem;
+  --text-label-md--line-height: 1.125rem;
+  --text-label-md--letter-spacing: 0.02em;
+  --text-label-sm: 0.6875rem;
+  --text-label-sm--line-height: 1rem;
+  --text-label-sm--letter-spacing: 0.04em;
+  --text-code-sm: 0.75rem;
+  --text-code-sm--line-height: 1.125rem;
+  --text-code-sm--letter-spacing: 0.01em;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-literata);
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+    overscroll-behavior: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-space-grotesk);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklch, var(--primary) 16%, transparent);
+  }
+}

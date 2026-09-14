@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Plasmite Workspace</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&amp;family=Space+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed": "#e7e2da", "on-primary-fixed-variant": "#4c463d", "on-primary": "#ffffff", "on-secondary-container": "#67645e", "primary-fixed": "#ece1d5", "on-tertiary-fixed-variant": "#494640", "surface-container-lowest": "#ffffff", "on-secondary-fixed-variant": "#494741", "secondary-fixed-dim": "#cac6bf", "tertiary-fixed": "#e7e2d9", "outline": "#7d766e", "primary-fixed-dim": "#cfc5ba", "surface-container-low": "#f5f3f0", "inverse-surface": "#30312f", "on-secondary-fixed": "#1d1b17", "surface-tint": "#645d54", "error": "#ba1a1a", "surface-container": "#efeeeb", "outline-variant": "#cec5bc", "on-error-container": "#93000a", "on-primary-fixed": "#201b14", "on-background": "#1b1c1a", "on-error": "#ffffff", "secondary-container": "#e7e2da", "surface-variant": "#e4e2df", "tertiary-fixed-dim": "#cbc6be", "error-container": "#ffdad6", "background": "#fbf9f6", "on-surface": "#1b1c1a", "tertiary": "#25231e", "surface-bright": "#fbf9f6", "inverse-primary": "#cfc5ba", "on-tertiary": "#ffffff", "on-surface-variant": "#4c463f", "surface-container-highest": "#e4e2df", "surface-container-high": "#eae8e5", "tertiary-container": "#3b3933", "secondary": "#615e58", "on-primary-container": "#aaa197", "inverse-on-surface": "#f2f0ed", "on-tertiary-container": "#a7a29b", "primary": "#28231b", "primary-container": "#3e3830", "on-secondary": "#ffffff", "surface": "#fbf9f6", "surface-dim": "#dbdad7", "on-tertiary-fixed": "#1d1b16" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "gutter-lg": "2rem", "margin-sm": "1rem", "gutter": "1.5rem", "gutter-sm": "1rem", "margin-lg": "3.5rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "space-md": "1rem", "margin": "2rem", "space-sm": "0.5rem", "space-xs": "0.25rem" }, "fontFamily": { "body-md": [ "Literata" ], "headline-lg": [ "Space Grotesk" ], "headline-xl": [ "Space Grotesk" ], "label-sm": [ "Space Grotesk" ], "headline-sm": [ "Space Grotesk" ], "label-md": [ "Space Grotesk" ], "body-sm": [ "Literata" ], "headline-md": [ "Space Grotesk" ], "display-lg": [ "Space Grotesk" ], "body-xl": [ "Literata" ], "body-lg": [ "Literata" ], "code-sm": [ "Space Grotesk" ], "headline-xl-mobile": [ "Space Grotesk" ], "display-lg-mobile": [ "Space Grotesk" ] }, "fontSize": { "body-md": [ "15px", { "lineHeight": "24px", "letterSpacing": "0.005em", "fontWeight": "400" } ], "headline-lg": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "headline-xl": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "label-sm": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" } ], "headline-sm": [ "16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" } ], "label-md": [ "13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "body-sm": [ "13px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "headline-md": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "500" } ], "display-lg": [ "44px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "600" } ], "body-xl": [ "20px", { "lineHeight": "32px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "body-lg": [ "17px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400" } ], "code-sm": [ "12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "headline-xl-mobile": [ "26px", { "lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "display-lg-mobile": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col h-full overflow-hidden"><div class="h-16 px-gutter flex items-center justify-between flex-shrink-0"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-primary text-[22px]">auto_stories</span><span class="font-headline-sm text-headline-sm tracking-tight text-primary font-bold">PLASMITE</span></div><span class="font-code-sm text-code-sm text-on-surface-variant bg-surface px-space-xs py-0.5 rounded">v2.4</span></div><div class="flex-1 overflow-y-auto px-space-md py-space-sm flex flex-col gap-space-lg"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-surface-container-highest text-on-surface font-headline-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[18px]">dashboard</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="subjects" href="#"><span class="material-symbols-outlined text-[18px]">library_books</span><span>Subjects</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="notes" href="#"><span class="material-symbols-outlined text-[18px]">edit_note</span><span>Notes</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="tasks" href="#"><span class="material-symbols-outlined text-[18px]">check_circle</span><span>Tasks</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="labs" href="#"><span class="material-symbols-outlined text-[18px]">biotech</span><span>Labs</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="projects" href="#"><span class="material-symbols-outlined text-[18px]">science</span><span>Projects</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="revision" href="#"><span class="material-symbols-outlined text-[18px]">history_edu</span><span>Revision</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg transition-colors bg-surface-container-highest text-on-surface font-headline-sm" data-path="tools" href="#"><span class="material-symbols-outlined text-[18px]">tune</span><span>Tools</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="settings" href="#"><span class="material-symbols-outlined text-[18px]">settings</span><span>Settings</span></a></nav><div class="bg-surface-container-lowest p-space-md rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.02)] flex flex-col gap-space-sm"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Pending Tasks</span><span class="font-code-sm text-code-sm text-primary font-medium">3 due</span></div><div class="flex flex-col gap-space-xs"><div class="flex items-start gap-space-xs text-on-surface font-body-sm text-body-sm"><span class="material-symbols-outlined text-[15px] text-on-surface-variant mt-0.5">check_box_outline_blank</span><span class="truncate">Review Quantum Electrodynamics</span></div><div class="flex items-start gap-space-xs text-on-surface font-body-sm text-body-sm"><span class="material-symbols-outlined text-[15px] text-on-surface-variant mt-0.5">check_box_outline_blank</span><span class="truncate">Bio-synthesis Draft</span></div></div></div></div><div class="p-space-md bg-surface-container flex items-center justify-between flex-shrink-0"><div class="flex items-center gap-space-sm min-w-0"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col min-w-0"><span class="font-label-md text-label-md text-on-surface truncate font-medium">Dr. S. Thorne</span><span class="font-code-sm text-code-sm text-on-surface-variant truncate">Postdoc Folio</span></div></div><span class="material-symbols-outlined text-on-surface-variant text-[18px]">unfold_more</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-gutter-lg"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs text-on-surface-variant font-code-sm text-code-sm"><span class="material-symbols-outlined text-[16px]">terminal</span><span>plasmite-core/academic</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-md py-1.5 bg-surface-container-low rounded-lg text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">search</span><span class="font-label-sm text-label-sm">Search corpus (⌘K)</span></div><div class="flex items-center gap-space-xs"><button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">bookmark_border</span></button><button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span></button></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-16 w-full px-gutter-lg bg-surface"><div class="flex flex-col w-full">
+<!-- Main Content Canvas -->
+<div class="max-w-5xl w-full mx-auto px-margin py-space-xl flex flex-col">
+<!-- Top Workspace Identification & Context -->
+<div class="flex flex-col md:flex-row md:items-end justify-between pb-space-lg gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-code-sm text-code-sm mb-space-xs">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>FOLIO / ARCHIVAL SYSTEM / UTILITIES</span>
+</div>
+<h1 class="font-body-xl text-display-lg text-primary tracking-tight font-normal italic">
+          Engineering Tools
+        </h1>
+<p class="font-code-sm text-code-sm text-on-surface-variant mt-1 tracking-wide">
+          Fast, offline-ready client-side converters, formatters, and calculators.
+        </p>
+</div>
+<!-- Live Session Diagnostics -->
+<div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-space-xs rounded-xl self-start md:self-auto shadow-sm">
+<span class="inline-flex relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-outline opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">LOCAL RUNTIME</span>
+<span class="text-outline-variant font-code-sm text-code-sm">/</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">0ms LATENCY</span>
+</div>
+</div>
+<!-- Navigation Tabs Strip -->
+<div class="flex items-center gap-space-xl bg-surface-container-low px-space-md py-space-xs rounded-lg mb-space-xl text-label-md">
+<button class="flex items-center gap-space-xs py-1.5 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-headline-sm text-headline-sm shadow-sm transition-all" id="tab-dev">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span>Developer Tools</span>
+</button>
+<button class="flex items-center gap-space-xs py-1.5 px-space-sm rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all" id="tab-calc">
+<span class="material-symbols-outlined text-[16px]">calculate</span>
+<span>Mathematical Calculators</span>
+</button>
+<button class="flex items-center gap-space-xs py-1.5 px-space-sm rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all" id="tab-conv">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span>
+<span>Unit &amp; Base Converters</span>
+</button>
+</div>
+<!-- Tool 1: Comprehensive JSON Formatter & Validator -->
+<section class="bg-surface-container-lowest rounded-xl shadow-md p-space-lg mb-space-xl flex flex-col gap-space-md">
+<!-- Section Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-space-sm gap-space-xs bg-surface-container-low px-space-md py-space-xs rounded-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-6 h-6 rounded bg-primary text-on-primary flex items-center justify-center font-headline-sm text-label-sm">
+            {}
+          </div>
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">
+            JSON Formatter &amp; Schema Inspector
+          </span>
+</div>
+<div class="flex items-center gap-space-sm text-on-surface-variant font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[15px] text-on-surface">lock</span>
+<span>Client-Side Sandbox · Zero Network Telemetry</span>
+</div>
+</div>
+<!-- Split Editor Panes -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-md">
+<!-- Input Left -->
+<div class="flex flex-col bg-surface-container-low rounded-lg p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">
+              Source Raw String
+            </span>
+<div class="flex items-center gap-space-xs">
+<button class="font-code-sm text-code-sm text-primary hover:text-on-surface-variant transition-colors underline" id="btn-load-sample">
+                Load telemetry demo
+              </button>
+<button class="font-code-sm text-code-sm text-on-surface-variant hover:text-error transition-colors ml-space-sm" id="btn-clear-json">
+                Clear
+              </button>
+</div>
+</div>
+<textarea class="w-full bg-surface-container-lowest text-on-surface font-code-sm text-code-sm p-space-sm rounded-lg focus:outline-none focus:bg-surface-bright resize-none shadow-sm transition-all" id="json-input" placeholder="Paste minified or raw JSON payload here..." rows="11" spellcheck="false">{"system":{"id":"PLM-9920","timestamp":1726149200421,"environment":"staging","active":true},"diagnostics":{"thermal_drift_ppm":0.042,"coherence_ratio":0.99981,"status":"nominal"},"vectors":[{"axis":"x","value":1.0423},{"axis":"y","value":-0.0091}],"revision":{"author":"Dr. S. Thorne","hash":"c9e21df"}}</textarea>
+</div>
+<!-- Output Right -->
+<div class="flex flex-col bg-surface-container-low rounded-lg p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">
+              Formatted Canonical Tree
+            </span>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-code-sm text-code-sm">
+<span class="text-primary opacity-0 transition-opacity" id="copy-feedback">Copied!</span>
+<button class="hover:text-on-surface flex items-center gap-0.5 transition-colors" id="btn-copy-json">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+<span>Copy</span>
+</button>
+</div>
+</div>
+<div class="relative w-full h-full min-h-[220px] bg-surface-container-lowest rounded-lg p-space-sm overflow-hidden flex flex-col shadow-sm">
+<pre class="font-code-sm text-code-sm text-on-surface flex-1 overflow-auto whitespace-pre leading-relaxed select-all" id="json-output"><span class="text-outline-variant">1</span>  {
+<span class="text-outline-variant">2</span>    <span class="font-medium text-primary">"system"</span>: {
+<span class="text-outline-variant">3</span>      <span class="font-medium text-primary">"id"</span>: <span class="text-on-surface-variant">"PLM-9920"</span>,
+<span class="text-outline-variant">4</span>      <span class="font-medium text-primary">"timestamp"</span>: <span class="text-secondary font-medium">1726149200421</span>,
+<span class="text-outline-variant">5</span>      <span class="font-medium text-primary">"environment"</span>: <span class="text-on-surface-variant">"staging"</span>,
+<span class="text-outline-variant">6</span>      <span class="font-medium text-primary">"active"</span>: <span class="text-secondary font-medium">true</span>
+<span class="text-outline-variant">7</span>    },
+<span class="text-outline-variant">8</span>    <span class="font-medium text-primary">"diagnostics"</span>: {
+<span class="text-outline-variant">9</span>      <span class="font-medium text-primary">"thermal_drift_ppm"</span>: <span class="text-secondary font-medium">0.042</span>,
+<span class="text-outline-variant">10</span>     <span class="font-medium text-primary">"coherence_ratio"</span>: <span class="text-secondary font-medium">0.99981</span>,
+<span class="text-outline-variant">11</span>     <span class="font-medium text-primary">"status"</span>: <span class="text-on-surface-variant">"nominal"</span>
+<span class="text-outline-variant">12</span>   }
+<span class="text-outline-variant">13</span> }</pre>
+</div>
+</div>
+</div>
+<!-- Bottom Action Bar & Status Strip -->
+<div class="flex flex-wrap items-center justify-between pt-space-xs gap-space-sm bg-surface-container-low px-space-md py-space-sm rounded-lg">
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="px-space-md py-1.5 rounded-lg bg-primary text-on-primary font-headline-sm text-label-md hover:bg-primary-container transition-all flex items-center gap-space-xs shadow-sm" id="btn-format-json">
+<span>Format</span>
+<span class="font-code-sm text-[10px] bg-primary-container text-on-primary px-1 rounded">⌘↵</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container transition-all shadow-sm" id="btn-minify-json">
+            Minify
+          </button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container transition-all shadow-sm" id="btn-validate-json">
+            Validate Schema
+          </button>
+</div>
+<div class="flex items-center gap-space-sm font-code-sm text-code-sm">
+<div class="flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container-lowest text-on-surface shadow-sm" id="json-badge">
+<span class="w-2 h-2 rounded-full bg-primary" id="json-badge-dot"></span>
+<span class="font-medium" id="json-badge-text">Valid JSON · 342 bytes</span>
+</div>
+<span class="text-on-surface-variant hidden sm:inline">UTF-8 canonical</span>
+</div>
+</div>
+</section>
+<!-- Section Heading: Utility Grid -->
+<div class="flex items-baseline justify-between mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">
+          Micro-Instruments
+        </span>
+<span class="text-outline-variant font-code-sm text-code-sm">/</span>
+<span class="font-code-sm text-code-sm text-on-surface">Deterministic Utilities</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Archival Folio v2.4</span>
+</div>
+<!-- 4-Column Quick Utility Strip -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- TOOL A: REGEX TESTER -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md p-space-md flex flex-col justify-between">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between pb-space-xs bg-surface-container-low px-space-sm py-1 rounded">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">data_object</span>
+<span class="font-headline-sm text-label-md text-on-surface">Regex Tester</span>
+</div>
+<span class="font-code-sm text-[10px] bg-surface-container-lowest px-1.5 py-0.5 rounded text-on-surface-variant shadow-sm">JS / PCRE</span>
+</div>
+<!-- Pattern Input -->
+<div class="flex flex-col gap-0.5 mt-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Expression</span>
+<input class="bg-surface-container-low text-on-surface font-code-sm text-code-sm p-space-xs px-space-sm rounded-lg focus:outline-none focus:bg-surface-container-lowest shadow-sm" id="regex-pattern" type="text" value="^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$"/>
+</div>
+<!-- Sample Target -->
+<div class="flex flex-col gap-0.5 mt-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Test String</span>
+<input class="bg-surface-container-low text-on-surface font-code-sm text-code-sm p-space-xs px-space-sm rounded-lg focus:outline-none focus:bg-surface-container-lowest shadow-sm" id="regex-target" type="text" value="s.thorne@plasmite.edu"/>
+</div>
+<!-- Match Output Box -->
+<div class="mt-space-sm bg-surface-container-low rounded-lg p-space-xs shadow-sm flex flex-col gap-1">
+<div class="flex items-center justify-between text-[11px] font-code-sm text-on-surface-variant">
+<span>Match Status:</span>
+<span class="text-primary font-medium" id="regex-badge">Match [1 full, 3 groups]</span>
+</div>
+<div class="font-code-sm text-code-sm p-space-xs bg-surface-container-lowest rounded text-primary truncate shadow-sm" id="regex-preview">
+              "<span class="bg-secondary-fixed text-on-surface px-0.5 rounded">s.thorne@plasmite.edu</span>"
+            </div>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between text-on-surface-variant font-code-sm text-[11px] mt-space-xs">
+<span>Flags: /i, /g</span>
+<button class="hover:text-on-surface transition-colors" id="regex-copy-btn">Copy pattern</button>
+</div>
+</div>
+<!-- TOOL B: BASE64 / URL ENCODER & DECODER -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md p-space-md flex flex-col justify-between">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between pb-space-xs bg-surface-container-low px-space-sm py-1 rounded">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">key</span>
+<span class="font-headline-sm text-label-md text-on-surface">Base64 / URL</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-lowest p-0.5 rounded shadow-sm">
+<button class="px-1.5 py-0.5 rounded font-code-sm text-[10px] bg-primary text-on-primary" id="b64-mode-encode">ENC</button>
+<button class="px-1.5 py-0.5 rounded font-code-sm text-[10px] text-on-surface-variant hover:text-on-surface" id="b64-mode-decode">DEC</button>
+</div>
+</div>
+<!-- Raw Input -->
+<div class="flex flex-col gap-0.5 mt-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Payload Input</span>
+<input class="bg-surface-container-low text-on-surface font-code-sm text-code-sm p-space-xs px-space-sm rounded-lg focus:outline-none focus:bg-surface-container-lowest shadow-sm" id="b64-input" type="text" value="Plasmite Quantum Laboratory v2.4"/>
+</div>
+<!-- Result Output -->
+<div class="flex flex-col gap-0.5 mt-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Translation</span>
+<button class="text-on-surface-variant hover:text-on-surface font-code-sm text-[11px]" id="b64-copy">Copy</button>
+</div>
+<div class="bg-surface-container-low text-on-surface font-code-sm text-[11px] p-space-xs px-space-sm rounded-lg overflow-x-auto whitespace-nowrap shadow-sm select-all" id="b64-output">
+              UGxhc21pdGUgUXVhbnR1bSBMYWJvcmF0b3J5IHYyLjQ=
+            </div>
+</div>
+<div class="flex items-center justify-between mt-space-xs text-[11px] font-code-sm text-on-surface-variant">
+<span>Charset: UTF-8</span>
+<span id="b64-byte-size">32 → 44 B</span>
+</div>
+</div>
+<div class="pt-space-sm flex items-center gap-space-xs text-on-surface-variant font-code-sm text-[11px] mt-space-xs">
+<button class="hover:text-on-surface underline" id="btn-toggle-url">Switch to URL percent-encoding</button>
+</div>
+</div>
+<!-- TOOL C: UNIX TIMESTAMP CONVERTER -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md p-space-md flex flex-col justify-between">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between pb-space-xs bg-surface-container-low px-space-sm py-1 rounded">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+<span class="font-headline-sm text-label-md text-on-surface">Epoch Converter</span>
+</div>
+<button class="font-code-sm text-[10px] bg-primary text-on-primary px-1.5 py-0.5 rounded shadow-sm hover:bg-primary-container" id="btn-epoch-now">NOW</button>
+</div>
+<!-- Input Epoch -->
+<div class="flex flex-col gap-0.5 mt-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Epoch Timestamp (sec)</span>
+<input class="bg-surface-container-low text-on-surface font-code-sm text-code-sm p-space-xs px-space-sm rounded-lg focus:outline-none focus:bg-surface-container-lowest shadow-sm" id="epoch-input" type="text" value="1726149200"/>
+</div>
+<!-- Localized Human Date -->
+<div class="flex flex-col gap-0.5 mt-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Localized RFC 2822</span>
+<div class="bg-surface-container-low text-on-surface font-code-sm text-[11px] p-space-xs px-space-sm rounded-lg truncate shadow-sm" id="epoch-local">
+              Thu, 12 Sep 2024 13:53:20 GMT
+            </div>
+</div>
+<!-- ISO 8601 -->
+<div class="flex flex-col gap-0.5 mt-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">ISO 8601 Representation</span>
+<div class="bg-surface-container-low text-on-surface font-code-sm text-[11px] p-space-xs px-space-sm rounded-lg truncate shadow-sm" id="epoch-iso">
+              2024-09-12T13:53:20.000Z
+            </div>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between text-on-surface-variant font-code-sm text-[11px] mt-space-xs">
+<span>Clock: UTC-0</span>
+<span class="text-on-surface font-medium" id="epoch-rel">Valid timestamp</span>
+</div>
+</div>
+<!-- TOOL D: CHMOD PERMISSIONS CALCULATOR -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md p-space-md flex flex-col justify-between">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between pb-space-xs bg-surface-container-low px-space-sm py-1 rounded">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">security</span>
+<span class="font-headline-sm text-label-md text-on-surface">chmod Matrix</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="font-code-sm text-code-sm bg-primary text-on-primary px-2 py-0.5 rounded font-bold shadow-sm" id="chmod-octal">
+                755
+              </span>
+</div>
+</div>
+<!-- Permissions Matrix Table -->
+<div class="mt-space-xs bg-surface-container-low rounded-lg p-space-xs shadow-sm">
+<table class="w-full text-left font-code-sm text-[11px]">
+<thead>
+<tr class="text-on-surface-variant">
+<th class="py-1 px-1 font-medium font-label-sm">Role</th>
+<th class="py-1 px-1 text-center font-medium">R</th>
+<th class="py-1 px-1 text-center font-medium">W</th>
+<th class="py-1 px-1 text-center font-medium">X</th>
+</tr>
+</thead>
+<tbody class="divide-transparent">
+<!-- Owner (7 = rwx) -->
+<tr>
+<td class="py-1 px-1 text-on-surface font-semibold font-label-sm">Owner</td>
+<td class="py-1 px-1 text-center">
+<input checked="" class="accent-primary cursor-pointer" id="perm-ur" type="checkbox"/>
+</td>
+<td class="py-1 px-1 text-center">
+<input checked="" class="accent-primary cursor-pointer" id="perm-uw" type="checkbox"/>
+</td>
+<td class="py-1 px-1 text-center">
+<input checked="" class="accent-primary cursor-pointer" id="perm-ux" type="checkbox"/>
+</td>
+</tr>
+<!-- Group (5 = r-x) -->
+<tr>
+<td class="py-1 px-1 text-on-surface font-semibold font-label-sm">Group</td>
+<td class="py-1 px-1 text-center">
+<input checked="" class="accent-primary cursor-pointer" id="perm-gr" type="checkbox"/>
+</td>
+<td class="py-1 px-1 text-center">
+<input class="accent-primary cursor-pointer" id="perm-gw" type="checkbox"/>
+</td>
+<td class="py-1 px-1 text-center">
+<input checked="" class="accent-primary cursor-pointer" id="perm-gx" type="checkbox"/>
+</td>
+</tr>
+<!-- Public (5 = r-x) -->
+<tr>
+<td class="py-1 px-1 text-on-surface font-semibold font-label-sm">Public</td>
+<td class="py-1 px-1 text-center">
+<input checked="" class="accent-primary cursor-pointer" id="perm-or" type="checkbox"/>
+</td>
+<td class="py-1 px-1 text-center">
+<input class="accent-primary cursor-pointer" id="perm-ow" type="checkbox"/>
+</td>
+<td class="py-1 px-1 text-center">
+<input checked="" class="accent-primary cursor-pointer" id="perm-ox" type="checkbox"/>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Symbolic String Output -->
+<div class="flex flex-col gap-0.5 mt-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Symbolic Notation</span>
+<div class="bg-surface-container-low text-primary font-code-sm text-code-sm font-semibold p-space-xs px-space-sm rounded-lg tracking-widest text-center shadow-sm" id="chmod-symbolic">
+              -rwxr-xr-x
+            </div>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between text-on-surface-variant font-code-sm text-[11px] mt-space-xs">
+<span>Command:</span>
+<button class="hover:text-on-surface text-primary font-medium transition-colors" id="chmod-copy-cmd">
+            chmod 755 [file]
+          </button>
+</div>
+</div>
+</div>
+<!-- Secondary Context & Lab Apparatus Metadata Footnote -->
+<div class="mt-space-xl bg-surface-container-low rounded-xl p-space-md flex flex-col sm:flex-row items-center justify-between text-on-surface-variant font-code-sm text-code-sm gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-primary">shield</span>
+<span>Cryptographic security policy: WebCrypto API used where entropy is required. No remote execution.</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span>Node Env: Browser WASM / v8</span>
+<span class="text-outline-variant">•</span>
+<span class="text-primary font-medium">FOLIO SECURE</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // 1. JSON FORMATTER LOGIC
+    const jsonInput = document.getElementById('json-input');
+    const jsonOutput = document.getElementById('json-output');
+    const jsonBadge = document.getElementById('json-badge');
+    const jsonBadgeDot = document.getElementById('json-badge-dot');
+    const jsonBadgeText = document.getElementById('json-badge-text');
+    const btnFormat = document.getElementById('btn-format-json');
+    const btnMinify = document.getElementById('btn-minify-json');
+    const btnValidate = document.getElementById('btn-validate-json');
+    const btnClear = document.getElementById('btn-clear-json');
+    const btnSample = document.getElementById('btn-load-sample');
+    const btnCopyJson = document.getElementById('btn-copy-json');
+    const copyFeedback = document.getElementById('copy-feedback');
+
+    function highlightSyntax(json) {
+      if (typeof json !== 'string') {
+        json = JSON.stringify(json, null, 2);
+      }
+      const lines = json.split('\n');
+      return lines.map((line, idx) => {
+        const lineNum = idx + 1;
+        // Escape special chars
+        let escaped = line
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+        
+        // Highlighting keys, strings, numbers, booleans
+        escaped = escaped.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+          if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+              return '<span class="font-medium text-primary">' + match + '</span>';
+            } else {
+              return '<span class="text-on-surface-variant">' + match + '</span>';
+            }
+          } else if (/true|false/.test(match)) {
+            return '<span class="text-secondary font-medium">' + match + '</span>';
+          } else if (/null/.test(match)) {
+            return '<span class="text-error font-medium">' + match + '</span>';
+          }
+          return '<span class="text-secondary font-medium">' + match + '</span>';
+        });
+
+        return `<span class="text-outline-variant select-none inline-block w-6 text-right pr-2">${lineNum}</span>${escaped}`;
+      }).join('\n');
+    }
+
+    function runFormat() {
+      const val = jsonInput.value.trim();
+      if (!val) {
+        jsonOutput.innerHTML = '<span class="text-on-surface-variant italic">// Empty editor buffer</span>';
+        jsonBadgeDot.className = 'w-2 h-2 rounded-full bg-outline';
+        jsonBadgeText.textContent = 'Empty payload';
+        return;
+      }
+      try {
+        const parsed = JSON.parse(val);
+        const formatted = JSON.stringify(parsed, null, 2);
+        jsonOutput.innerHTML = highlightSyntax(formatted);
+        const byteCount = new Blob([formatted]).size;
+        jsonBadgeDot.className = 'w-2 h-2 rounded-full bg-primary';
+        jsonBadgeText.textContent = `Valid JSON \u2022 ${byteCount} bytes`;
+      } catch (err) {
+        jsonOutput.innerHTML = `<span class="text-error font-medium">Syntax Error:</span>\n<span class="text-on-surface">${err.message}</span>`;
+        jsonBadgeDot.className = 'w-2 h-2 rounded-full bg-error';
+        jsonBadgeText.textContent = 'Invalid Syntax';
+      }
+    }
+
+    function runMinify() {
+      const val = jsonInput.value.trim();
+      if (!val) return;
+      try {
+        const parsed = JSON.parse(val);
+        const minified = JSON.stringify(parsed);
+        jsonInput.value = minified;
+        runFormat();
+      } catch (err) {
+        runFormat();
+      }
+    }
+
+    btnFormat.addEventListener('click', runFormat);
+    btnMinify.addEventListener('click', runMinify);
+    btnValidate.addEventListener('click', runFormat);
+
+    btnClear.addEventListener('click', () => {
+      jsonInput.value = '';
+      runFormat();
+      jsonInput.focus();
+    });
+
+    btnSample.addEventListener('click', () => {
+      jsonInput.value = JSON.stringify({
+        experiment: "Quantum-Cavity-Coupling",
+        status: "calibrated",
+        parameters: {
+          wavelength_nm: 780.24,
+          cavity_q_factor: 1.45e7,
+          finesse: 32000,
+          vacuum_sealed: true
+        },
+        readings: [0.984, 0.991, 0.993, 0.989]
+      });
+      runFormat();
+    });
+
+    // Keyboard shortcut CMD+ENTER to format
+    jsonInput.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+        e.preventDefault();
+        runFormat();
+      }
+    });
+
+    btnCopyJson.addEventListener('click', () => {
+      const textToCopy = jsonOutput.innerText.replace(/^\s*\d+\s+/gm, ''); // strip line numbers
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        copyFeedback.style.opacity = '1';
+        setTimeout(() => {
+          copyFeedback.style.opacity = '0';
+        }, 1500);
+      });
+    });
+
+    // Run initial format
+    runFormat();
+
+    // 2. REGEX TESTER LOGIC
+    const regexPattern = document.getElementById('regex-pattern');
+    const regexTarget = document.getElementById('regex-target');
+    const regexBadge = document.getElementById('regex-badge');
+    const regexPreview = document.getElementById('regex-preview');
+    const regexCopyBtn = document.getElementById('regex-copy-btn');
+
+    function testRegex() {
+      const patternVal = regexPattern.value;
+      const targetVal = regexTarget.value;
+      if (!patternVal) {
+        regexBadge.textContent = 'No pattern';
+        regexPreview.textContent = targetVal;
+        return;
+      }
+      try {
+        const re = new RegExp(patternVal, 'i');
+        const match = targetVal.match(re);
+        if (match) {
+          regexBadge.textContent = `Match [${match.length} group${match.length > 1 ? 's' : ''}]`;
+          regexBadge.className = 'text-primary font-medium';
+          regexPreview.innerHTML = `&quot;<span class="bg-secondary-fixed text-on-surface px-0.5 rounded font-medium">${match[0]}</span>&quot;`;
+        } else {
+          regexBadge.textContent = 'No match';
+          regexBadge.className = 'text-error font-medium';
+          regexPreview.innerHTML = `<span class="text-on-surface-variant italic">Pattern does not match input</span>`;
+        }
+      } catch (e) {
+        regexBadge.textContent = 'Invalid regex';
+        regexBadge.className = 'text-error font-medium';
+        regexPreview.textContent = e.message;
+      }
+    }
+
+    regexPattern.addEventListener('input', testRegex);
+    regexTarget.addEventListener('input', testRegex);
+    regexCopyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(regexPattern.value);
+      regexCopyBtn.textContent = 'Copied!';
+      setTimeout(() => regexCopyBtn.textContent = 'Copy pattern', 1400);
+    });
+
+    // 3. BASE64 / URL ENCODER LOGIC
+    const b64Input = document.getElementById('b64-input');
+    const b64Output = document.getElementById('b64-output');
+    const b64ModeEnc = document.getElementById('b64-mode-encode');
+    const b64ModeDec = document.getElementById('b64-mode-decode');
+    const b64ByteSize = document.getElementById('b64-byte-size');
+    const b64Copy = document.getElementById('b64-copy');
+    const btnToggleUrl = document.getElementById('btn-toggle-url');
+    let currentMode = 'encode';
+    let isUrlMode = false;
+
+    function processBase64() {
+      const val = b64Input.value;
+      try {
+        if (!isUrlMode) {
+          if (currentMode === 'encode') {
+            const encoded = btoa(unescape(encodeURIComponent(val)));
+            b64Output.textContent = encoded;
+            b64ByteSize.textContent = `${new Blob([val]).size} \u2192 ${new Blob([encoded]).size} B`;
+          } else {
+            const decoded = decodeURIComponent(escape(atob(val)));
+            b64Output.textContent = decoded;
+            b64ByteSize.textContent = `${new Blob([val]).size} \u2192 ${new Blob([decoded]).size} B`;
+          }
+        } else {
+          if (currentMode === 'encode') {
+            const encoded = encodeURIComponent(val);
+            b64Output.textContent = encoded;
+            b64ByteSize.textContent = `URL Encoded`;
+          } else {
+            const decoded = decodeURIComponent(val);
+            b64Output.textContent = decoded;
+            b64ByteSize.textContent = `URL Decoded`;
+          }
+        }
+      } catch (err) {
+        b64Output.textContent = '[Conversion Error: Invalid Stream]';
+      }
+    }
+
+    b64ModeEnc.addEventListener('click', () => {
+      currentMode = 'encode';
+      b64ModeEnc.className = 'px-1.5 py-0.5 rounded font-code-sm text-[10px] bg-primary text-on-primary';
+      b64ModeDec.className = 'px-1.5 py-0.5 rounded font-code-sm text-[10px] text-on-surface-variant hover:text-on-surface';
+      processBase64();
+    });
+
+    b64ModeDec.addEventListener('click', () => {
+      currentMode = 'decode';
+      b64ModeDec.className = 'px-1.5 py-0.5 rounded font-code-sm text-[10px] bg-primary text-on-primary';
+      b64ModeEnc.className = 'px-1.5 py-0.5 rounded font-code-sm text-[10px] text-on-surface-variant hover:text-on-surface';
+      processBase64();
+    });
+
+    btnToggleUrl.addEventListener('click', () => {
+      isUrlMode = !isUrlMode;
+      btnToggleUrl.textContent = isUrlMode ? 'Switch to Base64 byte-stream' : 'Switch to URL percent-encoding';
+      processBase64();
+    });
+
+    b64Input.addEventListener('input', processBase64);
+    b64Copy.addEventListener('click', () => {
+      navigator.clipboard.writeText(b64Output.textContent);
+      b64Copy.textContent = 'Copied!';
+      setTimeout(() => b64Copy.textContent = 'Copy', 1200);
+    });
+
+    // 4. UNIX TIMESTAMP CONVERTER LOGIC
+    const epochInput = document.getElementById('epoch-input');
+    const epochLocal = document.getElementById('epoch-local');
+    const epochIso = document.getElementById('epoch-iso');
+    const epochRel = document.getElementById('epoch-rel');
+    const btnEpochNow = document.getElementById('btn-epoch-now');
+
+    function convertEpoch() {
+      let val = epochInput.value.trim();
+      let num = Number(val);
+      if (isNaN(num) || val === '') {
+        epochLocal.textContent = 'Invalid epoch input';
+        epochIso.textContent = '-';
+        epochRel.textContent = 'NaN';
+        return;
+      }
+      // If 13 digits (ms) vs 10 digits (sec)
+      if (val.length <= 11) {
+        num = num * 1000;
+      }
+      const d = new Date(num);
+      if (isNaN(d.getTime())) {
+        epochLocal.textContent = 'Out of range';
+        epochIso.textContent = '-';
+        return;
+      }
+      epochLocal.textContent = d.toUTCString();
+      epochIso.textContent = d.toISOString();
+      
+      const diffSec = Math.round((Date.now() - d.getTime()) / 1000);
+      if (Math.abs(diffSec) < 60) {
+        epochRel.textContent = 'Just now';
+      } else if (diffSec > 0) {
+        const days = Math.floor(diffSec / 86400);
+        epochRel.textContent = days > 0 ? `${days}d ago` : `${Math.floor(diffSec/60)}m ago`;
+      } else {
+        const futureDays = Math.floor(Math.abs(diffSec) / 86400);
+        epochRel.textContent = futureDays > 0 ? `In ${futureDays}d` : `In ${Math.floor(Math.abs(diffSec)/60)}m`;
+      }
+    }
+
+    epochInput.addEventListener('input', convertEpoch);
+    btnEpochNow.addEventListener('click', () => {
+      epochInput.value = Math.floor(Date.now() / 1000);
+      convertEpoch();
+    });
+    convertEpoch();
+
+    // 5. CHMOD PERMISSIONS CALCULATOR LOGIC
+    const permUR = document.getElementById('perm-ur');
+    const permUW = document.getElementById('perm-uw');
+    const permUX = document.getElementById('perm-ux');
+    const permGR = document.getElementById('perm-gr');
+    const permGW = document.getElementById('perm-gw');
+    const permGX = document.getElementById('perm-gx');
+    const permOR = document.getElementById('perm-or');
+    const permOW = document.getElementById('perm-ow');
+    const permOX = document.getElementById('perm-ox');
+
+    const chmodOctal = document.getElementById('chmod-octal');
+    const chmodSymbolic = document.getElementById('chmod-symbolic');
+    const chmodCopyCmd = document.getElementById('chmod-copy-cmd');
+
+    function calculateChmod() {
+      const u = (permUR.checked ? 4 : 0) + (permUW.checked ? 2 : 0) + (permUX.checked ? 1 : 0);
+      const g = (permGR.checked ? 4 : 0) + (permGW.checked ? 2 : 0) + (permGX.checked ? 1 : 0);
+      const o = (permOR.checked ? 4 : 0) + (permOW.checked ? 2 : 0) + (permOX.checked ? 1 : 0);
+
+      const octalStr = `${u}${g}${o}`;
+      chmodOctal.textContent = octalStr;
+
+      const sym = '-' +
+        (permUR.checked ? 'r' : '-') +
+        (permUW.checked ? 'w' : '-') +
+        (permUX.checked ? 'x' : '-') +
+        (permGR.checked ? 'r' : '-') +
+        (permGW.checked ? 'w' : '-') +
+        (permGX.checked ? 'x' : '-') +
+        (permOR.checked ? 'r' : '-') +
+        (permOW.checked ? 'w' : '-') +
+        (permOX.checked ? 'x' : '-');
+
+      chmodSymbolic.textContent = sym;
+      chmodCopyCmd.textContent = `chmod ${octalStr} [file]`;
+    }
+
+    [permUR, permUW, permUX, permGR, permGW, permGX, permOR, permOW, permOX].forEach(cb => {
+      cb.addEventListener('change', calculateChmod);
+    });
+
+    chmodCopyCmd.addEventListener('click', () => {
+      const cmd = `chmod ${chmodOctal.textContent} target_file`;
+      navigator.clipboard.writeText(cmd).then(() => {
+        const prev = chmodCopyCmd.textContent;
+        chmodCopyCmd.textContent = 'Copied to clipboard!';
+        setTimeout(() => chmodCopyCmd.textContent = prev, 1500);
+      });
+    });
+
+    // Tab switching visual micro-interaction
+    const tabDev = document.getElementById('tab-dev');
+    const tabCalc = document.getElementById('tab-calc');
+    const tabConv = document.getElementById('tab-conv');
+
+    [tabDev, tabCalc, tabConv].forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        [tabDev, tabCalc, tabConv].forEach(t => {
+          t.className = 'flex items-center gap-space-xs py-1.5 px-space-sm rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all';
+        });
+        tab.className = 'flex items-center gap-space-xs py-1.5 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-headline-sm text-headline-sm shadow-sm transition-all';
+      });
+    });
+
+  })();
+</script></main></div></body></html>
