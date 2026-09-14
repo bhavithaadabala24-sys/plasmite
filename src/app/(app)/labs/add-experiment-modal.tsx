@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, Plus, X } from "lucide-react";
 
-import { createClient } from "@/lib/supabase/client";
+import { createClient, getCurrentUserId } from "@/lib/supabase/client";
 
 export function AddExperimentModal({ labId, nextNumber }: { labId: string; nextNumber: number }) {
   const router = useRouter();
@@ -22,7 +22,14 @@ export function AddExperimentModal({ labId, nextNumber }: { labId: string; nextN
     setError(null);
     setLoading(true);
     const supabase = createClient();
+    const userId = await getCurrentUserId();
+    if (!userId) {
+      setError("You must be signed in to add an experiment.");
+      setLoading(false);
+      return;
+    }
     const { error: insertError } = await supabase.from("lab_experiments").insert({
+      user_id: userId,
       lab_id: labId,
       experiment_number: form.experiment_number ? Number(form.experiment_number) : null,
       title: form.title.trim(),

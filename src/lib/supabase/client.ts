@@ -12,3 +12,8 @@ export function createClient() {
 
   return client;
 }
+
+export async function getCurrentUserId(): Promise<string | null> {
+  const { data } = await createClient().auth.getUser();
+  return data.user?.id ?? null;
+}

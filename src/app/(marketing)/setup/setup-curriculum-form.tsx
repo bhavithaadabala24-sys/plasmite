@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight, BookOpen, Check, Loader2, Plus } from "lucide-react";
 
-import { createClient } from "@/lib/supabase/client";
+import { createClient, getCurrentUserId } from "@/lib/supabase/client";
 
 export function SetupCurriculumForm() {
   const router = useRouter();
@@ -19,9 +19,16 @@ export function SetupCurriculumForm() {
     setError(null);
     setLoading(true);
     const supabase = createClient();
+    const userId = await getCurrentUserId();
+    if (!userId) {
+      setError("You must be signed in to add subjects.");
+      setLoading(false);
+      return;
+    }
     const { data, error: insertError } = await supabase
       .from("subjects")
       .insert({
+        user_id: userId,
         name: form.name.trim(),
         code: form.code.trim() || null,
       })

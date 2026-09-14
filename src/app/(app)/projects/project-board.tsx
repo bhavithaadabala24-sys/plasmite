@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Check, CheckCircle2, Circle, Flag, Loader2, Plus, Trash2 } from "lucide-react";
 
 import { ProgressBar } from "@/components/app/progress-bar";
-import { createClient } from "@/lib/supabase/client";
+import { createClient, getCurrentUserId } from "@/lib/supabase/client";
 
 type Task = { id: string; title: string; status: "todo" | "in_progress" | "done"; due_date: string | null };
 type Milestone = { id: string; title: string; completed: boolean; due_date: string | null };
@@ -38,8 +38,19 @@ export function ProjectBoard({
   const [taskInput, setTaskInput] = useState("");
   const [msInput, setMsInput] = useState("");
   const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const supabase = createClient();
+
+  useEffect(() => {
+    let cancelled = false;
+    getCurrentUserId().then((id) => {
+      if (!cancelled && !id) setError("You must be signed in to update this project.");
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const doneCount = tasks.filter((t) => t.status === "done").length;
   const progress = tasks.length ? (doneCount / tasks.length) * 100 : 0;
@@ -69,12 +80,23 @@ export function ProjectBoard({
     const title = taskInput.trim();
     if (!title || busy) return;
     setBusy(true);
-    const { data } = await supabase
+    setError(null);
+    const userId = await getCurrentUserId();
+    if (!userId) {
+      setError("You must be signed in to add a task.");
+      setBusy(false);
+      return;
+    }
+    const { data, error: insertError } = await supabase
       .from("project_tasks")
-      .insert({ project_id: projectId, title, status: "todo", position: tasks.length })
+      .insert({ user_id: userId, project_id: projectId, title, status: "todo", position: tasks.length })
       .select("id, title, status, due_date")
       .single();
     setBusy(false);
+    if (insertError) {
+      setError(insertError.message);
+      return;
+    }
     if (data) {
       setTasks([...tasks, data as Task]);
       setTaskInput("");
@@ -98,12 +120,23 @@ export function ProjectBoard({
     const title = msInput.trim();
     if (!title || busy) return;
     setBusy(true);
-    const { data } = await supabase
+    setError(null);
+    const userId = await getCurrentUserId();
+    if (!userId) {
+      setError("You must be signed in to add a milestone.");
+      setBusy(false);
+      return;
+    }
+    const { data, error: insertError } = await supabase
       .from("project_milestones")
-      .insert({ project_id: projectId, title, position: milestones.length })
+      .insert({ user_id: userId, project_id: projectId, title, position: milestones.length })
       .select("id, title, completed, due_date")
       .single();
     setBusy(false);
+    if (insertError) {
+      setError(insertError.message);
+      return;
+    }
     if (data) {
       setMilestones([...milestones, data as Milestone]);
       setMsInput("");
@@ -153,6 +186,12 @@ export function ProjectBoard({
           </select>
         </div>
       </div>
+
+      {error ? (
+        <p className="rounded-lg bg-error-container px-4 py-2.5 font-body text-body-sm text-on-error-container">
+          {error}
+        </p>
+      ) : null}
 
       <div className="grid gap-6 lg:grid-cols-2">
         <section className="rounded-xl border border-surface-variant bg-surface-container-lowest shadow-card">

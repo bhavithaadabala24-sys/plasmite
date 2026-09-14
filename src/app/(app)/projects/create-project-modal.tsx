@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, Plus, X } from "lucide-react";
 
-import { createClient } from "@/lib/supabase/client";
+import { createClient, getCurrentUserId } from "@/lib/supabase/client";
 
 export function CreateProjectModal() {
   const router = useRouter();
@@ -29,7 +29,14 @@ export function CreateProjectModal() {
     setError(null);
     setLoading(true);
     const supabase = createClient();
+    const userId = await getCurrentUserId();
+    if (!userId) {
+      setError("You must be signed in to create a project.");
+      setLoading(false);
+      return;
+    }
     const { error: insertError } = await supabase.from("projects").insert({
+      user_id: userId,
       name: form.name.trim(),
       description: form.description.trim() || null,
       problem_statement: form.problem_statement.trim() || null,

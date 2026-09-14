@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Loader2, Plus, X } from "lucide-react";
 
 import { FormError } from "@/components/auth/submit-button";
-import { createClient } from "@/lib/supabase/client";
+import { createClient, getCurrentUserId } from "@/lib/supabase/client";
 
 export function AddTopicModal({ subjectId }: { subjectId: string }) {
   const router = useRouter();
@@ -23,7 +23,14 @@ export function AddTopicModal({ subjectId }: { subjectId: string }) {
     setError(null);
     setLoading(true);
     const supabase = createClient();
+    const userId = await getCurrentUserId();
+    if (!userId) {
+      setError("You must be signed in to add a topic.");
+      setLoading(false);
+      return;
+    }
     const { error: insertError } = await supabase.from("topics").insert({
+      user_id: userId,
       subject_id: subjectId,
       unit_number: form.unit_number ? Number(form.unit_number) : null,
       name: form.name.trim(),

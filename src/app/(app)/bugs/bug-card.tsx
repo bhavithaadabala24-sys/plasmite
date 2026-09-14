@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Bug, ChevronDown, Loader2, X } from "lucide-react";
 
-import { createClient } from "@/lib/supabase/client";
+import { createClient, getCurrentUserId } from "@/lib/supabase/client";
 
 export const STATUS_META = {
   open: { label: "Open", className: "bg-surface-container text-on-surface-variant" },
@@ -86,7 +86,14 @@ export function AddBugModal({
     setError(null);
     setLoading(true);
     const supabase = createClient();
+    const userId = await getCurrentUserId();
+    if (!userId) {
+      setError("You must be signed in to log a bug.");
+      setLoading(false);
+      return;
+    }
     const { error: insertError } = await supabase.from("bugs").insert({
+      user_id: userId,
       title: form.title.trim(),
       severity: form.severity,
       status: "open",

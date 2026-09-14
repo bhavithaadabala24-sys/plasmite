@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Layers, RotateCcw, X } from "lucide-react";
 
-import { createClient } from "@/lib/supabase/client";
+import { createClient, getCurrentUserId } from "@/lib/supabase/client";
 
 const STATUS_META = {
   to_revise: { label: "To Revise", className: "bg-surface-container text-on-surface-variant" },
@@ -88,7 +88,14 @@ export function AddRevisionCardModal({
     setError(null);
     setLoading(true);
     const supabase = createClient();
+    const userId = await getCurrentUserId();
+    if (!userId) {
+      setError("You must be signed in to add a revision card.");
+      setLoading(false);
+      return;
+    }
     const { error: insertError } = await supabase.from("revision_items").insert({
+      user_id: userId,
       title: form.title.trim(),
       content: form.content.trim() || null,
       subject_id: form.subject_id || null,

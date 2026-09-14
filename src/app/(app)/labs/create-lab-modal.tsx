@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, Plus, X } from "lucide-react";
 
-import { createClient } from "@/lib/supabase/client";
+import { createClient, getCurrentUserId } from "@/lib/supabase/client";
 
 export function Field({ label, children, hint }: { label: string; children: React.ReactNode; hint?: string }) {
   return (
@@ -101,7 +101,14 @@ export function CreateLabModal({ subjects = [] }: { subjects: { id: string; name
     setError(null);
     setLoading(true);
     const supabase = createClient();
+    const userId = await getCurrentUserId();
+    if (!userId) {
+      setError("You must be signed in to add a lab.");
+      setLoading(false);
+      return;
+    }
     const { error: insertError } = await supabase.from("labs").insert({
+      user_id: userId,
       title: form.title.trim(),
       description: form.description.trim() || null,
       subject_id: form.subject_id || null,

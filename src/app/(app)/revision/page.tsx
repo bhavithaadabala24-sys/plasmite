@@ -3,6 +3,7 @@ import { Layers, Sparkles } from "lucide-react";
 import { EmptyState } from "@/components/app/empty-state";
 import { PageHeader } from "@/components/layout/page-header";
 import { requireUser } from "@/lib/db";
+import { embedValue } from "@/lib/utils";
 import { AddRevisionCardModal, RevisionStatusSelect } from "./revision-card";
 
 const DIFFICULTY_CLASS: Record<string, string> = {
@@ -108,7 +109,7 @@ export default async function RevisionPage() {
                       {c.difficulty}
                     </span>
                     <span className="font-display text-code-sm text-secondary">
-                      {c.subject?.[0]?.name ?? "General"}
+                      {embedValue(c.subject)?.name ?? "General"}
                     </span>
                   </div>
                   {c.revised_at ? (

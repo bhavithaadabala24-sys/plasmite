@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Plus } from "lucide-react";
 
-import { createClient } from "@/lib/supabase/client";
+import { createClient, getCurrentUserId } from "@/lib/supabase/client";
 import { Field, inputField, ModalShell, SubmitButtons } from "@/app/(app)/labs/create-lab-modal";
 
 export function AddQuestionModal({ subjects = [] }: { subjects: { id: string; name: string; topics: { id: string; name: string }[] }[] }) {
@@ -31,7 +31,14 @@ export function AddQuestionModal({ subjects = [] }: { subjects: { id: string; na
     setError(null);
     setLoading(true);
     const supabase = createClient();
+    const userId = await getCurrentUserId();
+    if (!userId) {
+      setError("You must be signed in to add a question.");
+      setLoading(false);
+      return;
+    }
     const { error: insertError } = await supabase.from("questions").insert({
+      user_id: userId,
       question: form.question.trim(),
       answer: form.answer.trim() || null,
       subject_id: form.subject_id || null,

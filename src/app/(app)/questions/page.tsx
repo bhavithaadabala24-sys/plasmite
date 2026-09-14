@@ -2,6 +2,7 @@ import { CheckCircle2, HelpCircle, RefreshCcw, ShieldQuestion } from "lucide-rea
 
 import { PageHeader } from "@/components/layout/page-header";
 import { requireUser } from "@/lib/db";
+import { embedValue } from "@/lib/utils";
 import { AddQuestionModal } from "./add-question-modal";
 import { QuestionStatusSelect } from "./question-status-select";
 
@@ -19,13 +20,22 @@ export default async function QuestionsPage({
   const { supabase, user } = await requireUser();
   const { status } = await searchParams;
 
-  let query = supabase
+  const { data: allQuestions } = await supabase
     .from("questions")
     .select("id, question, answer, difficulty, status, subject:subjects(name), topic:topics(name)")
-    .eq("user_id", user.id);
-  if (status) query = query.eq("status", status);
-  query = query.order("updated_at", { ascending: false });
-  const { data: questions } = await query;
+    .eq("user_id", user.id)
+    .order("updated_at", { ascending: false });
+
+  const counts = {
+    total: allQuestions?.length ?? 0,
+    unanswered: allQuestions?.filter((x) => x.status === "unanswered").length ?? 0,
+    needsRevision: allQuestions?.filter((x) => x.status === "needs_revision").length ?? 0,
+    understood: allQuestions?.filter((x) => x.status === "understood").length ?? 0,
+  };
+
+  const questions = status
+    ? (allQuestions ?? []).filter((q) => q.status === status)
+    : allQuestions;
 
   const [{ data: subjects }, { data: topics }] = await Promise.all([
     supabase.from("subjects").select("id, name").eq("user_id", user.id),
@@ -40,14 +50,7 @@ export default async function QuestionsPage({
       .map((t) => ({ id: t.id, name: t.name })),
   }));
 
-  const counts = (q: typeof questions) => ({
-    total: q?.length ?? 0,
-    unanswered: q?.filter((x) => x.status === "unanswered").length ?? 0,
-    needsRevision: q?.filter((x) => x.status === "needs_revision").length ?? 0,
-    understood: q?.filter((x) => x.status === "understood").length ?? 0,
-  });
-
-  const c = counts(questions);
+  const c = counts;
 
   return (
     <div className="flex flex-col gap-8">
@@ -120,8 +123,10 @@ export default async function QuestionsPage({
                       {q.difficulty}
                     </span>
                     <span className="font-display text-code-sm text-secondary">
-                      {q.subject?.[0]?.name ?? "General"}
-                      {q.topic?.[0]?.name ? ` · ${q.topic[0].name}` : ""}
+                      {embedValue(q.subject)?.name ?? "General"}
+                      {embedValue(q.topic)?.name
+                        ? ` · ${embedValue(q.topic)?.name}`
+                        : ""}
                     </span>
                   </div>
                   <p className="mt-2.5 font-body text-body-lg leading-relaxed text-on-surface">

@@ -15,6 +15,7 @@ import { ProgressBar } from "@/components/app/progress-bar";
 import { StatCard } from "@/components/app/stat-card";
 import { PageHeader } from "@/components/layout/page-header";
 import { requireUser } from "@/lib/db";
+import { embedValue } from "@/lib/utils";
 
 function greeting() {
   const h = new Date().getHours();
@@ -36,7 +37,7 @@ export default async function DashboardPage() {
   const now = new Date();
   const weekEnd = new Date(now.getTime() + 7 * 86400000);
 
-  const [{ data: profile }, { data: subjects }, { data: topics }, { data: recentNotes }] =
+  const [{ data: profile }, { data: subjects }, { data: topics }, { data: recentNotes }, { count: notesCount }] =
     await Promise.all([
       supabase
         .from("profiles")
@@ -60,6 +61,11 @@ export default async function DashboardPage() {
         .eq("is_archived", false)
         .order("updated_at", { ascending: false })
         .limit(5),
+      supabase
+        .from("notes")
+        .select("id", { count: "exact", head: true })
+        .eq("user_id", user.id)
+        .eq("is_archived", false),
     ]);
 
   const [{ data: openTasks }, { data: projects }, { data: revisionItems }] = await Promise.all([
@@ -107,7 +113,7 @@ export default async function DashboardPage() {
   }
 
   const coursesTotal = subjects?.length ?? 0;
-  const notesTotal = recentNotes?.length ?? 0;
+  const notesTotal = notesCount ?? 0;
   const revisionPending = revisionItems?.length ?? 0;
 
   return (
@@ -174,7 +180,7 @@ export default async function DashboardPage() {
                   <div className="min-w-0 flex-1">
                     <p className="truncate font-body text-body-md text-on-surface">{t.title}</p>
                     <p className="font-display text-code-sm text-secondary">
-                      {t.project?.[0]?.name ?? "Unassigned"}
+                      {embedValue(t.project)?.name ?? "Unassigned"}
                       {t.due_date ? ` · Due ${t.due_date}` : ""}
                     </p>
                   </div>

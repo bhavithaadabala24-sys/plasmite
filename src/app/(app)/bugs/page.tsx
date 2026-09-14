@@ -3,6 +3,7 @@ import { Bug } from "lucide-react";
 import { EmptyState } from "@/components/app/empty-state";
 import { PageHeader } from "@/components/layout/page-header";
 import { requireUser } from "@/lib/db";
+import { embedValue } from "@/lib/utils";
 import { AddBugModal, BugDiagnosis, BugStatusSelect, SEVERITY_META } from "./bug-card";
 
 export default async function BugsPage({
@@ -30,19 +31,18 @@ export default async function BugsPage({
   const investigatingCount = bugs?.filter((b) => b.status === "investigating").length ?? 0;
   const resolvedCount = bugs?.filter((b) => b.status === "resolved").length ?? 0;
 
-  const filterChip = (key: string, label: string, active: boolean) =>
-    key ? (
-      <a
-        href={active ? "/bugs" : `/bugs?${key}`}
-        className={`rounded-full px-3.5 py-1.5 font-display text-code-sm transition-colors ${
-          active
-            ? "bg-on-surface text-surface"
-            : "bg-surface-container text-on-surface-variant hover:bg-surface-container-high"
-        }`}
-      >
-        {label}
-      </a>
-    ) : null;
+  const filterChip = (query: string, label: string, active: boolean) => (
+  <a
+    href={active ? "/bugs" : query ? `/bugs?${query}` : "/bugs"}
+    className={`rounded-full px-3.5 py-1.5 font-display text-code-sm transition-colors ${
+      active
+        ? "bg-on-surface text-surface"
+        : "bg-surface-container text-on-surface-variant hover:bg-surface-container-high"
+    }`}
+  >
+    {label}
+  </a>
+);
 
   return (
     <div className="flex flex-col gap-8">
@@ -111,7 +111,7 @@ export default async function BugsPage({
                     {b.title}
                   </p>
                   <p className="mt-0.5 font-display text-code-sm text-secondary">
-                    {b.project?.[0]?.name ?? "No project"}
+                    {embedValue(b.project)?.name ?? "No project"}
                     {b.updated_at
                       ? ` · ${new Date(b.updated_at).toLocaleDateString(undefined, {
                           month: "short",

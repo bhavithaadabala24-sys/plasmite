@@ -3,6 +3,7 @@ import { Search } from "lucide-react";
 
 import { PageHeader } from "@/components/layout/page-header";
 import { requireUser } from "@/lib/db";
+import { embedValue } from "@/lib/utils";
 
 type ResultGroup = {
   label: string;
@@ -41,7 +42,7 @@ export default async function SearchPage({
           .limit(8),
         supabase
           .from("topics")
-          .select("id, name, subject:subjects(name)")
+          .select("id, name, subject:subjects(id, name)")
           .eq("user_id", user.id)
           .ilike("name", like)
           .limit(8),
@@ -89,8 +90,8 @@ export default async function SearchPage({
         rows: topics.map((r) => ({
           id: r.id,
           title: r.name,
-          sub: (r.subject as { name?: string }[] | null)?.[0]?.name ?? undefined,
-          href: `/subjects/${(r.subject as { id?: string }[] | null)?.[0]?.id ?? ""}`,
+          sub: embedValue(r.subject)?.name ?? undefined,
+          href: `/subjects/${embedValue(r.subject)?.id ?? ""}`,
         })),
       });
     }
@@ -101,7 +102,7 @@ export default async function SearchPage({
         rows: questions.map((r) => ({
           id: r.id,
           title: r.question,
-          sub: (r.subject as { name?: string }[] | null)?.[0]?.name ?? undefined,
+          sub: embedValue(r.subject)?.name ?? undefined,
           href: `/questions`,
         })),
       });

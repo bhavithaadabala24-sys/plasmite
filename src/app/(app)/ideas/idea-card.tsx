@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Lightbulb, Loader2, X } from "lucide-react";
 
-import { createClient } from "@/lib/supabase/client";
+import { createClient, getCurrentUserId } from "@/lib/supabase/client";
 
 const STATUS_META = {
   idea: { label: "Idea", className: "bg-surface-container text-on-surface-variant" },
@@ -68,7 +68,14 @@ export function AddIdeaModal() {
     setError(null);
     setLoading(true);
     const supabase = createClient();
+    const userId = await getCurrentUserId();
+    if (!userId) {
+      setError("You must be signed in to save an idea.");
+      setLoading(false);
+      return;
+    }
     const { error: insertError } = await supabase.from("ideas").insert({
+      user_id: userId,
       title: form.title.trim(),
       content: form.content.trim() || null,
       status: "idea",

@@ -4,6 +4,7 @@ import { NotebookText, Pin, Plus, Search } from "lucide-react";
 import { EmptyState } from "@/components/app/empty-state";
 import { PageHeader } from "@/components/layout/page-header";
 import { requireUser } from "@/lib/db";
+import { embedValue } from "@/lib/utils";
 
 export default async function NotesLibraryPage({
   searchParams,
@@ -11,7 +12,7 @@ export default async function NotesLibraryPage({
   searchParams: Promise<{ q?: string; subject?: string; error?: string }>;
 }) {
   const { supabase, user } = await requireUser();
-  const { q, subject } = await searchParams;
+  const { q, subject, error } = await searchParams;
 
   let query = supabase
     .from("notes")
@@ -42,6 +43,12 @@ export default async function NotesLibraryPage({
           </Link>
         }
       />
+
+      {error ? (
+        <div className="rounded-xl border border-error-container bg-error-container/40 px-4 py-3 font-body text-body-sm text-on-error-container">
+          Could not create that note. {error}
+        </div>
+      ) : null}
 
       <form method="get" action="/notes" className="relative">
         <Search className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-secondary" />
@@ -99,7 +106,7 @@ export default async function NotesLibraryPage({
                   ) : null}
                 </div>
                 <p className="mt-2 font-display text-code-sm text-secondary">
-                  {n.subject?.[0]?.name ?? "General"}
+                  {embedValue(n.subject)?.name ?? "General"}
                 </p>
               </div>
               <span className="font-display text-code-sm text-on-surface-variant">

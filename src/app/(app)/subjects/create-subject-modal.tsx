@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Loader2, Plus, X } from "lucide-react";
 
 import { FormError } from "@/components/auth/submit-button";
-import { createClient } from "@/lib/supabase/client";
+import { createClient, getCurrentUserId } from "@/lib/supabase/client";
 
 export function CreateSubjectModal({ triggerLabel = "Add Subject" }: { triggerLabel?: string }) {
   const router = useRouter();
@@ -30,7 +30,14 @@ export function CreateSubjectModal({ triggerLabel = "Add Subject" }: { triggerLa
     setError(null);
     setLoading(true);
     const supabase = createClient();
+    const userId = await getCurrentUserId();
+    if (!userId) {
+      setError("You must be signed in to add a subject.");
+      setLoading(false);
+      return;
+    }
     const { error: insertError } = await supabase.from("subjects").insert({
+      user_id: userId,
       name: form.name.trim(),
       code: form.code.trim() || null,
       semester: form.semester ? Number(form.semester) : null,

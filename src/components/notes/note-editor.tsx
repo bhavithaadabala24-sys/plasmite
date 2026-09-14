@@ -79,6 +79,16 @@ export function NoteEditor({
   const [archived, setArchived] = useState(initialArchived);
   const [saveState, setSaveState] = useState<SaveState>("saved");
 
+  const latestRef = useRef({ title, content });
+
+  useEffect(() => {
+    latestRef.current = { title, content };
+  });
+
+  useEffect(() => {
+    document.title = `${title || "Untitled"} · Folio`;
+  }, [title]);
+
   const selectedSubject = subjects.find((s) => s.id === subjectId);
 
   const persist = useCallback(
@@ -110,13 +120,16 @@ export function NoteEditor({
 
   useEffect(() => {
     document.title = `${title || "Untitled"} · Folio`;
+  }, [title]);
+
+  useEffect(() => {
     return () => {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
-        persist({ title, content });
+        void persist({ title: latestRef.current.title, content: latestRef.current.content });
       }
     };
-  }, [title, content, persist]);
+  }, [persist]);
 
   async function updateMeta(
     patch: { is_pinned?: boolean; is_archived?: boolean; subject_id?: string | null; topic_id?: string | null },

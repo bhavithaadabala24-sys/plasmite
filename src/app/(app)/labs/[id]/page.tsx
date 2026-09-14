@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, FlaskConical } from "lucide-react";
 
 import { EmptyState } from "@/components/app/empty-state";
 import { requireUser } from "@/lib/db";
+import { embedValue } from "@/lib/utils";
 import { AddExperimentModal } from "../add-experiment-modal";
 
 export default async function LabDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -29,6 +30,7 @@ export default async function LabDetailPage({ params }: { params: Promise<{ id: 
 
   if (!lab) notFound();
 
+  const labSubjectName = embedValue(lab.subject)?.name;
   const done = experiments?.filter((e) => e.status === "completed").length ?? 0;
   const pct = experiments?.length ? (done / experiments.length) * 100 : 0;
   const nextNumber =
@@ -47,7 +49,7 @@ export default async function LabDetailPage({ params }: { params: Promise<{ id: 
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div className="min-w-0">
           <p className="font-display text-label-sm uppercase tracking-wider text-secondary">
-            {lab.subject?.[0]?.name ? `${lab.subject[0].name} · ` : ""}Experiment Record
+            {labSubjectName ? `${labSubjectName} · ` : ""}Experiment Record
           </p>
           <h1 className="mt-1 font-display text-headline-xl font-medium tracking-tight text-on-surface">
             {lab.title}
