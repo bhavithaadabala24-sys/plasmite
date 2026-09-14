@@ -6,7 +6,11 @@ import { createClient } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
 
-export default async function UpdatePasswordPage() {
+export default async function UpdatePasswordPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ code?: string }>;
+}) {
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
     return (
       <div className="flex min-h-[calc(100dvh-4rem)] w-full items-center justify-center px-4">
@@ -26,6 +30,9 @@ export default async function UpdatePasswordPage() {
   }
 
   const supabase = await createClient();
+  const { code } = await searchParams;
+  if (code) await supabase.auth.exchangeCodeForSession(code);
+
   const {
     data: { user },
   } = await supabase.auth.getUser();
