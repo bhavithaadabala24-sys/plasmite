@@ -36,7 +36,19 @@ export function SignInForm() {
     }
 
     setNotice("Session initialized. Opening your folio…");
-    router.push("/dashboard");
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (user) {
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("branch")
+        .eq("id", user.id)
+        .maybeSingle();
+      router.push(profile?.branch ? "/dashboard" : "/setup");
+    } else {
+      router.push("/dashboard");
+    }
     router.refresh();
   }
 

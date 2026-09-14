@@ -1,22 +1,42 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { Search } from "lucide-react";
 
+import { cn } from "@/lib/utils";
+
 export function CommandTrigger({ className }: { className?: string }) {
-  return (
-    <div
-      role="search"
-      aria-label="Search PLASMITE"
-      className={
-        className ??
-        "flex w-full max-w-xs items-center gap-2 rounded-sm border border-border bg-surface-container-lowest px-2.5 py-1.5 shadow-card"
+  const router = useRouter();
+
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        router.push("/search");
       }
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [router]);
+
+  return (
+    <button
+      type="button"
+      aria-label="Search PLASMITE"
+      onClick={() => router.push("/search")}
+      className={cn(
+        "flex w-full max-w-xs items-center gap-2 rounded-sm border border-border bg-surface-container-lowest px-2.5 py-1.5 text-secondary shadow-card transition-colors hover:border-ring hover:text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        className,
+      )}
     >
-      <Search className="size-3.5 shrink-0 text-secondary" />
-      <span className="flex-1 text-left font-display text-label-sm text-secondary">
+      <Search className="size-3.5 shrink-0" />
+      <span className="min-w-0 flex-1 truncate text-left font-display text-label-sm">
         Search PLASMITE…
       </span>
-      <kbd className="rounded-sm border border-border bg-surface-container px-1.5 py-0.5 font-display text-label-sm text-secondary">
+      <kbd className="shrink-0 rounded-sm border border-border bg-surface-container px-1.5 py-0.5 font-display text-label-sm">
         ⌘K
       </kbd>
-    </div>
+    </button>
   );
 }

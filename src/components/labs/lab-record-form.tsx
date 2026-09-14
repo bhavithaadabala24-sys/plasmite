@@ -48,6 +48,10 @@ export function LabRecordForm({
     async (next: Record<string, unknown>, nextVivas: string[]) => {
       const payload: Record<string, unknown> = {
         title: next.title,
+        experiment_number:
+          next.experiment_number === "" || next.experiment_number == null
+            ? null
+            : Number(next.experiment_number),
         aim: next.aim || null,
         objective: next.objective || null,
         requirements: next.requirements || null,

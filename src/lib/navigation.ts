@@ -82,7 +82,6 @@ export const navGroups: NavGroup[] = [
 export const mobileNav: NavItem[] = [
   { title: "Home", href: "/dashboard", icon: Home },
   { title: "Notes", href: "/notes", icon: NotebookText },
-  { title: "Subjects", href: "/subjects", icon: FolderKanban },
+  { title: "Subjects", href: "/subjects", icon: BookOpen },
   { title: "Search", href: "/search", icon: Search },
-  { title: "Profile", href: "/profile", icon: UserRound },
 ];

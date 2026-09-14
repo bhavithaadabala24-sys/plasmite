@@ -14,7 +14,7 @@ export function Sidebar() {
     href === "/" ? pathname === "/" || pathname === "" : pathname.startsWith(href);
 
   return (
-    <aside className="hidden h-dvh w-64 shrink-0 flex-col border-r border-border bg-background lg:flex">
+    <aside className="hidden h-dvh w-64 shrink-0 flex-col border-r border-border bg-background md:flex">
       <div className="flex h-16 shrink-0 items-center border-b border-border px-5">
         <Brand />
       </div>
@@ -29,8 +29,9 @@ export function Sidebar() {
               <Link
                 key={group.key}
                 href={single.href}
+                aria-current={isActive(single.href) ? "page" : undefined}
                 className={cn(
-                  "flex items-center gap-2.5 rounded-sm px-2.5 py-1.5 font-display text-label-md transition-colors",
+                  "flex items-center gap-2.5 rounded-sm px-2.5 py-1.5 font-display text-label-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
                   isActive(single.href)
                     ? "bg-surface-container font-medium text-on-surface"
                     : "text-on-surface-variant hover:bg-surface-container/70 hover:text-on-surface",
@@ -52,8 +53,9 @@ export function Sidebar() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
+                      aria-current={isActive(item.href) ? "page" : undefined}
                       className={cn(
-                        "group relative flex items-center gap-2.5 rounded-sm px-2.5 py-1.5 font-display text-label-md transition-colors",
+                        "group relative flex items-center gap-2.5 rounded-sm px-2.5 py-1.5 font-display text-label-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
                         isActive(item.href)
                           ? "bg-surface-container font-medium text-on-surface"
                           : "text-on-surface-variant hover:bg-surface-container/70 hover:text-on-surface",

@@ -81,33 +81,33 @@ export default function LandingPage() {
           </Link>
         </div>
 
-        <p className="mt-6 flex items-center justify-center gap-2 font-display text-code-sm text-secondary">
-          <span>No credit card</span>
-          <span className="text-outline-variant">·</span>
-          <span>Completely free for students</span>
-          <span className="text-outline-variant">·</span>
-          <span>Export your data anytime</span>
-        </p>
+<p className="mt-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 font-display text-code-sm text-secondary">
+  <span>No credit card</span>
+  <span className="text-outline-variant">·</span>
+  <span>Completely free for students</span>
+  <span className="text-outline-variant">·</span>
+  <span>Export your data anytime</span>
+</p>
       </section>
 
       {/* App preview frame */}
       <section className="mx-auto max-w-5xl px-4">
         <div className="overflow-hidden rounded-2xl border border-surface-variant bg-surface-container-lowest shadow-card">
-          <div className="flex items-center justify-between border-b border-surface-variant px-5 py-3">
-            <div className="flex items-center gap-1.5">
-              <span className="size-2.5 rounded-full bg-surface-container-highest" />
-              <span className="size-2.5 rounded-full bg-surface-container-highest" />
-              <span className="size-2.5 rounded-full bg-surface-container-highest" />
-            </div>
-            <span className="font-display text-code-sm text-secondary">
-              folio · curriculum node — semester living syllabus
-            </span>
-            <div className="flex items-center gap-2">
-              <span className="rounded-full bg-secondary-container px-2 py-0.5 font-display text-code-sm text-on-secondary-container">
-                Verified Note
-              </span>
-            </div>
-          </div>
+<div className="flex min-w-0 items-center justify-between gap-3 border-b border-surface-variant px-5 py-3">
+  <div className="flex items-center gap-1.5">
+    <span className="size-2.5 rounded-full bg-surface-container-highest" />
+    <span className="size-2.5 rounded-full bg-surface-container-highest" />
+    <span className="size-2.5 rounded-full bg-surface-container-highest" />
+  </div>
+  <span className="min-w-0 flex-1 truncate text-center font-display text-code-sm text-secondary">
+    folio · curriculum node — semester living syllabus
+  </span>
+  <div className="flex shrink-0 items-center gap-2">
+<span className="hidden rounded-full bg-secondary-container px-2 py-0.5 font-display text-code-sm text-on-secondary-container min-[480px]:inline-block">
+  Verified Note
+</span>
+  </div>
+</div>
 
           <div className="grid gap-px bg-surface-variant sm:grid-cols-5">
             <div className="space-y-4 bg-surface-container-lowest p-5 sm:col-span-2">
@@ -143,7 +143,7 @@ export default function LandingPage() {
             </div>
 
             <div className="space-y-4 bg-surface-container-lowest p-5 sm:col-span-3">
-              <div className="flex items-start justify-between gap-3">
+              <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <p className="font-display text-label-sm uppercase tracking-wider text-secondary">
                     Upcoming Deliverables
@@ -203,7 +203,7 @@ export default function LandingPage() {
       </section>
 
       {/* Learning loop */}
-      <section id="learning-loop" className="mx-auto max-w-5xl px-4">
+      <section id="learning-loop" className="mx-auto max-w-5xl scroll-mt-16 px-4">
         <div className="text-center">
           <p className="font-display text-label-sm uppercase tracking-widest text-secondary">
             The Engineering Learning Loop

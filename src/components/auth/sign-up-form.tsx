@@ -51,7 +51,12 @@ export function SignUpForm() {
 
     if (data.session) {
       setNotice("Workspace created. Opening your notebook…");
-      router.push("/dashboard");
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("branch")
+        .eq("id", data.user?.id ?? "")
+        .maybeSingle();
+      router.push(profile?.branch ? "/dashboard" : "/setup");
       router.refresh();
     } else {
       setNotice(
