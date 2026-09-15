@@ -29,6 +29,7 @@ export function Sidebar() {
               <Link
                 key={group.key}
                 href={single.href}
+                prefetch
                 aria-current={isActive(single.href) ? "page" : undefined}
                 className={cn(
                   "flex items-center gap-2.5 rounded-sm px-2.5 py-1.5 font-display text-label-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
@@ -53,6 +54,7 @@ export function Sidebar() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
+                      prefetch
                       aria-current={isActive(item.href) ? "page" : undefined}
                       className={cn(
                         "group relative flex items-center gap-2.5 rounded-sm px-2.5 py-1.5 font-display text-label-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",

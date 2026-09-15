@@ -29,9 +29,14 @@ export async function updateSession(request: NextRequest) {
     },
   });
 
+  // Fast, cookie-only session check (no network round-trip).
+  // The JWT is still validated server-side on every app page via
+  // requireUser() -> getUser(), and RLS scopes every query by user_id.
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  const user = session?.user ?? null;
 
   const pathname = request.nextUrl.pathname;
 
