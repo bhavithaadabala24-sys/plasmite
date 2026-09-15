@@ -53,7 +53,7 @@ export function RevisionStatusSelect({
         value={status}
         disabled={loading}
         onChange={(e) => update(e.target.value as RevisionStatus)}
-        className={`h-8 cursor-pointer appearance-none rounded-full pl-3 pr-8 font-display text-code-sm font-medium transition-colors disabled:opacity-60 ${current.className}`}
+        className={`h-8 cursor-pointer appearance-none rounded-full pl-3 pr-8 font-display text-code-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring disabled:opacity-60 ${current.className}`}
       >
         {Object.entries(STATUS_META).map(([value, meta]) => (
           <option key={value} value={value}>
@@ -137,7 +137,7 @@ export function AddRevisionCardModal({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-label-md font-medium text-on-primary shadow-md transition-all hover:bg-tertiary active:translate-y-px"
+        className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-display font-medium text-primary-foreground shadow-md transition-all hover:bg-tertiary active:translate-y-px"
       >
         <Layers className="size-4" />
         New Revision Card
@@ -145,7 +145,7 @@ export function AddRevisionCardModal({
 
       {open ? (
         <div className="fixed inset-0 z-50 flex items-end justify-center bg-inverse-surface/40 p-4 sm:items-center">
-          <div className="w-full max-w-lg rounded-2xl border border-surface-variant bg-surface-container-lowest shadow-popover">
+          <div className="w-full max-w-lg rounded-2xl border border-surface-variant bg-surface-container-lowest shadow-popover max-h-[calc(100dvh-2rem)] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-surface-variant px-6 py-4">
               <h2 className="font-display text-headline-md font-medium tracking-tight text-on-surface">
                 New Revision Card
@@ -224,9 +224,9 @@ export function AddRevisionCardModal({
                       key={d}
                       type="button"
                       onClick={() => setForm({ ...form, difficulty: d })}
-                      className={`h-9 flex-1 rounded-lg border font-label-md capitalize transition-colors ${
+                      className={`h-9 flex-1 rounded-lg border font-display capitalize transition-colors ${
                         form.difficulty === d
-                          ? "border-primary bg-primary text-on-primary"
+                          ? "border-primary bg-primary text-primary-foreground"
                           : "border-border bg-surface-container-lowest text-on-surface hover:bg-surface"
                       }`}
                     >
@@ -240,14 +240,14 @@ export function AddRevisionCardModal({
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="inline-flex h-10 items-center justify-center rounded-lg border border-surface-variant bg-surface-container-lowest px-4 font-label-md text-on-surface transition-colors hover:bg-surface"
+                  className="inline-flex h-10 items-center justify-center rounded-lg border border-surface-variant bg-surface-container-lowest px-4 font-display text-on-surface transition-colors hover:bg-surface"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-label-md font-medium text-on-primary transition-all hover:bg-tertiary disabled:opacity-70"
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-display font-medium text-primary-foreground transition-all hover:bg-tertiary disabled:opacity-70"
                 >
                   {loading ? <RotateCcw className="size-4 animate-spin" /> : null}
                   Save Card

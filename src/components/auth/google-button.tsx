@@ -28,7 +28,7 @@ export function GoogleButton({ label }: { label: string }) {
         type="button"
         onClick={handleGoogle}
         disabled={loading}
-        className="group relative flex h-11 w-full items-center justify-center rounded-lg bg-surface-container-low font-label-md text-label-md text-on-surface shadow-sm transition-all hover:bg-surface-container active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70"
+        className="group relative flex h-11 w-full items-center justify-center rounded-lg bg-surface-container-low font-display text-label-md text-on-surface shadow-sm transition-all hover:bg-surface-container active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70"
       >
         <span className="absolute left-3.5 flex items-center justify-center">
           <svg className="size-4" viewBox="0 0 24 24" aria-hidden="true">

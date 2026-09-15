@@ -39,7 +39,7 @@ export default async function NotesLibraryPage({
         actions={
           <Link
             href="/notes/new"
-            className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-label-md font-medium text-on-primary shadow-md transition-all hover:bg-tertiary active:translate-y-px"
+            className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-display font-medium text-primary-foreground shadow-md transition-all hover:bg-tertiary active:translate-y-px"
           >
             <Plus className="size-4" />
             New Note
@@ -84,7 +84,7 @@ export default async function NotesLibraryPage({
           action={
             <Link
               href="/notes/new"
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-label-md font-medium text-on-primary"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-display font-medium text-primary-foreground"
             >
               <Plus className="size-4" />
               Write your first note

@@ -52,7 +52,7 @@ export function AddExperimentModal({ labId, nextNumber }: { labId: string; nextN
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-label-md font-medium text-on-primary shadow-md transition-all hover:bg-tertiary active:translate-y-px"
+        className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-display font-medium text-primary-foreground shadow-md transition-all hover:bg-tertiary active:translate-y-px"
       >
         <Plus className="size-4" />
         Add Experiment
@@ -62,7 +62,7 @@ export function AddExperimentModal({ labId, nextNumber }: { labId: string; nextN
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-inverse-surface/40 p-4 sm:items-center">
-      <div className="w-full max-w-md rounded-2xl border border-surface-variant bg-surface-container-lowest shadow-popover">
+      <div className="w-full max-w-md rounded-2xl border border-surface-variant bg-surface-container-lowest shadow-popover max-h-[calc(100dvh-2rem)] overflow-y-auto">
         <div className="flex items-center justify-between border-b border-surface-variant px-6 py-4">
           <h2 className="font-display text-headline-md font-medium tracking-tight text-on-surface">
             Add Experiment
@@ -77,7 +77,7 @@ export function AddExperimentModal({ labId, nextNumber }: { labId: string; nextN
           </button>
         </div>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 px-6 py-5">
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid gap-3 sm:grid-cols-3">
             <div className="flex flex-col gap-1.5">
               <label className="font-display text-label-sm text-on-surface">No.</label>
               <input
@@ -106,14 +106,14 @@ export function AddExperimentModal({ labId, nextNumber }: { labId: string; nextN
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="inline-flex h-10 items-center justify-center rounded-lg border border-surface-variant bg-surface-container-lowest px-4 font-label-md text-on-surface transition-colors hover:bg-surface"
+              className="inline-flex h-10 items-center justify-center rounded-lg border border-surface-variant bg-surface-container-lowest px-4 font-display text-on-surface transition-colors hover:bg-surface"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-label-md font-medium text-on-primary transition-all hover:bg-tertiary disabled:opacity-70"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-display font-medium text-primary-foreground transition-all hover:bg-tertiary disabled:opacity-70"
             >
               {loading ? <Loader2 className="size-4 animate-spin" /> : null}
               Save Experiment

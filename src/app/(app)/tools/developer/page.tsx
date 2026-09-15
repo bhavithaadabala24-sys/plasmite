@@ -199,7 +199,7 @@ export default function DeveloperToolsPage() {
         <button
           type="button"
           onClick={() => setTab("base")}
-          className={`inline-flex h-10 items-center gap-2 rounded-lg px-4 font-label-md transition-colors ${
+          className={`inline-flex h-10 items-center gap-2 rounded-lg px-4 font-display transition-colors ${
             tab === "base"
               ? "bg-on-surface text-surface"
               : "bg-surface-container text-on-surface-variant hover:bg-surface-container-high"
@@ -211,7 +211,7 @@ export default function DeveloperToolsPage() {
         <button
           type="button"
           onClick={() => setTab("units")}
-          className={`inline-flex h-10 items-center gap-2 rounded-lg px-4 font-label-md transition-colors ${
+          className={`inline-flex h-10 items-center gap-2 rounded-lg px-4 font-display transition-colors ${
             tab === "units"
               ? "bg-on-surface text-surface"
               : "bg-surface-container text-on-surface-variant hover:bg-surface-container-high"

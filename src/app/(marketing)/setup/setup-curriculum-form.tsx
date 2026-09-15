@@ -49,7 +49,7 @@ export function SetupCurriculumForm() {
   return (
     <div className="mt-8 flex flex-col gap-6">
       <form onSubmit={addSubject} className="flex flex-col gap-3">
-        <div className="grid grid-cols-[1fr_120px] gap-3">
+        <div className="grid gap-3 sm:grid-cols-[1fr_120px]">
           <input
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -67,7 +67,7 @@ export function SetupCurriculumForm() {
           <button
             type="submit"
             disabled={!form.name.trim() || loading}
-            className="inline-flex h-10 items-center gap-2 rounded-lg bg-primary px-4 font-label-md text-on-primary transition-all hover:bg-tertiary disabled:opacity-50"
+            className="inline-flex h-10 items-center gap-2 rounded-lg bg-primary px-4 font-display text-primary-foreground transition-all hover:bg-tertiary disabled:opacity-50"
           >
             {loading ? <Loader2 className="size-4 animate-spin" /> : <Plus className="size-4" />}
             Add Subject

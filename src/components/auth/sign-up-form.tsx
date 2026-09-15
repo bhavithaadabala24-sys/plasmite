@@ -164,7 +164,7 @@ export function SignUpForm() {
           <button
             type="submit"
             disabled={loading}
-            className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-primary font-label-md font-medium text-on-primary shadow-md transition-all hover:bg-tertiary disabled:cursor-not-allowed disabled:opacity-70 active:translate-y-px"
+            className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-primary font-display font-medium text-primary-foreground shadow-md transition-all hover:bg-tertiary disabled:cursor-not-allowed disabled:opacity-70 active:translate-y-px"
           >
             {loading ? (
               <>

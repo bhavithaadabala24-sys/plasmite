@@ -38,7 +38,7 @@ export function DeleteSubjectButton({ subjectId, subjectName }: { subjectId: str
         type="button"
         onClick={handleDelete}
         disabled={loading}
-        className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-border px-4 font-label-md text-error transition-colors hover:bg-error-container/40 disabled:opacity-60"
+        className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-border px-4 font-display text-error transition-colors hover:bg-error-container/40 disabled:opacity-60"
       >
         {loading ? <Loader2 className="size-4 animate-spin" /> : <Trash2 className="size-4" />}
         Delete Subject

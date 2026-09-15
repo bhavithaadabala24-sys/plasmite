@@ -150,7 +150,7 @@ export function LabRecordForm({
             aria-label="Record status"
             value={status}
             onChange={(e) => update({ status: e.target.value }, false)}
-            className={`h-8 cursor-pointer appearance-none rounded-full pl-3 pr-8 font-display text-code-sm font-medium transition-colors ${STATUS_META[status].className}`}
+            className={`h-8 cursor-pointer appearance-none rounded-full pl-3 pr-8 font-display text-code-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${STATUS_META[status].className}`}
           >
             {Object.entries(STATUS_META).map(([value, meta]) => (
               <option key={value} value={value}>
@@ -163,7 +163,7 @@ export function LabRecordForm({
           type="button"
           onClick={saveNow}
           disabled={saveState === "saving"}
-          className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-label-md font-medium text-on-primary shadow-md transition-all hover:bg-tertiary active:translate-y-px disabled:opacity-60"
+          className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-display font-medium text-primary-foreground shadow-md transition-all hover:bg-tertiary active:translate-y-px disabled:opacity-60"
         >
           {saveState === "saving" ? <Save className="size-4 animate-pulse" /> : <Save className="size-4" />}
           Save Record
@@ -355,7 +355,7 @@ export function LabRecordForm({
               type="button"
               onClick={addViva}
               disabled={!vivaInput.trim()}
-              className="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-lg bg-secondary-container px-4 font-label-md text-on-secondary-container transition-colors hover:bg-surface-container-high disabled:opacity-50"
+              className="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-lg bg-secondary-container px-4 font-display text-on-secondary-container transition-colors hover:bg-surface-container-high disabled:opacity-50"
             >
               <Plus className="size-4" />
               Add

@@ -61,7 +61,7 @@ export function AddQuestionModal({ subjects = [] }: { subjects: { id: string; na
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-label-md font-medium text-on-primary shadow-md transition-all hover:bg-tertiary active:translate-y-px"
+        className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-display font-medium text-primary-foreground shadow-md transition-all hover:bg-tertiary active:translate-y-px"
       >
         <Plus className="size-4" />
         Add Question
@@ -126,9 +126,9 @@ export function AddQuestionModal({ subjects = [] }: { subjects: { id: string; na
                   key={d}
                   type="button"
                   onClick={() => setForm({ ...form, difficulty: d })}
-                  className={`h-9 flex-1 rounded-lg border font-label-md capitalize transition-colors ${
+                  className={`h-9 flex-1 rounded-lg border font-display capitalize transition-colors ${
                     form.difficulty === d
-                      ? "border-primary bg-primary text-on-primary"
+                      ? "border-primary bg-primary text-primary-foreground"
                       : "border-border bg-surface-container-lowest text-on-surface hover:bg-surface"
                   }`}
                 >

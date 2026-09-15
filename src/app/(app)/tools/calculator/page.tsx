@@ -268,7 +268,7 @@ export default function CalculatorPage() {
                     onClick={() => key(k)}
                     className={`${buttonBase} ${
                       isAction
-                        ? "bg-primary text-on-primary hover:bg-tertiary"
+                        ? "bg-primary text-primary-foreground hover:bg-tertiary"
                         : isOp
                           ? "bg-secondary-container text-on-secondary-container hover:bg-surface-container-high"
                           : "bg-surface-container-lowest text-on-surface shadow-sm hover:bg-surface-container"

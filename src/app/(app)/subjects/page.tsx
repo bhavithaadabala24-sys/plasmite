@@ -156,7 +156,7 @@ export default async function SubjectsPage() {
                   </span>
                   <Link
                     href={`/subjects/${s.id}`}
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-on-surface px-3.5 py-2 font-label-md font-medium text-surface transition-colors hover:bg-primary-container hover:text-on-primary-container"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-on-surface px-3.5 py-2 font-display font-medium text-surface transition-colors hover:bg-primary-container hover:text-on-primary-container"
                   >
                     Open Subject
                     <ArrowRight className="size-3.5" />

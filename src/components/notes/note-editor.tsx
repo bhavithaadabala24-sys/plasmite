@@ -153,7 +153,7 @@ useEffect(() => {
   }
 
   const editorField =
-    "w-full bg-transparent font-body text-on-surface placeholder:text-secondary/40 focus:outline-none";
+    "w-full bg-transparent font-body text-on-surface placeholder:text-secondary/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring";
 
   return (
     <div className="flex flex-col gap-6">
@@ -197,9 +197,9 @@ useEffect(() => {
           <button
             type="button"
             onClick={() => updateMeta({ is_pinned: !pinned })}
-            className={`inline-flex h-9 items-center gap-1.5 rounded-lg border px-3 font-label-md transition-colors ${
+            className={`inline-flex h-9 items-center gap-1.5 rounded-lg border px-3 font-display transition-colors ${
               pinned
-                ? "border-primary bg-primary text-on-primary"
+                ? "border-primary bg-primary text-primary-foreground"
                 : "border-border bg-surface-container-lowest text-on-surface hover:bg-surface"
             }`}
           >
@@ -209,7 +209,7 @@ useEffect(() => {
           <button
             type="button"
             onClick={() => updateMeta({ is_archived: !archived })}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-border bg-surface-container-lowest px-3 font-label-md text-on-surface transition-colors hover:bg-surface"
+            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-border bg-surface-container-lowest px-3 font-display text-on-surface transition-colors hover:bg-surface"
           >
             <Archive className="size-4" />
             {archived ? "Unarchive" : "Archive"}
@@ -268,10 +268,10 @@ useEffect(() => {
           value={title}
           onChange={(e) => onDraftChange(e.target.value, content)}
           placeholder="Note title…"
-          className="h-16 w-full rounded-t-xl bg-transparent px-6 pt-2 font-display text-headline-lg font-medium tracking-tight text-on-surface placeholder:text-secondary/40 focus:outline-none"
+          className="h-16 w-full rounded-t-xl bg-transparent px-6 pt-2 font-display text-headline-lg font-medium tracking-tight text-on-surface placeholder:text-secondary/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
         />
 
-        <div className="flex items-center gap-1 border-y border-surface-variant px-3 py-1.5">
+        <div className="flex flex-wrap items-center gap-1 border-y border-surface-variant px-3 py-1.5">
           {TOOLBAR.map((b) => (
             <button
               key={b.label}

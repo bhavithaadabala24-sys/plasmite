@@ -49,9 +49,9 @@ export default function LandingPage() {
     <div className="space-y-24 pb-8 sm:space-y-32">
       {/* Hero */}
       <section className="mx-auto max-w-3xl px-4 pt-20 text-center sm:pt-24">
-        <div className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-surface-variant bg-surface-container-lowest px-3 py-1 shadow-card">
-          <span className="size-1.5 rounded-full bg-primary-fixed-dim" />
-          <span className="font-display text-label-sm uppercase tracking-widest text-secondary">
+        <div className="mb-5 inline-flex max-w-full items-center gap-1.5 rounded-full border border-surface-variant bg-surface-container-lowest px-3 py-1 shadow-card">
+          <span className="size-1.5 shrink-0 rounded-full bg-primary-fixed-dim" />
+          <span className="truncate font-display text-label-sm uppercase tracking-widest text-secondary">
             A Digital Notebook for Engineering Students
           </span>
         </div>
@@ -171,7 +171,7 @@ export default function LandingPage() {
                     <span
                       className={`flex size-4 items-center justify-center rounded-full border ${
                         t.done
-                          ? "border-primary bg-primary text-on-primary"
+                          ? "border-primary bg-primary text-primary-foreground"
                           : "border-outline-variant"
                       }`}
                     >

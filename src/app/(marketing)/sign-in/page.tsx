@@ -42,16 +42,16 @@ export default async function SignInPage({
           </div>
         </div>
 
-        <div className="mt-4 flex items-center justify-between rounded-xl bg-surface-container p-4 text-on-surface-variant">
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="size-5 text-secondary" />
-            <span className="font-display text-label-sm text-on-surface">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 rounded-xl bg-surface-container p-4 text-on-surface-variant">
+          <div className="flex min-w-0 items-center gap-2">
+            <ShieldCheck className="size-5 shrink-0 text-secondary" />
+            <span className="truncate font-display text-label-sm text-on-surface">
               Session protected end-to-end
             </span>
           </div>
           <Link
             href="/sign-up"
-            className="font-display text-label-sm text-primary transition-colors hover:text-on-surface"
+            className="shrink-0 font-display text-label-sm text-primary transition-colors hover:text-on-surface"
           >
             Claim workspace →
           </Link>

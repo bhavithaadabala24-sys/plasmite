@@ -55,7 +55,7 @@ export function TopicStatusSelect({
           value={status}
           disabled={loading}
           onChange={(e) => update(e.target.value as TopicStatus)}
-          className={`h-8 cursor-pointer appearance-none rounded-full pl-3 pr-8 font-display text-code-sm font-medium transition-colors disabled:opacity-60 ${current.className}`}
+          className={`h-8 cursor-pointer appearance-none rounded-full pl-3 pr-8 font-display text-code-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring disabled:opacity-60 ${current.className}`}
         >
           {Object.entries(STATUS_META).map(([value, meta]) => (
             <option key={value} value={value}>

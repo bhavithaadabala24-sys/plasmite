@@ -70,11 +70,11 @@ export default async function VivaPage() {
                     {it.question}
                   </p>
                 </div>
-                <div className="shrink-0 text-right">
-                  <p className="font-display text-code-sm text-secondary">{it.labTitle}</p>
+                <div className="max-w-[45%] shrink-0 text-right">
+                  <p className="truncate font-display text-code-sm text-secondary">{it.labTitle}</p>
                   <p className="mt-0.5 flex items-center justify-end gap-1 font-display text-code-sm text-on-surface-variant">
-                    {it.experimentTitle}
-                    <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
+                    <span className="truncate">{it.experimentTitle}</span>
+                    <ArrowRight className="size-3 shrink-0 transition-transform group-hover:translate-x-0.5" />
                   </p>
                 </div>
               </div>

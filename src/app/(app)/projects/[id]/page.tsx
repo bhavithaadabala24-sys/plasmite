@@ -132,7 +132,7 @@ export default async function ProjectDetailPage({
           <ul className="divide-y divide-surface-variant">
             {(bugs ?? []).map((b) => (
               <li key={b.id} className="flex items-center justify-between gap-3 px-5 py-3.5">
-                <span className="truncate font-body text-body-md text-on-surface">{b.title}</span>
+                <span className="min-w-0 flex-1 truncate font-body text-body-md text-on-surface">{b.title}</span>
                 <span className="shrink-0 font-display text-code-sm text-secondary">
                   {b.severity} · {b.status}
                 </span>

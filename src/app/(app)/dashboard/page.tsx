@@ -208,7 +208,7 @@ export default async function DashboardPage() {
                 return (
                   <li key={s.id} className="px-5 py-3.5">
                     <div className="flex items-center justify-between gap-3">
-                      <p className="truncate font-display text-label-md text-on-surface">
+                      <p className="min-w-0 flex-1 truncate font-display text-label-md text-on-surface">
                         {s.name}
                       </p>
                       <span className="shrink-0 font-display text-code-sm text-secondary">
@@ -261,7 +261,7 @@ export default async function DashboardPage() {
                 return (
                   <li key={s.id} className="px-5 py-3.5">
                     <div className="flex items-center justify-between gap-3">
-                      <p className="truncate font-display text-label-md text-on-surface">
+                      <p className="min-w-0 flex-1 truncate font-display text-label-md text-on-surface">
                         {s.name}
                       </p>
                       <span className="shrink-0 font-display text-code-sm text-secondary">

@@ -306,7 +306,7 @@ export function ProjectBoard({
                 type="button"
                 onClick={addTask}
                 disabled={!taskInput.trim() || busy}
-                className="inline-flex h-10 shrink-0 items-center gap-1.5 rounded-lg bg-primary px-4 font-label-md text-on-primary transition-colors hover:bg-tertiary disabled:opacity-50"
+                className="inline-flex h-10 shrink-0 items-center gap-1.5 rounded-lg bg-primary px-4 font-display text-primary-foreground transition-colors hover:bg-tertiary disabled:opacity-50"
               >
                 {busy ? <Loader2 className="size-4 animate-spin" /> : <Plus className="size-4" />}
                 Add
@@ -335,7 +335,7 @@ export function ProjectBoard({
                     className="shrink-0"
                   >
                     {m.completed ? (
-                      <span className="flex size-4 items-center justify-center rounded-full bg-primary text-on-primary">
+                      <span className="flex size-4 items-center justify-center rounded-full bg-primary text-primary-foreground">
                         <Check className="size-2.5" strokeWidth={3} />
                       </span>
                     ) : (
@@ -386,7 +386,7 @@ export function ProjectBoard({
                 type="button"
                 onClick={addMilestone}
                 disabled={!msInput.trim() || busy}
-                className="inline-flex h-10 shrink-0 items-center gap-1.5 rounded-lg bg-secondary-container px-4 font-label-md text-on-secondary-container transition-colors hover:bg-surface-container-high disabled:opacity-50"
+                className="inline-flex h-10 shrink-0 items-center gap-1.5 rounded-lg bg-secondary-container px-4 font-display text-on-secondary-container transition-colors hover:bg-surface-container-high disabled:opacity-50"
               >
                 {busy ? <Loader2 className="size-4 animate-spin" /> : <Flag className="size-4" />}
                 Add

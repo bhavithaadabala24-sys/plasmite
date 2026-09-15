@@ -68,12 +68,12 @@ export default async function LabsPage() {
                     {lab.status.replace("_", " ")}
                   </span>
                 </div>
-                <div className="flex items-center justify-between border-t border-surface-variant pt-4">
-                  <span className="font-display text-code-sm text-on-surface-variant">
+                <div className="flex items-center justify-between gap-3 border-t border-surface-variant pt-4">
+                  <span className="min-w-0 truncate font-display text-code-sm text-on-surface-variant">
                     {subjectName.get(lab.subject_id ?? "") ?? "General lab"}
                     {prog ? ` · ${prog.done}/${prog.total} experiments` : ""}
                   </span>
-                  <span className="inline-flex items-center gap-1.5 font-display text-label-sm text-primary transition-colors group-hover:text-on-surface">
+                  <span className="inline-flex shrink-0 items-center gap-1.5 font-display text-label-sm text-primary transition-colors group-hover:text-on-surface">
                     Open Notebook
                     <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
                   </span>

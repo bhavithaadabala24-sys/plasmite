@@ -134,7 +134,7 @@ export function ProfileSettingsForm({
             <button
               type="submit"
               disabled={saving}
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-label-md font-medium text-on-primary transition-all hover:bg-tertiary disabled:opacity-70"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-display font-medium text-primary-foreground transition-all hover:bg-tertiary disabled:opacity-70"
             >
               {saving ? <Loader2 className="size-4 animate-spin" /> : <Check className="size-4" />}
               {saved ? "Saved" : "Save Changes"}
@@ -154,7 +154,7 @@ export function ProfileSettingsForm({
           <div className="mt-4 flex flex-col gap-2">
             <a
               href="/auth/update-password"
-              className="inline-flex h-10 items-center gap-2 rounded-lg border border-border bg-surface-container-lowest px-4 font-label-md text-on-surface transition-colors hover:bg-surface"
+              className="inline-flex h-10 items-center gap-2 rounded-lg border border-border bg-surface-container-lowest px-4 font-display text-on-surface transition-colors hover:bg-surface"
             >
               <KeyRound className="size-4" />
               Update Password
