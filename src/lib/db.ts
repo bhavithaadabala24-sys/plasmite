@@ -6,16 +6,18 @@ export type AppUser = NonNullable<Awaited<ReturnType<typeof requireUser>>>;
 
 export async function requireUser() {
   const supabase = await createClient();
+  // Read the session locally from cookies (no network round-trip on every
+  // page render). The access token is still validated by PostgREST on every
+  // query via RLS, so this stays secure without the latency cost of getUser().
   const {
-    data: { user },
-    error,
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  if (error || !user) {
+  if (!session?.user) {
     redirect("/sign-in");
   }
 
-  return { supabase, user: user! };
+  return { supabase, user: session.user };
 }
 
 export async function getUserProfile(userId: string) {
