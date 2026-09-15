@@ -121,8 +121,9 @@ export function CreateSubjectModal({ triggerLabel = "Add Subject" }: { triggerLa
                   <input
                     id="subj-sem"
                     inputMode="numeric"
+                    pattern="[0-9]*"
                     value={form.semester}
-                    onChange={(e) => setForm({ ...form, semester: e.target.value })}
+                    onChange={(e) => setForm({ ...form, semester: e.target.value.replace(/\D/g, "") })}
                     placeholder="3"
                     className={field}
                   />
@@ -134,8 +135,9 @@ export function CreateSubjectModal({ triggerLabel = "Add Subject" }: { triggerLa
                   <input
                     id="subj-year"
                     inputMode="numeric"
+                    pattern="[0-9]*"
                     value={form.year}
-                    onChange={(e) => setForm({ ...form, year: e.target.value })}
+                    onChange={(e) => setForm({ ...form, year: e.target.value.replace(/\D/g, "") })}
                     placeholder="2"
                     className={field}
                   />

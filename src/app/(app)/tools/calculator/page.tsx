@@ -43,9 +43,127 @@ function toSafeExpr(input: string) {
   return input
     .replace(/×/g, "*")
     .replace(/÷/g, "/")
-    .replace(/−/g, "-")
-    .replace(/\^/g, "**")
-    .replace(/π/g, "Math.PI");
+    .replace(/−/g, "-");
+}
+
+class SafeCalculator {
+  private tokens: string[];
+  private pos = 0;
+
+  constructor(input: string) {
+    this.tokens = [];
+    const re =
+      /\s*(\d+(?:\.\d+)?|\.\d+|π|[a-zA-Z_][a-zA-Z0-9_.]*|[+\-*/^%()])/g;
+    let m: RegExpExecArray | null;
+    let last = 0;
+    while ((m = re.exec(input)) !== null) {
+      if (m.index !== last) throw new Error("Unexpected input");
+      this.tokens.push(m[1]);
+      last = re.lastIndex;
+    }
+    if (last !== input.length) throw new Error("Unexpected input");
+  }
+
+  private peek(): string | undefined {
+    return this.tokens[this.pos];
+  }
+
+  private consume(): string {
+    return this.tokens[this.pos++];
+  }
+
+  evaluate(): number {
+    if (this.tokens.length === 0) throw new Error("Empty expression");
+    const value = this.expression();
+    if (this.pos !== this.tokens.length) throw new Error(`Unexpected "${this.peek()}"`);
+    return value;
+  }
+
+  private expression(): number {
+    let value = this.term();
+    while (this.peek() === "+" || this.peek() === "-") {
+      const op = this.consume();
+      const right = this.term();
+      value = op === "+" ? value + right : value - right;
+    }
+    return value;
+  }
+
+  private term(): number {
+    let value = this.unary();
+    while (this.peek() === "*" || this.peek() === "/") {
+      const op = this.consume();
+      if (op === "/") {
+        const right = this.unary();
+        if (right === 0) throw new Error("Division by zero");
+        value /= right;
+      } else {
+        value *= this.unary();
+      }
+    }
+    return value;
+  }
+
+  private unary(): number {
+    if (this.peek() === "-") {
+      this.consume();
+      return -this.unary();
+    }
+    return this.factor();
+  }
+
+  private factor(): number {
+    const base = this.postfix();
+    if (this.peek() === "^") {
+      this.consume();
+      return Math.pow(base, this.factor());
+    }
+    return base;
+  }
+
+  private postfix(): number {
+    let value = this.atom();
+    while (this.peek() === "%") {
+      this.consume();
+      value /= 100;
+    }
+    return value;
+  }
+
+  private atom(): number {
+    const t = this.consume();
+    if (t === "(") {
+      if (this.pos === this.tokens.length) throw new Error("Missing closing parenthesis");
+      const value = this.expression();
+      if (this.peek() !== ")") throw new Error("Missing closing parenthesis");
+      this.consume();
+      return value;
+    }
+    if (t === "π") return Math.PI;
+    if (/^\d/.test(t) || /^\.\d/.test(t)) return Number(t);
+    if (/^[a-zA-Z_]/.test(t)) {
+      if (this.peek() === "(") {
+        this.consume();
+        const arg = this.expression();
+        if (this.peek() !== ")") throw new Error("Missing closing parenthesis");
+        this.consume();
+        const fns: Record<string, (x: number) => number> = {
+          "Math.sin": Math.sin,
+          "Math.cos": Math.cos,
+          "Math.tan": Math.tan,
+          "Math.log": Math.log,
+          "Math.log10": Math.log10,
+          "Math.sqrt": Math.sqrt,
+        };
+        const fn = fns[t];
+        if (!fn) throw new Error(`Unknown function "${t}"`);
+        return fn(arg);
+      }
+      if (t === "Math.PI") return Math.PI;
+      throw new Error(`Unknown identifier "${t}"`);
+    }
+    throw new Error(`Unexpected "${t}"`);
+  }
 }
 
 export default function CalculatorPage() {
@@ -54,20 +172,19 @@ export default function CalculatorPage() {
   const [error, setError] = useState<string | null>(null);
 
   function evaluate() {
+    setError(null);
     const expr = toSafeExpr(display);
     if (!expr.trim()) return;
-    if (/[+\-*/%]\.*$/.test(expr) || /\($/.test(expr)) {
+    if (/[+\-*/^%]\s*$/.test(expr) || /\(\s*$/.test(expr)) {
       setError("Incomplete expression — close it before evaluating.");
       return;
     }
     try {
-      const value = Function(`"use strict"; return (${expr});`)();
-      const result = Number(value);
-      if (!Number.isFinite(result)) throw new Error("non-finite");
-      const formatted = String(Math.round(result * 1e10) / 1e10);
-      setHistory((h) => [`${display.replace(/\^/g, "^")} = ${formatted}`, ...h].slice(0, 12));
+      const value = new SafeCalculator(expr).evaluate();
+      if (!Number.isFinite(value)) throw new Error("non-finite");
+      const formatted = String(Math.round(value * 1e10) / 1e10);
+      setHistory((h) => [`${display} = ${formatted}`, ...h].slice(0, 12));
       setDisplay(formatted);
-      setError(null);
     } catch {
       setError("Couldn't evaluate that expression.");
     }

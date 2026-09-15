@@ -65,7 +65,7 @@ export function SignInForm() {
     setLoading(true);
     const supabase = createClient();
     const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/auth/update-password`,
+      redirectTo: `${window.location.origin}/auth/confirm-password`,
     });
 
     if (resetError) {

@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 
 import { LabRecordForm } from "@/components/labs/lab-record-form";
 import { requireUser } from "@/lib/db";
+import { embedValue } from "@/lib/utils";
 
 export default async function ExperimentPage({
   params,
@@ -24,6 +25,8 @@ export default async function ExperimentPage({
 
   if (!experiment) notFound();
 
+  const lab = embedValue(experiment.lab);
+
   const record = {
     ...experiment,
     experiment_number: experiment.experiment_number ?? "",
@@ -32,13 +35,15 @@ export default async function ExperimentPage({
 
   return (
     <div className="flex flex-col gap-6">
-      <Link
-        href={`/labs/${(experiment.lab as { id?: string } | null)?.id ?? ""}`}
-        className="inline-flex w-fit items-center gap-1.5 font-display text-label-sm text-secondary transition-colors hover:text-on-surface"
-      >
-        <ArrowLeft className="size-4" />
-        {(experiment.lab as { title?: string } | null)?.title ?? "Lab Notebook"}
-      </Link>
+      {lab ? (
+        <Link
+          href={`/labs/${lab.id}`}
+          className="inline-flex w-fit items-center gap-1.5 font-display text-label-sm text-secondary transition-colors hover:text-on-surface"
+        >
+          <ArrowLeft className="size-4" />
+          {lab.title ?? "Lab Notebook"}
+        </Link>
+      ) : null}
 
       <div className="flex flex-col gap-2">
         <p className="font-display text-label-sm uppercase tracking-wider text-secondary">

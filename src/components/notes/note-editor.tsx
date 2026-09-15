@@ -81,11 +81,7 @@ export function NoteEditor({
 
   const latestRef = useRef({ title, content });
 
-  useEffect(() => {
-    latestRef.current = { title, content };
-  });
-
-  useEffect(() => {
+useEffect(() => {
     document.title = `${title || "Untitled"} · Folio`;
   }, [title]);
 
@@ -123,10 +119,11 @@ export function NoteEditor({
   }, [title]);
 
   useEffect(() => {
+    const last = latestRef.current;
     return () => {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
-        void persist({ title: latestRef.current.title, content: latestRef.current.content });
+        void persist({ title: last.title, content: last.content });
       }
     };
   }, [persist]);

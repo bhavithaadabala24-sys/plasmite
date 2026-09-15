@@ -46,12 +46,15 @@ export function LabRecordForm({
 
   const persist = useCallback(
     async (next: Record<string, unknown>, nextVivas: string[]) => {
+      const rawNumber = next.experiment_number;
+      const parsedNumber =
+        rawNumber === "" || rawNumber == null || Number.isNaN(Number(rawNumber))
+          ? null
+          : Number(rawNumber);
+
       const payload: Record<string, unknown> = {
         title: next.title,
-        experiment_number:
-          next.experiment_number === "" || next.experiment_number == null
-            ? null
-            : Number(next.experiment_number),
+        experiment_number: parsedNumber,
         aim: next.aim || null,
         objective: next.objective || null,
         requirements: next.requirements || null,
@@ -159,9 +162,10 @@ export function LabRecordForm({
         <button
           type="button"
           onClick={saveNow}
-          className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-label-md font-medium text-on-primary shadow-md transition-all hover:bg-tertiary active:translate-y-px"
+          disabled={saveState === "saving"}
+          className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 font-label-md font-medium text-on-primary shadow-md transition-all hover:bg-tertiary active:translate-y-px disabled:opacity-60"
         >
-          <Save className="size-4" />
+          {saveState === "saving" ? <Save className="size-4 animate-pulse" /> : <Save className="size-4" />}
           Save Record
         </button>
       </div>
@@ -180,7 +184,9 @@ export function LabRecordForm({
             <label className="font-display text-label-sm text-on-surface">Experiment number</label>
             <input
               value={(draft.experiment_number as string) ?? ""}
-              onChange={(e) => update({ experiment_number: e.target.value })}
+              inputMode="numeric"
+              pattern="[0-9]*"
+              onChange={(e) => update({ experiment_number: e.target.value.replace(/\D/g, "") })}
               className={`${inputField} mt-1.5`}
             />
           </div>

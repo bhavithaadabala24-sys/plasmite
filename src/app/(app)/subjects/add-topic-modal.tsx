@@ -87,8 +87,9 @@ export function AddTopicModal({ subjectId }: { subjectId: string }) {
                   <input
                     id="topic-unit"
                     inputMode="numeric"
+                    pattern="[0-9]*"
                     value={form.unit_number}
-                    onChange={(e) => setForm({ ...form, unit_number: e.target.value })}
+                    onChange={(e) => setForm({ ...form, unit_number: e.target.value.replace(/\D/g, "") })}
                     placeholder="1"
                     className={field}
                   />

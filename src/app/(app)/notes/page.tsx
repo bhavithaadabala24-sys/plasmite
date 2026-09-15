@@ -14,14 +14,17 @@ export default async function NotesLibraryPage({
   const { supabase, user } = await requireUser();
   const { q, subject, error } = await searchParams;
 
+  const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  const validSubject = subject && UUID_RE.test(subject) ? subject : undefined;
+
   let query = supabase
     .from("notes")
     .select("id, title, is_pinned, is_archived, updated_at, subject:subjects(name)")
     .eq("user_id", user.id)
     .eq("is_archived", false);
 
-  if (subject) query = query.eq("subject_id", subject);
-  if (q) query = query.ilike("title", `%${q}%`);
+  if (validSubject) query = query.eq("subject_id", validSubject);
+  if (q) query = query.ilike("title", `%${q.replace(/[\\%_]/g, "\\$&")}%`);
 
   query = query.order("is_pinned", { ascending: false }).order("updated_at", { ascending: false });
 

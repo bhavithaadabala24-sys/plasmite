@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Grid2X2, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { mobileNav, navGroups } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
@@ -18,6 +18,20 @@ export function MobileBottomNav() {
   const moreActive = navGroups
     .flatMap((g) => g.items)
     .some((i) => isActive(i.href) && !mobileNav.some((m) => m.href === i.href));
+
+  useEffect(() => {
+    if (!moreOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMoreOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [moreOpen]);
 
   return (
     <>

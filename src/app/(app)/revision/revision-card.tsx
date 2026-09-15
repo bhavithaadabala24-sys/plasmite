@@ -24,20 +24,30 @@ export function RevisionStatusSelect({
 }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const current = STATUS_META[status];
 
   async function update(next: RevisionStatus) {
     setLoading(true);
+    setError(null);
     const supabase = createClient();
     const patch: Record<string, unknown> = { status: next };
     if (next === "mastered" || next === "revised") patch.revised_at = new Date().toISOString();
-    await supabase.from("revision_items").update(patch).eq("id", itemId);
+    const { error: updateError } = await supabase
+      .from("revision_items")
+      .update(patch)
+      .eq("id", itemId);
     setLoading(false);
+    if (updateError) {
+      setError(updateError.message);
+      return;
+    }
     router.refresh();
   }
 
   return (
-    <div className="relative inline-flex items-center">
+    <div className="relative inline-flex flex-col items-start gap-1">
+      <div className="relative inline-flex items-center">
       <select
         aria-label="Revision status"
         value={status}
@@ -56,6 +66,12 @@ export function RevisionStatusSelect({
       ) : (
         <span className="pointer-events-none absolute right-2.5 text-on-surface-variant">▾</span>
       )}
+      </div>
+      {error ? (
+        <p role="alert" className="font-body text-code-sm text-error">
+          {error}
+        </p>
+      ) : null}
     </div>
   );
 }

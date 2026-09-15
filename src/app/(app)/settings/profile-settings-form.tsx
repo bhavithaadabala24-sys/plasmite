@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Check, KeyRound, Loader2 } from "lucide-react";
 
@@ -21,6 +21,7 @@ export function ProfileSettingsForm({
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const savedTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [form, setForm] = useState({
     full_name: profile.full_name ?? "",
     branch: profile.branch ?? "",
@@ -28,27 +29,44 @@ export function ProfileSettingsForm({
     semester: profile.semester ? String(profile.semester) : "",
   });
 
+  useEffect(() => {
+    return () => {
+      if (savedTimer.current) clearTimeout(savedTimer.current);
+    };
+  }, []);
+
   async function save(e: React.FormEvent) {
     e.preventDefault();
     setSaving(true);
     setError(null);
     const supabase = createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user) {
+      setSaving(false);
+      setError("You must be signed in to update your profile.");
+      return;
+    }
+    const year = form.year ? Math.min(8, Math.max(1, Number(form.year))) : null;
+    const semester = form.semester ? Math.min(16, Math.max(1, Number(form.semester))) : null;
     const { error: updateError } = await supabase
       .from("profiles")
       .update({
-        full_name: form.full_name.trim() || "",
+        full_name: form.full_name.trim(),
         branch: form.branch.trim() || null,
-        year: form.year ? Number(form.year) : null,
-        semester: form.semester ? Number(form.semester) : null,
+        year,
+        semester,
       })
-      .eq("id", (await supabase.auth.getUser()).data.user?.id ?? "");
+      .eq("id", user.id);
     setSaving(false);
     if (updateError) {
       setError(updateError.message);
       return;
     }
     setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
+    if (savedTimer.current) clearTimeout(savedTimer.current);
+    savedTimer.current = setTimeout(() => setSaved(false), 2000);
     router.refresh();
   }
 
@@ -88,8 +106,9 @@ export function ProfileSettingsForm({
               <label className="font-display text-label-sm text-on-surface">Year</label>
               <input
                 inputMode="numeric"
+                pattern="[0-9]*"
                 value={form.year}
-                onChange={(e) => setForm({ ...form, year: e.target.value })}
+                onChange={(e) => setForm({ ...form, year: e.target.value.replace(/\D/g, "") })}
                 placeholder="2"
                 className={FIELD}
               />
@@ -98,8 +117,9 @@ export function ProfileSettingsForm({
               <label className="font-display text-label-sm text-on-surface">Semester</label>
               <input
                 inputMode="numeric"
+                pattern="[0-9]*"
                 value={form.semester}
-                onChange={(e) => setForm({ ...form, semester: e.target.value })}
+                onChange={(e) => setForm({ ...form, semester: e.target.value.replace(/\D/g, "") })}
                 placeholder="3"
                 className={FIELD}
               />

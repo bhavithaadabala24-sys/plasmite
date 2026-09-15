@@ -12,24 +12,38 @@ export default async function BugsPage({
   searchParams: Promise<{ status?: string; severity?: string }>;
 }) {
   const { supabase, user } = await requireUser();
-  const { status, severity } = await searchParams;
+  const params = await searchParams;
 
-  let query = supabase
+  const VALID_STATUS = ["open", "investigating", "fixed", "resolved"] as const;
+  const VALID_SEVERITY = ["low", "medium", "high", "critical"] as const;
+  const status = VALID_STATUS.includes(params.status as (typeof VALID_STATUS)[number])
+    ? (params.status as (typeof VALID_STATUS)[number])
+    : undefined;
+  const severity = VALID_SEVERITY.includes(params.severity as (typeof VALID_SEVERITY)[number])
+    ? (params.severity as (typeof VALID_SEVERITY)[number])
+    : undefined;
+
+  const { data: allBugs } = await supabase
     .from("bugs")
     .select("id, title, severity, status, symptom, root_cause, remedy, updated_at, project:projects(name)")
-    .eq("user_id", user.id);
-  if (status) query = query.eq("status", status);
-  if (severity) query = query.eq("severity", severity);
-  query = query.order("updated_at", { ascending: false });
-  const { data: bugs } = await query;
+    .eq("user_id", user.id)
+    .order("updated_at", { ascending: false });
+
+  const bugs =
+    status || severity
+      ? (allBugs ?? []).filter(
+          (b) => (!status || b.status === status) && (!severity || b.severity === severity),
+        )
+      : allBugs ?? [];
 
   const [{ data: projects }] = await Promise.all([
     supabase.from("projects").select("id, name").eq("user_id", user.id),
   ]);
 
-  const openCount = bugs?.filter((b) => b.status === "open").length ?? 0;
-  const investigatingCount = bugs?.filter((b) => b.status === "investigating").length ?? 0;
-  const resolvedCount = bugs?.filter((b) => b.status === "resolved").length ?? 0;
+  const all = allBugs ?? [];
+  const openCount = all.filter((b) => b.status === "open").length;
+  const investigatingCount = all.filter((b) => b.status === "investigating").length;
+  const resolvedCount = all.filter((b) => b.status === "resolved").length;
 
   const filterChip = (query: string, label: string, active: boolean) => (
   <a
@@ -56,7 +70,7 @@ export default async function BugsPage({
       <div className="flex flex-wrap items-center gap-4">
         <div className="flex flex-wrap gap-2">
           {[
-            { key: "", label: `All · ${bugs?.length ?? 0}`, active: !status && !severity },
+            { key: "", label: `All · ${all.length}`, active: !status && !severity },
             { key: "status=open", label: `Open · ${openCount}`, active: status === "open" },
             {
               key: "status=investigating",
@@ -85,7 +99,7 @@ export default async function BugsPage({
                   : `${SEVERITY_META[sev].className} hover:opacity-80`
               }`}
             >
-              {sev} · {bugs?.filter((b) => b.severity === sev).length ?? 0}
+              {sev} · {all.filter((b) => b.severity === sev).length}
             </a>
           ))}
         </div>

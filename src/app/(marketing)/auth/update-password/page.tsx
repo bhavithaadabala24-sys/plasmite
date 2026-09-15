@@ -6,21 +6,17 @@ import { createClient } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
 
-export default async function UpdatePasswordPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ code?: string }>;
-}) {
+export default async function UpdatePasswordPage() {
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
     return (
       <div className="flex min-h-[calc(100dvh-4rem)] w-full items-center justify-center px-4">
         <p className="max-w-md text-center font-body text-body-md text-secondary">
           Authentication is not configured yet. Add{" "}
-          <code className="rounded bg-surface-container px-1.5 py-0.5 font-monospace text-code-sm text-on-surface">
+          <code className="rounded bg-surface-container px-1.5 py-0.5 font-mono text-code-sm text-on-surface">
             NEXT_PUBLIC_SUPABASE_URL
           </code>{" "}
           and{" "}
-          <code className="rounded bg-surface-container px-1.5 py-0.5 font-monospace text-code-sm text-on-surface">
+          <code className="rounded bg-surface-container px-1.5 py-0.5 font-mono text-code-sm text-on-surface">
             NEXT_PUBLIC_SUPABASE_ANON_KEY
           </code>{" "}
           to <span className="text-on-surface">.env.local</span> to enable passkey recovery.
@@ -30,9 +26,6 @@ export default async function UpdatePasswordPage({
   }
 
   const supabase = await createClient();
-  const { code } = await searchParams;
-  if (code) await supabase.auth.exchangeCodeForSession(code);
-
   const {
     data: { user },
   } = await supabase.auth.getUser();

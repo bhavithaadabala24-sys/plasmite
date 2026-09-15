@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 type ResultRow = { id: string; title: string; sub?: string; href: string };
 type ResultGroup = { label: string; href: string; rows: ResultRow[] };
 
-type SearchResult = { q: string; groups: ResultGroup[]; total: number };
+type SearchResult = { q: string; groups: ResultGroup[]; total: number; error?: boolean };
 
 export function SearchClient({ initialTerm = "" }: { initialTerm?: string }) {
   const [term, setTerm] = useState(initialTerm);
@@ -27,10 +27,12 @@ export function SearchClient({ initialTerm = "" }: { initialTerm?: string }) {
         if (res.ok) {
           const data = await res.json();
           setResult({ q, groups: data.groups ?? [], total: data.total ?? 0 });
+        } else {
+          setResult({ q, groups: [], total: 0, error: true });
         }
       } catch {
         if (requestId === requestRef.current) {
-          setResult({ q, groups: [], total: 0 });
+          setResult({ q, groups: [], total: 0, error: true });
         }
       }
     }, 250);
@@ -79,6 +81,10 @@ export function SearchClient({ initialTerm = "" }: { initialTerm?: string }) {
       ) : !isFresh ? (
         <p className="rounded-xl border border-dashed border-surface-variant bg-surface-container-lowest px-6 py-12 text-center font-body text-body-sm text-on-surface-variant">
           Searching…
+        </p>
+      ) : result.error ? (
+        <p className="rounded-xl border border-dashed border-error/60 bg-surface-container-lowest px-6 py-12 text-center font-body text-body-sm text-error">
+          Search hit a problem. Please try again.
         </p>
       ) : result.groups.length === 0 ? (
         <p className="rounded-xl border border-dashed border-surface-variant bg-surface-container-lowest px-6 py-12 text-center font-body text-body-sm text-on-surface-variant">

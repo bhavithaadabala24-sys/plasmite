@@ -6,6 +6,10 @@ import { embedValue } from "@/lib/utils";
 type ResultRow = { id: string; title: string; sub?: string; href: string };
 type ResultGroup = { label: string; href: string; rows: ResultRow[] };
 
+function escapeLike(value: string): string {
+  return value.replace(/[\\%_]/g, "\\$&");
+}
+
 export async function GET(request: NextRequest) {
   const term = request.nextUrl.searchParams.get("q")?.trim() ?? "";
 
@@ -22,9 +26,9 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const like = `%${term}%`;
+  const like = `%${escapeLike(term)}%`;
 
-  const [{ data: notes }, { data: subjects }, { data: topics }, { data: questions }, { data: revisions }] =
+  const [{ data: notes }, { data: subjects }, { data: subjectsByCode }, { data: topics }, { data: questions }, { data: revisions }] =
     await Promise.all([
       supabase
         .from("notes")
@@ -36,7 +40,13 @@ export async function GET(request: NextRequest) {
         .from("subjects")
         .select("id, name, code, semester")
         .eq("user_id", user.id)
-        .or(`name.ilike.%${term}%,code.ilike.%${term}%`)
+        .ilike("name", like)
+        .limit(8),
+      supabase
+        .from("subjects")
+        .select("id, name, code, semester")
+        .eq("user_id", user.id)
+        .ilike("code", like)
         .limit(8),
       supabase
         .from("topics")
@@ -71,17 +81,22 @@ export async function GET(request: NextRequest) {
       })),
     });
   }
-  if (subjects?.length) {
-    groups.push({
-      label: "Subjects",
-      href: `/subjects`,
-      rows: subjects.map((r) => ({
-        id: r.id,
-        title: r.name,
-        sub: r.code ?? undefined,
-        href: `/subjects/${r.id}`,
-      })),
-    });
+  {
+    const merged = new Map<string, NonNullable<typeof subjects>[number]>();
+    for (const s of [...(subjects ?? []), ...(subjectsByCode ?? [])]) merged.set(s.id, s);
+    const rows = [...merged.values()];
+    if (rows.length) {
+      groups.push({
+        label: "Subjects",
+        href: `/subjects`,
+        rows: rows.slice(0, 8).map((r) => ({
+          id: r.id,
+          title: r.name,
+          sub: r.code ?? undefined,
+          href: `/subjects/${r.id}`,
+        })),
+      });
+    }
   }
   if (topics?.length) {
     groups.push({

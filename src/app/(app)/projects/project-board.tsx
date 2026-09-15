@@ -55,14 +55,31 @@ export function ProjectBoard({
   const doneCount = tasks.filter((t) => t.status === "done").length;
   const progress = tasks.length ? (doneCount / tasks.length) * 100 : 0;
 
-  async function syncProgress() {
-    const done = (tasks.length ? (doneCount / tasks.length) * 100 : 0).toFixed(0);
-    await supabase.from("projects").update({ progress: Number(done) }).eq("id", projectId);
+  async function syncProgress(updatedTasks: Task[]) {
+    const done = updatedTasks.filter((t) => t.status === "done").length;
+    const pct = updatedTasks.length ? Number(((done / updatedTasks.length) * 100).toFixed(0)) : 0;
+    const { error: updateError } = await supabase
+      .from("projects")
+      .update({ progress: pct })
+      .eq("id", projectId);
+    if (updateError) {
+      setError(updateError.message);
+      return;
+    }
+    setBusy(false);
   }
 
   async function updateStatus(next: string) {
     setStatus(next);
-    await supabase.from("projects").update({ status: next }).eq("id", projectId);
+    const { error: updateError } = await supabase
+      .from("projects")
+      .update({ status: next })
+      .eq("id", projectId);
+    if (updateError) {
+      setStatus(status);
+      setError(updateError.message);
+      return;
+    }
     router.refresh();
   }
 
@@ -70,10 +87,16 @@ export function ProjectBoard({
     const next: Task["status"] = task.status === "done" ? "todo" : "done";
     const updated = tasks.map((t) => (t.id === task.id ? { ...t, status: next } : t));
     setTasks(updated);
-    await supabase.from("project_tasks").update({ status: next }).eq("id", task.id);
-    const doneN = updated.filter((t) => t.status === "done").length;
-    const pct = updated.length ? Number(((doneN / updated.length) * 100).toFixed(0)) : 0;
-    await supabase.from("projects").update({ progress: pct }).eq("id", projectId);
+    const { error: updateError } = await supabase
+      .from("project_tasks")
+      .update({ status: next })
+      .eq("id", task.id);
+    if (updateError) {
+      setTasks(tasks);
+      setError(updateError.message);
+      return;
+    }
+    await syncProgress(updated);
   }
 
   async function addTask() {
@@ -104,16 +127,28 @@ export function ProjectBoard({
   }
 
   async function deleteTask(taskId: string) {
-    const updated = tasks.filter((t) => t.id !== taskId);
-    setTasks(updated);
-    await supabase.from("project_tasks").delete().eq("id", taskId);
-    syncProgress();
+    const retained = tasks.filter((t) => t.id !== taskId);
+    setTasks(retained);
+    const { error: deleteError } = await supabase.from("project_tasks").delete().eq("id", taskId);
+    if (deleteError) {
+      setTasks(tasks);
+      setError(deleteError.message);
+      return;
+    }
+    await syncProgress(retained);
   }
 
   async function toggleMilestone(ms: Milestone) {
     const updated = milestones.map((m) => (m.id === ms.id ? { ...m, completed: !m.completed } : m));
     setMilestones(updated);
-    await supabase.from("project_milestones").update({ completed: !ms.completed }).eq("id", ms.id);
+    const { error: updateError } = await supabase
+      .from("project_milestones")
+      .update({ completed: !ms.completed })
+      .eq("id", ms.id);
+    if (updateError) {
+      setMilestones(milestones);
+      setError(updateError.message);
+    }
   }
 
   async function addMilestone() {
@@ -144,8 +179,16 @@ export function ProjectBoard({
   }
 
   async function deleteMilestone(msId: string) {
-    setMilestones(milestones.filter((m) => m.id !== msId));
-    await supabase.from("project_milestones").delete().eq("id", msId);
+    const retained = milestones.filter((m) => m.id !== msId);
+    setMilestones(retained);
+    const { error: deleteError } = await supabase
+      .from("project_milestones")
+      .delete()
+      .eq("id", msId);
+    if (deleteError) {
+      setMilestones(milestones);
+      setError(deleteError.message);
+    }
   }
 
   const inputField =

@@ -82,8 +82,9 @@ export function AddExperimentModal({ labId, nextNumber }: { labId: string; nextN
               <label className="font-display text-label-sm text-on-surface">No.</label>
               <input
                 inputMode="numeric"
+                pattern="[0-9]*"
                 value={form.experiment_number}
-                onChange={(e) => setForm({ ...form, experiment_number: e.target.value })}
+                onChange={(e) => setForm({ ...form, experiment_number: e.target.value.replace(/\D/g, "") })}
                 className={field}
               />
             </div>
