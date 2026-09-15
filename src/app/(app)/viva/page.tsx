@@ -4,6 +4,7 @@ import { ArrowRight, ShieldQuestion } from "lucide-react";
 import { EmptyState } from "@/components/app/empty-state";
 import { PageHeader } from "@/components/layout/page-header";
 import { requireUser } from "@/lib/db";
+import { embedValue } from "@/lib/utils";
 
 export default async function VivaPage() {
   const { supabase, user } = await requireUser();
@@ -12,17 +13,35 @@ export default async function VivaPage() {
     .from("lab_experiments")
     .select("id, title, viva_questions, lab:labs(title)")
     .eq("user_id", user.id)
-    .order("updated_at", { ascending: false });
+    .order("updated_at", { ascending: false })
+    .limit(200);
 
-  const items = (experiments ?? []).flatMap((e) =>
-    (Array.isArray(e.viva_questions) ? (e.viva_questions as string[]) : []).map((q, i) => ({
+  function questionsOf(e: {
+    viva_questions: unknown;
+  }): string[] {
+    const raw = e.viva_questions;
+    if (Array.isArray(raw)) return raw.filter((q): q is string => typeof q === "string");
+    if (typeof raw === "string") {
+      try {
+        const parsed: unknown = JSON.parse(raw);
+        if (Array.isArray(parsed)) return parsed.filter((q): q is string => typeof q === "string");
+      } catch {
+        return [];
+      }
+    }
+    return [];
+  }
+
+  const items = (experiments ?? []).flatMap((e) => {
+    const lab = embedValue(e.lab);
+    return questionsOf(e).map((q, i) => ({
       id: `${e.id}-${i}`,
       question: q,
       experimentId: e.id,
       experimentTitle: e.title,
-      labTitle: (e.lab as { title?: string } | null)?.title ?? "Lab",
-    })),
-  );
+      labTitle: lab?.title ?? "Lab",
+    }));
+  });
 
   const total = items.length;
 
@@ -36,7 +55,7 @@ export default async function VivaPage() {
         }`}
       />
 
-      {(experiments ?? []).some((e) => Array.isArray(e.viva_questions) && e.viva_questions.length > 0) ? (
+      {(experiments ?? []).some((e) => questionsOf(e).length > 0) ? (
         <div className="flex flex-col gap-3">
           {items.map((it) => (
             <Link
