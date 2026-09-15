@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { Search } from "lucide-react";
@@ -21,12 +22,13 @@ export function CommandTrigger({ className }: { className?: string }) {
   }, [router]);
 
   return (
-    <button
-      type="button"
+    <Link
+      href="/search"
+      prefetch
+      role="search"
       aria-label="Search PLASMITE"
-      onClick={() => router.push("/search")}
       className={cn(
-        "flex w-full max-w-xs items-center gap-2 rounded-sm border border-border bg-surface-container-lowest px-2.5 py-1.5 text-secondary shadow-card transition-colors hover:border-ring hover:text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        "inline-flex w-full max-w-xs items-center gap-2 rounded-sm border border-border bg-surface-container-lowest px-2.5 py-1.5 text-secondary shadow-card transition-colors hover:border-ring hover:text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         className,
       )}
     >
@@ -37,6 +39,6 @@ export function CommandTrigger({ className }: { className?: string }) {
       <kbd className="shrink-0 rounded-sm border border-border bg-surface-container px-1.5 py-0.5 font-display text-label-sm">
         ⌘K
       </kbd>
-    </button>
+    </Link>
   );
 }
